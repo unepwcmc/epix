@@ -1,0 +1,6 @@
+--no-private
+--title "EPIX Conduit"
+--markup markdown
+--markup-provider redcarpet
+app/**/*.rb
+lib/**/*.rb
