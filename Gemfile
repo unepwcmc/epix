@@ -19,6 +19,8 @@ gem 'dotenv-rails', '~> 2.1.1'
 # Logging'n'tracking
 gem 'appsignal', '~> 1.1.9'
 
+gem 'devise'
+
 group :development do
   # Docs
   gem 'yard', '~> 0.8.7.6'
