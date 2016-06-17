@@ -5,9 +5,7 @@ addons:
   postgresql: 9.4
 
 env:
-  - RAILS_ENV=test
-  - PG_HOST=localhost
-  - PG_USERNAME=postgres
+  - RAILS_ENV=test PG_HOST=localhost PG_USERNAME=postgres
 
 before_script:
   - bundle exec rake db:create db:migrate
