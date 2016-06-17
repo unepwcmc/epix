@@ -21,6 +21,10 @@ gem 'appsignal', '~> 1.1.9'
 
 gem 'devise'
 
+gem 'savon'
+
+gem 'attr_encrypted', '~>3.0.0'
+
 group :development do
   # Docs
   gem 'yard', '~> 0.8.7.6'
