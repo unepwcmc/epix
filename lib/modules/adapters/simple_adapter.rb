@@ -9,14 +9,6 @@ class Adapters::SimpleAdapter < Adapters::Base
       password: ''
     }
     wsdl = adapter.web_service_uri
-    @response = soap_request(wsdl, operation, auth, options)
-  end
-
-  def to_hash
-    @response.to_hash
-  end
-
-  def to_json
-    @response.to_json
+    soap_request(wsdl, operation, auth, options)
   end
 end

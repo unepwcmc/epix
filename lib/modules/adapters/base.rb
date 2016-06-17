@@ -6,7 +6,7 @@ class Adapters::Base
   def soap_request(wsdl, operation, auth, options)
     begin
       Timeout::timeout(TIMEOUT) {
-        Transports::Soap.request(wsdl, operation, auth, options)
+       @response = Transports::Soap.request(wsdl, operation, auth, options)
       }
     rescue => e
       if e.is_a?(Timeout::Error)
@@ -15,5 +15,13 @@ class Adapters::Base
         p 'Something went wrong'
       end
     end
+  end
+
+  def to_hash
+    @response.to_hash
+  end
+
+  def to_json
+    @response.to_json
   end
 end
