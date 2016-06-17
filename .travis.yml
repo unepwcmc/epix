@@ -1,10 +1,6 @@
 language: ruby
 bundler_args: --without development production
 
-branches:
-  only:
-    - add-travis
-
 addons:
   postgresql: 9.4
 
