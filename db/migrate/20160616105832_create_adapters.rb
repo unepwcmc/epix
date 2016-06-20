@@ -5,7 +5,7 @@ class CreateAdapters < ActiveRecord::Migration
       t.string :name, null: false
       t.string :web_service_type
       t.string :web_service_uri
-      t.integer :timeout, default: 5
+      t.integer :time_out, default: 5
 
       ##Encrypted fields for authentication
       t.string :encrypted_auth_token
