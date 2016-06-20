@@ -36,4 +36,8 @@ end
 
 # Debugging
 gem 'web-console', '~> 2.0', group: :development
-gem 'byebug', group: [:development, :test]
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec-rails', '~> 3.4'
+end
