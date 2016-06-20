@@ -1,34 +1,30 @@
 class Adapters::Base
-  attr_reader :response, :params
+  attr_reader :params
 
-  TIMEOUT = 10
+  def self.run(adapter)
+    instance = self.new(adapter)
+    instance.request
+  end
+
+  def initialize(adapter)
+    @params = {}
+  end
 
   def request
-    request_type = "#{@params[:request_type].downcase}_request".to_sym
-    send(request_type)
-  end
-
-  def to_hash
-    @response.to_hash
-  end
-
-  def to_json
-    @response.to_json
+    send(@params[:request_type])
   end
 
   private
 
-  def initialise_params; end
-
   def soap_request
-    adapter = Adapter.find_by_name(@params[:adapter])
-    wsdl = adapter.web_service_uri
+    wsdl = @params[:wsdl]
     operation = @params[:operation]
     auth = @params[:auth]
     options = @params[:options]
+    timeout = @params[:timeout]
     begin
-      Timeout::timeout(TIMEOUT) {
-       @response = Transports::Soap.request(wsdl, operation, auth, options)
+      Timeout::timeout(timeout) {
+       Transports::Soap.request(wsdl, operation, auth, options)
       }
     rescue => e
       if e.is_a?(Timeout::Error)

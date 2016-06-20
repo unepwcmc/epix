@@ -1,16 +1,10 @@
 class Adapters::SimpleAdapter < Adapters::Base
 
-  def initialize
-    initialise_params
-    request
-  end
-
-  private
-
-  def initialise_params
+  def initialize(adapter)
     @params = {
-      request_type: 'SOAP',
-      adapter: 'Adapters::SimpleAdapter',
+      request_type: 'soap_request',
+      wsdl: adapter.web_service_uri,
+      timeout: adapter.timeout,
       operation: :get_non_final_cites_certificate,
       options: {},
       auth: {
