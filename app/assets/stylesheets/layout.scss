@@ -26,4 +26,21 @@ footer {
   height: 80px;
   bottom: 0;
   background-color: grey;
+  .footer-container {
+    height: 80px;
+    width: 1180px;
+    margin: 0 auto;
+    .upper-footer {
+      height: 50%;
+    }
+    .lower-footer {
+      height: 50%;
+      border-top: 1px solid black;
+      color: white;
+    }
+  }
 }
+
+.left { float: left; }
+.right { float: right; }
+.bold { font-weight: bold; }
