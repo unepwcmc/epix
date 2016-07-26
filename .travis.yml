@@ -5,10 +5,11 @@ addons:
   postgresql: 9.4
 
 env:
-  - RAILS_ENV=test PG_HOST=localhost PG_USERNAME=postgres
+  - RAILS_ENV=test PG_HOST=localhost PG_USERNAME=postgres SECRET_KEY_BASE=8378b5283a4ac078eab3afcbd260eb919e163886c22a6d0c35a54901103c34b4f6896482afe781df57b21dffab40a32613ec8721e2b747fd18edd0da92041d84
 
 before_script:
   - bundle exec rake db:create db:migrate
 
 notifications:
   slack: wcmc:HYHvCyZ3zcYBG2KRrDj5PusI
+
