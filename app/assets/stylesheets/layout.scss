@@ -7,8 +7,21 @@ header.row {
   color: $grey;
   nav#logo {
     ul li.bold {
-      font-size: 28px;
       color: $dark-grey;
+      @media screen and (min-width: 1024px) {
+        font-size: 2em;
+      }
+      @media screen and (max-width: 1024px) {
+        font-size: 1.4em;
+      }
+    }
+    ul li:last-child {
+      @media screen and (min-width: 1024px) {
+        font-size: 1em;
+      }
+      @media screen and (max-width: 1024px) {
+        font-size: 0.7em;
+      }
     }
   }
   .navbar {
