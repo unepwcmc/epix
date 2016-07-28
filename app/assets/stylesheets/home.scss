@@ -8,6 +8,11 @@
   @media screen and (max-width: 1024px) {
     font-size: 0.8em;
   }
+  p.epix-intro {
+    white-space: pre-line;
+    line-height: 30px;
+    margin: 0;
+  }
 }
 .logo-container {
   position: relative;
