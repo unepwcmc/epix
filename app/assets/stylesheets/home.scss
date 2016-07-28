@@ -1,0 +1,47 @@
+.sub-header {
+  padding: 15px 0;
+  border-bottom: 1px solid lightgrey;
+  color: grey;
+}
+.logo-container {
+  position: relative;
+  border : 1px solid lightgrey;
+  width: 600px;
+  height: 240px;
+  margin: 20px auto;
+  .cites-logo {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 300px;
+  }
+}
+.permit-search {
+  color: grey;
+  text-align: center;
+  p:first-child { font-size: 26px; }
+}
+
+.button {
+  display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  padding: 9px 50px;
+  background: purple;
+  color: white;
+  &:hover {
+    background: rebeccapurple;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+}

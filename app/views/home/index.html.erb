@@ -1,1 +1,15 @@
-<div>Content</div>
+<div class="sub-header">
+  <p class="bold">EPIX (Electronic Permit Information eXchange)</p>
+  <p>facilitates and expedites the exchange of permit data among national</p>
+  <p>CITES Authorities</p>
+</div>
+<div class="main-content">
+  <div class="logo-container">
+    <%= image_tag("CITES_logo.jpg", class: "cites-logo") %>
+  </div>
+  <div class="permit-search">
+    <p class="bold">Search a CITES Permit</p>
+    <p>CITES Authorities can query and verify details of CITES permits issued</p>
+    <%= link_to "CITES Permit Search", "#", class: "button search-button" %>
+  </div>
+</div>
