@@ -22,13 +22,13 @@
       </li>
       <li class='language nav-elem'>
         <div class='languages-dropdown'>
-          <button class="bold btn" type="button" data-toggle="dropdown">English
+          <button class="bold btn" type="button" data-toggle="dropdown"><%= t('language') %>
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">English</a></li>
-            <li><a href="#">French</a></li>
-            <li><a href="#">Spanish</a></li>
+            <li><a href=<%= "#{request.path}?locale=en" %>><%= t('language', locale: 'en') %></a></li>
+            <li><a href=<%= "#{request.path}?locale=fr" %>><%= t('language', locale: 'fr') %></a></li>
+            <li><a href=<%= "#{request.path}?locale=es" %>><%= t('language', locale: 'es') %></a></li>
           </ul>
         </div>
       </li>
