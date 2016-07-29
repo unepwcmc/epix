@@ -8,7 +8,13 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="top-level-container">
+  <div class="container">
+    <%= render 'layouts/header' %>
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
+</div>
 
 </body>
 </html>

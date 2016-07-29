@@ -1,0 +1,37 @@
+<header class="row">
+  <nav id='logo' class="col-xs-3 col-md-3 col-lg-3 navbar">
+    <ul class="nav navbar-nav">
+      <li class="bold">Wildlife Trade EPIX</li>
+      <li>Electronic Permit Information eXchange</li>
+    </ul>
+  </nav>
+  <nav id='nav_bar' class="col-xs-5 col-md-5 col-lg-5 navbar">
+    <ul id='main_nav' class="nav navbar-nav">
+      <li class="nav-elem bold"><a href="#"><%= t('home') %></a></li>
+      <li class="nav-elem bold"><a href="#"><%= t('cites_permit') %></a></li>
+      <li class="nav-elem bold"><a href="#"><%= t('about') %></a></li>
+    </ul>
+  </nav>
+  <nav id='user_nav_bar' class="col-xs-4 col-md-4 col-lg-4 navbar">
+    <ul id='user_nav' class="nav navbar-nav pull-right">
+      <li class='login nav-elem'>
+        <a href="#">
+          <i class='fa fa-sign-in'></i>
+          <span class='bold'><%= t('login') %></span>
+        </a>
+      </li>
+      <li class='language nav-elem'>
+        <div class='languages-dropdown'>
+          <button class="bold btn" type="button" data-toggle="dropdown"><%= t('language') %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href=<%= "#{request.path}?locale=en" %>><%= t('language', locale: 'en') %></a></li>
+            <li><a href=<%= "#{request.path}?locale=fr" %>><%= t('language', locale: 'fr') %></a></li>
+            <li><a href=<%= "#{request.path}?locale=es" %>><%= t('language', locale: 'es') %></a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,14 @@
+<div class="sub-header">
+  <p class="bold">EPIX (Electronic Permit Information eXchange)</p>
+  <p class="epix-intro"><%= t('epix') %></p>
+</div>
+<div class="main-content">
+  <div class="logo-container">
+    <%= image_tag("CITES_logo.jpg", class: "cites-logo") %>
+  </div>
+  <div class="permit-search">
+    <p class="bold"><%= t('search_permit') %></p>
+    <p><%= t('search_permit_info') %></p>
+    <%= link_to "CITES Permit Search", "#", class: "button search-button" %>
+  </div>
+</div>

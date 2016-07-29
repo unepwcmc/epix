@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  language: 'English'
+  home: 'Home'
+  cites_permit: 'CITES Permit'
+  about: 'About'
+  login: 'Log in'
+  epix: "facilitates and expedites the exchange of permit data among national\nCITES Authorities"
+  search_permit: 'Search a CITES Permit'
+  search_permit_info: 'CITES Authorities can query and verify details of CITES permits issued'

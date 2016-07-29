@@ -1,0 +1,67 @@
+.top-level-container {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 300px;
+}
+header.row {
+  color: $grey;
+  nav#logo {
+    ul li.bold {
+      color: $dark-grey;
+      @media screen and (min-width: 1024px) {
+        font-size: 2em;
+      }
+      @media screen and (max-width: 1024px) {
+        font-size: 1.4em;
+      }
+    }
+    ul li:last-child {
+      @media screen and (min-width: 1024px) {
+        font-size: 1em;
+      }
+      @media screen and (max-width: 1024px) {
+        font-size: 0.7em;
+      }
+    }
+  }
+  .navbar {
+    min-height: 0;
+    padding: 0;
+  }
+  li.nav-elem {
+    a {
+      padding-bottom: 0;
+      color: $grey;
+    }
+    a:hover {
+      background: none;
+      color: purple;
+    }
+  }
+  border-bottom: 1px solid $light-grey;
+  margin: 0;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  bottom: 0;
+  background-color: $grey;
+  .footer-container {
+    height: 120px;
+    .upper-footer {
+      height: 40%;
+      border-bottom: 1px solid black;
+    }
+    .lower-footer {
+      height: 60%;
+      color: white;
+      padding: 20px 0 0;
+    }
+  }
+}
+
+.left { float: left; }
+.right { float: right; }
+.bold { font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold' }
