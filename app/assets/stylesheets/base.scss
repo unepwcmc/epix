@@ -1,4 +1,5 @@
 @import "fonts";
+@import "colors";
 
 html, body {
   font-family: 'SourceSansPro-Regular', 'SorucesSerifPro-Regular';
@@ -6,3 +7,15 @@ html, body {
 }
 
 p { font-size: 1em; }
+
+h1 {
+  color: $grey;
+  font-weight: bold;
+  border-bottom: solid 1px $light-grey;
+  padding-bottom: 20px;
+  margin-top: 50px;
+}
+
+label {
+  color: $grey;
+}
