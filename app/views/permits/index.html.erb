@@ -1,0 +1,24 @@
+<h1>Search a CITES permit</h1>
+
+<div class="row permit-search-form col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+  <%= form_tag(permits_path, method: 'get') do %>
+      <div class="form-group">
+      <%= label_tag(:country, 'Please select country') %>
+      <%= select_tag(
+        :country,
+        options_for_select(@countries.map { |c| [c.name, c.id] }),
+        class: 'form-control'
+      ) %>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:permit_identifier, 'Enter permit identifier') %>
+      <%= text_field_tag(
+        :permit_identifier, nil,
+        {class: 'form-control', placeholder: 'Permit identifier'}
+      )%>
+    </div>
+    <div class="form-group text-center">
+      <%= submit_tag('Search', class: 'button search-button') %>
+    </div>
+  <% end %>
+</div>
