@@ -48,6 +48,8 @@ gem 'web-console', '~> 2.0', group: :development
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
