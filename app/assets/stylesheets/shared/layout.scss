@@ -85,6 +85,12 @@ footer {
 .right { float: right; }
 .bold { font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold' }
 
+li.login > a:focus {
+  background: none;
+  border: none;
+  outline: none;
+}
+
 .modal-dialog {
   display: none;
   position: fixed;
@@ -106,6 +112,24 @@ footer {
   background: white;
 }
 
+.modal-body {
+  padding-bottom: 30px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: none;
+  padding: 0;
+  .remember-me { margin-right: auto; }
+}
+
+.forgot-password {
+  float: right;
+  margin-right: 13px;
+}
+
 .close {
   float: right;
   background: #606061;
@@ -123,3 +147,19 @@ footer {
 
 .close:hover { background: #00d9ff; }
 
+.header-dropdown {
+  display: flex;
+  align-items: center;
+  margin-top: 9px;
+  .btn {
+    background: none;
+    border: none;
+    color: $grey;
+    .fa-caret-down { margin-left: 30px; }
+    &:focus { outline: 0; }
+    &:active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}

@@ -21,15 +21,20 @@
             <span class='bold'><%= t('login') %></span>
           </a>
         <% else %>
-          <a href="#">
+          <div class='header-dropdown'>
             <i class="fa fa-user"></i>
-            <span class="bold"><%= "#{current_user.name} #{current_user.surname}" %></span>
-            <i class="fa fa-caret-down"></i>
-          </a>
+            <button class="bold btn" type="button" data-toggle="dropdown"><%= "#{current_user.name} #{current_user.surname}" %>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Settings</a></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </div>
         <% end %>
       </li>
       <li class='language nav-elem'>
-        <div class='languages-dropdown'>
+        <div class='header-dropdown'>
           <button class="bold btn" type="button" data-toggle="dropdown"><%= t('language') %>
             <i class="fa fa-caret-down"></i>
           </button>
