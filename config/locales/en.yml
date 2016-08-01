@@ -28,3 +28,7 @@ en:
   epix: "facilitates and expedites the exchange of permit data among national\nCITES Authorities"
   search_permit: 'Search a CITES Permit'
   search_permit_info: 'CITES Authorities can query and verify details of CITES permits issued'
+  select_country: 'Please select country'
+  enter_permit_identifier: 'Enter permit identifier'
+  permit_identifier: 'Permit identifier'
+  search_button_label: 'Search'
