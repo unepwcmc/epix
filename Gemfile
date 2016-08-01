@@ -50,3 +50,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
 end
+
+group :test do
+  gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', require: false
+end
