@@ -15,15 +15,23 @@
   <nav id='user_nav_bar' class="col-xs-4 col-md-4 col-lg-4 navbar">
     <ul id='user_nav' class="nav navbar-nav pull-right">
       <li class='login nav-elem'>
-        <a href="#" data-toggle="modal" data-target="#login_modal">
-          <i class='fa fa-sign-in'></i>
-          <span class='bold'><%= t('login') %></span>
-        </a>
+        <% unless current_user %>
+          <a href="#" data-toggle="modal" data-target="#login_modal">
+            <i class='fa fa-sign-in'></i>
+            <span class='bold'><%= t('login') %></span>
+          </a>
+        <% else %>
+          <a href="#">
+            <i class="fa fa-user"></i>
+            <span class="bold"><%= "#{current_user.name} #{current_user.surname}" %></span>
+            <i class="fa fa-caret-down"></i>
+          </a>
+        <% end %>
       </li>
       <li class='language nav-elem'>
         <div class='languages-dropdown'>
           <button class="bold btn" type="button" data-toggle="dropdown"><%= t('language') %>
-            <span class="caret"></span>
+            <i class="fa fa-caret-down"></i>
           </button>
           <ul class="dropdown-menu">
             <li><a href=<%= "#{request.path}?locale=en" %>><%= t('language', locale: 'en') %></a></li>
