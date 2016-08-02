@@ -22,7 +22,7 @@
 
 .btn-long { width: 200px; }
 
-.alert-notice {
+.alert-notice, .alert-alert{
   background-image: -webkit-linear-gradient(top, $extralight-grey 0, $light-grey 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $extralight-grey), to($light-grey));
   background-image: linear-gradient(to bottom, $extralight-grey 0, $light-grey 100%);
