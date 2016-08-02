@@ -163,3 +163,8 @@ li.login > a:focus {
     }
   }
 }
+
+.forgot-password-form {
+  width: 500px;
+  .actions { float: right; }
+}
