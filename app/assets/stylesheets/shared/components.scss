@@ -1,0 +1,30 @@
+.button {
+  display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: none;
+  text-decoration: none;
+  padding: 9px 50px;
+  background: purple;
+  color: white;
+  &:hover {
+    background: rebeccapurple;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+}
+
+.btn-long { width: 200px; }
+
+.alert-notice, .alert-alert{
+  background-image: -webkit-linear-gradient(top, $extralight-grey 0, $light-grey 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $extralight-grey), to($light-grey));
+  background-image: linear-gradient(to bottom, $extralight-grey 0, $light-grey 100%);
+  background-repeat: repeat-x;
+}

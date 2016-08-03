@@ -1,0 +1,32 @@
+<div id="login_modal" class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <a class="close" href="#" data-dismiss="modal">x</a>
+      <h3 class="modal-title">Log in</h3>
+    </div>
+    <div class="modal-body">
+      <%= form_for(:user, url: session_path(:user)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group remember-me">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Log in', class: 'button search-button' %>
+          </div>
+        </div>
+        <div class="forgot-password">
+          <%= link_to "Forgot password?", new_password_path(:user) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -40,6 +40,25 @@ header.row {
   }
   border-bottom: 1px solid $light-grey;
   margin: 0;
+
+  .languages-dropdown {
+    margin-top: 9px;
+    .btn {
+      background: none;
+      border: none;
+      color: $grey;
+      .fa-caret-down { margin-left: 30px; }
+      &:focus { outline: 0; }
+      &:active {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .login {
+    .fa-caret-down { margin-left: 5px; }
+  }
 }
 
 footer {
@@ -65,3 +84,87 @@ footer {
 .left { float: left; }
 .right { float: right; }
 .bold { font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold' }
+
+li.login > a:focus {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.modal-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  -webkit-transition: opacity 400ms ease-in;
+  -maz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+}
+
+.modal-dialog > div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  background: white;
+}
+
+.modal-body {
+  padding-bottom: 30px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: none;
+  padding: 0;
+  .remember-me { margin-right: auto; }
+}
+
+.forgot-password {
+  float: right;
+  margin-right: 13px;
+}
+
+.close {
+  float: right;
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: relative;
+  text-align: center;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+}
+
+.close:hover { background: #00d9ff; }
+
+.header-dropdown {
+  display: flex;
+  align-items: center;
+  margin-top: 9px;
+  .btn {
+    background: none;
+    border: none;
+    color: $grey;
+    .fa-caret-down { margin-left: 30px; }
+    &:focus { outline: 0; }
+    &:active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.forgot-password-form {
+  width: 500px;
+  .actions { float: right; }
+}
