@@ -55,4 +55,6 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: false
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
