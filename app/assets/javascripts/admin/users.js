@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load',function(){
   $("#users_table").dataTable({
     "bFilter": false,
     "aoColumnDefs" : [{
