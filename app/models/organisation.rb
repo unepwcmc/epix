@@ -1,6 +1,7 @@
 class Organisation < ApplicationRecord
   has_many :users
   belongs_to :country
+  has_one :adapter
 
   VALID_ROLES = ["CITES MA", "Customs EA", "CITES Secretariat", "UNEP-WCMC"]
   validates :name, :role, :country, presence: true
