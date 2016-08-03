@@ -39,3 +39,6 @@ en:
   user_organisation: 'Organisation'
   user_is_admin: 'Admin?'
   delete_are_you_sure: 'Are you sure?'
+  admin_menu: 'Admin'
+  organisations_list: 'Organisations'
+  users_list: 'Users'
