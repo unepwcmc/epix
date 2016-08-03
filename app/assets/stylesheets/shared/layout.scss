@@ -8,18 +8,13 @@ header.row {
   nav#logo {
     ul li.bold {
       color: $dark-grey;
-      @media screen and (min-width: 1024px) {
         font-size: 2em;
-      }
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: $break_tablet) {
         font-size: 1.4em;
       }
     }
     ul li:last-child {
-      @media screen and (min-width: 1024px) {
-        font-size: 1em;
-      }
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: $break_tablet) {
         font-size: 0.7em;
       }
     }
@@ -69,6 +64,9 @@ footer {
   background-color: $grey;
   .footer-container {
     height: 120px;
+    @media screen and(max-width: $break_tablet) {
+      height: 80px;
+    }
     .upper-footer {
       height: 40%;
       border-bottom: 1px solid black;
