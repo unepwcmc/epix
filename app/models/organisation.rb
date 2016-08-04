@@ -3,7 +3,7 @@ class Organisation < ApplicationRecord
   belongs_to :country
   has_one :adapter
 
-  VALID_ROLES = ["CITES MA", "Customs EA", "CITES Secretariat", "UNEP-WCMC"]
+  VALID_ROLES = ["CITES MA", "Customs EA", "System Managers", "Other"]
   validates :name, :role, :country, presence: true
   validates :name, uniqueness: true
   validates_inclusion_of :role, in: VALID_ROLES
