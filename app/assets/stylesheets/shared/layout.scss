@@ -3,7 +3,17 @@
   min-height: 100%;
   padding-bottom: 300px;
 }
-header.row {
+
+header.mobile-header {
+  display: none;
+  @media screen and (max-width: $break_tablet) {
+    display: block;
+  }
+}
+header.row.desktop-header {
+  @media screen and (max-width: $break_tablet) {
+    display: none;
+  }
   color: $grey;
   nav#logo {
     ul li.bold {
