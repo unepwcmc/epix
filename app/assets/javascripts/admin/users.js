@@ -10,16 +10,16 @@ $(document).on('turbolinks:load',function(){
     aoColumns: [
       null,
       {
-        type: "text",
+        type: "text"
       },
       {
-        type: "text",
+        type: "text"
       },
       {
-        type: "text",
+        type: "text"
       },
       {
-        type: "text",
+        type: "text"
       },
       null,
       null,
