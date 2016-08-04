@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :permits, only: [:index]
 
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
   # You can have the root of your site routed with "root"
   root 'home#index'
 

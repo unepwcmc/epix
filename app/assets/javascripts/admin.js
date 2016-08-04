@@ -14,5 +14,7 @@
 //= require bootstrap.min
 //= require jquery_ujs
 //= require turbolinks
+//= require dataTables/jquery.dataTables
+//= require dataTables/dataTables.bootstrap
 //= require_tree ./shared
 //= require_tree ./admin
