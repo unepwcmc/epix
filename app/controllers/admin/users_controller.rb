@@ -27,6 +27,8 @@ class Admin::UsersController < Admin::BaseController
   def update
     @user = User.find(params[:id])
 
+    check_password_presence
+
     flash[:notice] = 'User was successfully updated.' if @user.update_attributes(user_params)
 
     respond_with :admin, @user
@@ -43,5 +45,13 @@ class Admin::UsersController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :organisation_id, :is_admin)
+  end
+
+  def check_password_presence
+    if !user_params[:password].present? &&
+      !user_params[:password_confirmation].present?
+      params[:user].delete :password
+      params[:user].delete :password_confirmation
+    end
   end
 end
