@@ -1,0 +1,35 @@
+<%= form_for @user, url: {action: "update"}, html: {id: "user_edit_form", class: 'form-horizontal'} do |f| %>
+  <h3>Login details</h3>
+  <div class="login-details">
+    <div class="form-group">
+      <%= f.label :first_name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.text_field :first_name, value: @user.first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.text_field :last_name, value: @user.last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.email_field :email, value: @user.email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+<% end %> <!-- End Form -->

@@ -13,6 +13,8 @@ class Admin::UsersController < Admin::BaseController
 
   def edit
     @user = User.find(params[:id])
+    @organisation = @user.try(:organisation)
+    @adapter = @organisation.try(:adapter)
   end
 
   def create
@@ -40,6 +42,6 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :organisation_id, :is_admin)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :organisation_id, :is_admin)
   end
 end

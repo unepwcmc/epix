@@ -91,6 +91,11 @@ li.login > a:focus {
   outline: none;
 }
 
+.modal-title {
+  padding: 0;
+  border: none;
+}
+
 .modal-dialog {
   display: none;
   position: fixed;
@@ -170,9 +175,18 @@ li.login > a:focus {
 }
 
 .edit-header {
+  h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 0 10px;
+  padding: 50px 0 20px;
   border-bottom: 2px solid $light-grey;
+}
+
+.form-horizontal {
+  label.control-label { text-align: left; }
 }
