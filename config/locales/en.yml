@@ -42,3 +42,7 @@ en:
   admin_menu: 'Admin'
   organisations_list: 'Organisations'
   users_list: 'Users'
+  organisation_id: 'ID'
+  organisation_name: 'Name'
+  organisation_role: 'Role'
+  organisation_country: 'Country'

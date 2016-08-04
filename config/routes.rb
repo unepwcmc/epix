@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index]
+    resources :organisations, only: [:index]
   end
 
   # You can have the root of your site routed with "root"
