@@ -20,9 +20,4 @@ class User < ApplicationRecord
   def is_admin
     true
   end
-
-  # TODO: placeholder for model attribute
-  def organisation
-    'CITES Management Authority of Wonderland'
-  end
 end

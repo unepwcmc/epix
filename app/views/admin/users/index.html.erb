@@ -27,7 +27,7 @@
           <%= user.email %>
         </td>
         <td>
-          <%= user.organisation %>
+          <%= user.organisation && user.organisation.display_name %>
         </td>
         <td>
           <%= user.is_admin ? fa_icon('check') : '' %>

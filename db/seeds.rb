@@ -9,6 +9,7 @@
 Country.create(
   [
     {name: 'Switzerland', iso_code2: 'CH'},
-    {name: 'France', iso_code2: 'FR'}
+    {name: 'France', iso_code2: 'FR'},
+    {name: 'United Kingdom', iso_code2:'GB'}
   ]
 )
