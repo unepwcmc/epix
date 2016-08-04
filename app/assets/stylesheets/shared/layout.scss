@@ -1,17 +1,18 @@
+@import "mobile";
+
 .top-level-container {
   position: relative;
   min-height: 100%;
   padding-bottom: 300px;
 }
 
-header.mobile-header {
-  display: none;
-  @media screen and (max-width: $break_tablet) {
-    display: block;
-  }
+.mobile-header, .desktop-header {
+  border-bottom: 1px solid $light-grey;
+  margin: 0;
 }
+
 header.row.desktop-header {
-  @media screen and (max-width: $break_tablet) {
+  @media screen and (max-width: $break_desktop) {
     display: none;
   }
   color: $grey;
@@ -19,12 +20,12 @@ header.row.desktop-header {
     ul li.bold {
       color: $dark-grey;
         font-size: 2em;
-      @media screen and (max-width: $break_tablet) {
+      @media screen and (max-width: $break_desktop) {
         font-size: 1.4em;
       }
     }
     ul li:last-child {
-      @media screen and (max-width: $break_tablet) {
+      @media screen and (max-width: $break_desktop) {
         font-size: 0.7em;
       }
     }
@@ -43,8 +44,6 @@ header.row.desktop-header {
       color: purple;
     }
   }
-  border-bottom: 1px solid $light-grey;
-  margin: 0;
 
   .languages-dropdown {
     margin-top: 9px;
@@ -74,7 +73,7 @@ footer {
   background-color: $grey;
   .footer-container {
     height: 120px;
-    @media screen and(max-width: $break_tablet) {
+    @media screen and(max-width: $break_desktop) {
       height: 80px;
     }
     .upper-footer {
@@ -113,7 +112,9 @@ li.login > a:focus {
 }
 
 .modal-dialog > div {
-  width: 400px;
+  @media screen and(min-width: $break_desktop) {
+    width: 400px;
+  }
   position: relative;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
