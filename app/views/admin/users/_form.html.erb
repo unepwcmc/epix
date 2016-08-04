@@ -31,5 +31,11 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :is_admin, class: 'col-sm-3' %>
+      <div class="col-sm-4">
+        <%= f.check_box :is_admin, checked: @user.is_admin %>
+      </div>
+    </div>
   </div>
 <% end %> <!-- End Form -->
