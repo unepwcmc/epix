@@ -1,3 +1,3 @@
-class Country < ActiveRecord::Base
-  has_one :adapter
+class Country < ApplicationRecord
+  has_many :organisations
 end
