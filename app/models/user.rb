@@ -5,19 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :organisation
-
-  # TODO: placeholder for model attribute
-  def first_name
-    'John'
-  end
-
-  # TODO: placeholder for model attribute
-  def last_name
-    'Doe'
-  end
-
-  # TODO: placeholder for model attribute
-  def is_admin
-    true
-  end
 end
