@@ -11,9 +11,9 @@
     <div class="mobile-nav">
       <ul class="mobile-nav-list">
         <li class="mobile-nav-elem"><%= link_to t('home'), root_path %></li>
-        <li class="mobile-nav-elem"><%= t('cites_permit') %></li>
-        <li class="mobile-nav-elem"><%= t('about') %></li>
-        <li class="mobile-nav-elem">
+        <li class="mobile-nav-elem"><%= link_to t('cites_permit'), '#' %></li>
+        <li class="mobile-nav-elem"><%= link_to t('about'), '#' %></li>
+        <li class="mobile-nav-elem login">
           <a href="#" data-toggle="modal" data-target="#login_modal">
             <i class="fa fa-sign-in"></i>
             <span><%= t('login') %></span>

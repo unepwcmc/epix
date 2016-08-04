@@ -26,12 +26,13 @@ ul.mobile-nav-list {
     a {
       display: block;
       width: 100%;
-      padding: 10px 0;
       color: $dark-grey;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $light-grey;
     }
-    padding: 10px;
-    border-bottom: 1px solid $light-grey;
+    padding: 10px 10px 0;
   }
+  li.login { padding: 25px 10px 0; }
 }
 
 ul.mobile-languages-list {
