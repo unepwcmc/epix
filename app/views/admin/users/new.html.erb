@@ -1,0 +1,9 @@
+<div class="edit-header">
+  <h2>New account</h2>
+  <div class="buttons">
+    <%= link_to 'Cancel', admin_users_path, class: 'button btn-scnd' %>
+    <input type="submit" value="Submit" form="new_user_form" class="button">
+  </div>
+</div>
+
+<%= render partial: "form", locals: {action: "create", form_id: "new_user_form"} %>
