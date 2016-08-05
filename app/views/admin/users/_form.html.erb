@@ -54,7 +54,7 @@
       <div class="col-sm-3">
         <% @organisations_roles.each do |role, id| %>
           <span class="organisation-role <%= "org-#{id}" %>
-            <%= 'selected-org' if @organisation.id == id %>">
+            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
             <%= role %>
           </span>
         <% end %>
@@ -65,7 +65,7 @@
       <div class="col-sm-3">
         <% @organisations_tokens.each do |token, id| %>
           <span class="organisation-token <%= "org-#{id}" %>
-            <%= 'selected-org' if @organisation.id == id %>">
+            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
             <%= token %>
           </span>
         <% end %>

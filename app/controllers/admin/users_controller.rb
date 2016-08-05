@@ -58,9 +58,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def load_organisations
-    organisations = Organisation.order(:name)
-    @organisations_for_dropdown = organisations.map { |o| [o.name, o.id] }
-    @organisations_roles = organisations.map { |o| [o.role, o.id] }
-    @organisations_tokens = organisations.map { |o| [o.adapter.try(:auth_token), o.id ] }
+    @organisations = Organisation.order(:name)
+    @organisations_for_dropdown = @organisations.map { |o| [o.name, o.id] }
+    @organisations_roles = @organisations.map { |o| [o.role, o.id] }
+    @organisations_tokens = @organisations.map { |o| [o.adapter.try(:auth_token), o.id ] }
   end
 end
