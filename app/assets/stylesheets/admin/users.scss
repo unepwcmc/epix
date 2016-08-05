@@ -1,6 +1,6 @@
 table.dataTable td, table.dataTable th { padding: 0px 2px }
 
-.organisation-role {
+.organisation-role, .organisation-token {
   display: none;
-  &.selected-role { display: block; }
+  &.selected-org { display: block; }
 }
