@@ -174,7 +174,7 @@ li.login > a:focus {
   .actions { float: right; }
 }
 
-.edit-header {
+.form-header {
   h2 {
     margin: 0;
     padding: 0;
@@ -185,6 +185,12 @@ li.login > a:focus {
   justify-content: space-between;
   padding: 50px 0 20px;
   border-bottom: 2px solid $light-grey;
+}
+
+.form-footer {
+  padding: 30px 0;
+  border-top: 1px solid $light-grey;
+  .buttons { float: right; }
 }
 
 .form-horizontal {
