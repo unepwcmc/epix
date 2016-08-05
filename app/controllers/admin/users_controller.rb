@@ -22,7 +22,10 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(user_params)
 
-    flash[:notice] = 'User was successfully created' if @user.save
+    if @user.save
+      UserMailer.welcome_email(@user).deliver_later
+      flash[:notice] = 'User was successfully created'
+    end
     respond_with :admin, @user
   end
 
