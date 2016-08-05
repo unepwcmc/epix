@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<%= render "form" %>
+<%= render partial: "form", locals: {action: "update", form_id: "user_edit_form"} %>
 
 <h3>Organisation details</h3>
 <div class="organisation-details form-horizontal">
