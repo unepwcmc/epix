@@ -1,6 +1,8 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
 
+  before_action :load_organisations, only: [:new, :edit]
+
   def index
     @users = User.select(
       :id, :first_name, :last_name, :email, :organisation_id, :is_admin
@@ -53,5 +55,10 @@ class Admin::UsersController < Admin::BaseController
       params[:user].delete :password
       params[:user].delete :password_confirmation
     end
+  end
+
+  def load_organisations
+    @organisations_for_dropdown = Organisation.order(:name).map { |o| [o.name, o.id] }
+    @organisations_roles = Organisation.order(:name).map { |o| [o.role, o.id] }
   end
 end

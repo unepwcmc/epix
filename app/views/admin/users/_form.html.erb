@@ -38,4 +38,31 @@
       </div>
     </div>
   </div>
+
+  <h3>Organisation details</h3>
+  <div class="organisation-details form-horizontal">
+    <div class="form-group">
+      <%= f.label :organisation_id, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.select :organisation_id,
+          options_for_select(@organisations_for_dropdown, @organisation.try(:id)), {}, class: "form-control chained-select"
+        %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3">Organisation type</label>
+      <div class="col-sm-3">
+        <% @organisations_roles.each do |role, id| %>
+          <span class="organisation-role <%= "org-#{id}" %>
+            <%= 'selected-role' if @organisation.id == id %>">
+            <%= role %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3">EPIX API token</label>
+      <span class="col-sm-3"><%= @adapter.try(:auth_token) %></span>
+    </div>
+  </div>
 <% end %> <!-- End Form -->

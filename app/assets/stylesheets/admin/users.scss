@@ -1,1 +1,6 @@
 table.dataTable td, table.dataTable th { padding: 0px 2px }
+
+.organisation-role {
+  display: none;
+  &.selected-role { display: block; }
+}
