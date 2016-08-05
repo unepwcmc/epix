@@ -1,9 +1,6 @@
-<div class="edit-header">
+<div class="form-header">
   <h2>Edit account</h2>
-  <div class="buttons">
-    <%= link_to 'Cancel', admin_users_path, class: 'button btn-scnd' %>
-    <input type="submit" value="Submit" form="user_edit_form" class='button'>
-  </div>
+  <%= render "buttons" %>
 </div>
 
 <%= render partial: "form", locals: {action: "update", form_id: "user_edit_form"} %>
@@ -23,3 +20,6 @@
   </div>
 </div>
 
+<div class="form-footer">
+  <%= render "buttons" %>
+</div>
