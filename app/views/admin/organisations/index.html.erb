@@ -1,0 +1,47 @@
+<div class="list-header">
+  <h2>Organisations</h2>
+  <div class="buttons">
+    <%= link_to 'Add organisation', '#', class: 'button' %>
+  </div>
+</div>
+
+<table id="organisations_table">
+  <thead>
+    <tr>
+      <th><%= t('organisation_id') %></th>
+      <th><%= t('organisation_name') %></th>
+      <th><%= t('organisation_role') %></th>
+      <th><%= t('organisation_country') %></th>
+      <th class="no-sort"></th>
+      <th class="no-sort"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @organisations.each do |organisation| %>
+      <tr>
+        <td>
+          <%= organisation.id %>
+        </td>
+        <td>
+          <%= organisation.name %>
+        </td>
+        <td>
+          <%= organisation.role %>
+        </td>
+        <td>
+          <%= organisation.country && organisation.country.name %>
+        </td>
+        <td>
+          <%= link_to('#') { fa_icon "pencil" } %>
+        </td>
+        <td>
+          <%= link_to(
+            '#',
+            method: :delete,
+            data: { confirm: t('delete_are_you_sure') }){ fa_icon "trash" }
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

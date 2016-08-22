@@ -1,25 +1,31 @@
+@import "mobile";
+
 .top-level-container {
   position: relative;
   min-height: 100%;
   padding-bottom: 300px;
 }
-header.row {
+
+.mobile-header, .desktop-header {
+  border-bottom: 1px solid $light-grey;
+  margin: 0;
+}
+
+header.row.desktop-header {
+  @media screen and (max-width: $break_desktop) {
+    display: none;
+  }
   color: $grey;
   nav#logo {
     ul li.bold {
       color: $dark-grey;
-      @media screen and (min-width: 1024px) {
         font-size: 2em;
-      }
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: $break_desktop) {
         font-size: 1.4em;
       }
     }
     ul li:last-child {
-      @media screen and (min-width: 1024px) {
-        font-size: 1em;
-      }
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: $break_desktop) {
         font-size: 0.7em;
       }
     }
@@ -38,8 +44,6 @@ header.row {
       color: purple;
     }
   }
-  border-bottom: 1px solid $light-grey;
-  margin: 0;
 
   .languages-dropdown {
     margin-top: 9px;
@@ -69,6 +73,9 @@ footer {
   background-color: $grey;
   .footer-container {
     height: 120px;
+    @media screen and(max-width: $break_desktop) {
+      height: 80px;
+    }
     .upper-footer {
       height: 40%;
       border-bottom: 1px solid black;
@@ -110,7 +117,9 @@ li.login > a:focus {
 }
 
 .modal-dialog > div {
-  width: 400px;
+  @media screen and(min-width: $break_desktop) {
+    width: 400px;
+  }
   position: relative;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
@@ -174,7 +183,7 @@ li.login > a:focus {
   .actions { float: right; }
 }
 
-.form-header {
+.form-header, .list-header {
   h2 {
     margin: 0;
     padding: 0;
