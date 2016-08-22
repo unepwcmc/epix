@@ -22,6 +22,13 @@
 
 .btn-long { width: 200px; }
 
+.btn-menu {
+  background: white;
+  color: $dark-grey;
+  border: 1px solid $light-grey;
+  padding: 5px 25px;
+}
+
 .alert-notice, .alert-alert{
   background-image: -webkit-linear-gradient(top, $extralight-grey 0, $light-grey 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $extralight-grey), to($light-grey));
