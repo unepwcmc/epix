@@ -1,6 +1,6 @@
 <div class="form-header">
   <h2>Edit account</h2>
-  <%= render "buttons" %>
+  <%= render partial: "buttons", locals: {form_id: "user_edit_form"} %>
 </div>
 
 <%= render partial: "form", locals: {action: "update", form_id: "user_edit_form"} %>
@@ -21,5 +21,5 @@
 </div>
 
 <div class="form-footer">
-  <%= render "buttons" %>
+  <%= render partial: "buttons", locals: {form_id: "user_edit_form"} %>
 </div>
