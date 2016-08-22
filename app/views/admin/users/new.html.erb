@@ -1,0 +1,10 @@
+<div class="form-header">
+  <h2>New account</h2>
+  <%= render partial: "buttons", locals: {form_id: "new_user_form"} %>
+</div>
+
+<%= render partial: "form", locals: {action: "create", form_id: "new_user_form"} %>
+
+<div class="form-footer">
+  <%= render partial: "buttons", locals: {form_id: "new_user_form"} %>
+</div>

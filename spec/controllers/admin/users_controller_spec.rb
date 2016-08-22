@@ -7,4 +7,65 @@ RSpec.describe Admin::UsersController, type: :controller do
       expect(response.status).to eq(200)
     end
   end
+
+  describe "GET new" do
+    it "has a 200 status code" do
+      get :new
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "GET edit" do
+    it "has a 200 status code" do
+      get :edit, id: FactoryGirl.create(:user).id
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "GET show" do
+    it "has a 200 status code" do
+      get :show, id: FactoryGirl.create(:user).id
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "POST create" do
+    it "creates a user" do
+      expect do
+        post :create, params: {
+          user: {
+            first_name: 'name',
+            last_name: 'surname',
+            email: 'email@email.com',
+            password: 'asdasdasd',
+            password_confirmation: 'asdasdasd'
+          }
+        }
+      end.to change{ User.count }
+
+      expect(response.status).to eq(302)
+    end
+  end
+
+  describe "PATCH update" do
+    it "updates a user" do
+      user = FactoryGirl.create(:user)
+      patch :update, id: user.id, user: { first_name: 'asd'}
+      user.reload
+      expect(user.first_name).to eq('asd')
+      expect(response.status).to eq(302)
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "destroys a user" do
+      user = FactoryGirl.create(:user)
+      expect do
+        delete :destroy, id: user.id
+      end.to change{ User.count }
+
+      expect(response.status).to eq(302)
+    end
+  end
+
 end

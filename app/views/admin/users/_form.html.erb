@@ -1,0 +1,75 @@
+<%= form_for @user, url: {action: action}, html: {id: form_id, class: 'form-horizontal'} do |f| %>
+  <h3>Login details</h3>
+  <div class="login-details">
+    <div class="form-group">
+      <%= f.label :first_name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.text_field :first_name, value: @user.first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.text_field :last_name, value: @user.last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.email_field :email, value: @user.email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_admin, class: 'col-sm-3' %>
+      <div class="col-sm-4">
+        <%= f.check_box :is_admin, checked: @user.is_admin %>
+      </div>
+    </div>
+  </div>
+
+  <h3>Organisation details</h3>
+  <div class="organisation-details form-horizontal">
+    <div class="form-group">
+      <%= f.label :organisation_id, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-4">
+        <%= f.select :organisation_id,
+          options_for_select(@organisations_for_dropdown, @organisation.try(:id)), {}, class: "form-control chained-select"
+        %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3">Organisation type</label>
+      <div class="col-sm-3">
+        <% @organisations_roles.each do |role, id| %>
+          <span class="organisation-role <%= "org-#{id}" %>
+            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
+            <%= role %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3">EPIX API token</label>
+      <div class="col-sm-3">
+        <% @organisations_tokens.each do |token, id| %>
+          <span class="organisation-token <%= "org-#{id}" %>
+            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
+            <%= token %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %> <!-- End Form -->
