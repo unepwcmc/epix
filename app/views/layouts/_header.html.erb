@@ -28,7 +28,7 @@
             </button>
             <ul class="dropdown-menu">
               <li><a href="#">Settings</a></li>
-              <li><%= link_to(t('organisations_list'), '#') %></li>
+              <li><%= link_to(t('organisations_list'), admin_organisations_url, 'data-no-turbolink' => true) %></li>
               <li><%= link_to(t('users_list'), admin_users_url, 'data-no-turbolink' => true) %></li>
               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>
