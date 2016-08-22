@@ -9,9 +9,9 @@
   <thead>
     <tr>
       <th><%= t('organisation_id') %></th>
-      <th><%= t('organisation_name') %></th>
-      <th><%= t('organisation_role') %></th>
-      <th><%= t('organisation_country') %></th>
+      <th class='searchable'><%= t('organisation_name') %></th>
+      <th class='searchable'><%= t('organisation_role') %></th>
+      <th class='searchable'><%= t('organisation_country') %></th>
       <th class="no-sort"></th>
       <th class="no-sort"></th>
     </tr>
@@ -44,4 +44,14 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th><input type="text" placeholder="Search name" ></th>
+      <th><input type="text" placeholder="Search role" ></th>
+      <th><input type="text" placeholder="Search country" /></th>
+      <th class="no-sort"></th>
+      <th class="no-sort"></th>
+    </tr>
+  </tfoot>
 </table>
