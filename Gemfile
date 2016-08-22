@@ -37,7 +37,8 @@ group :development do
   gem 'capistrano-rvm',   '~> 0.1', require: false
   gem 'capistrano-passenger', '~> 0.2.0', require: false
 
-
+  # Mailer
+  gem 'letter_opener'
 
 
 end
