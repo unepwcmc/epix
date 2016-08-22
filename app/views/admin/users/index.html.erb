@@ -9,10 +9,10 @@
   <thead>
     <tr>
       <th><%= t('user_id') %></th>
-      <th><%= t('user_first_name') %></th>
-      <th><%= t('user_last_name') %></th>
-      <th><%= t('user_email') %></th>
-      <th><%= t('user_organisation') %></th>
+      <th class='searchable'><%= t('user_first_name') %></th>
+      <th class='searchable'><%= t('user_last_name') %></th>
+      <th class='searchable'><%= t('user_email') %></th>
+      <th class='searchable'><%= t('user_organisation') %></th>
       <th><%= t('user_is_admin') %></th>
       <th class="no-sort"></th>
       <th class="no-sort"></th>
@@ -52,4 +52,16 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th><input type="text" placeholder="Search first name" ></th>
+      <th><input type="text" placeholder="Search last name" ></th>
+      <th><input type="text" placeholder="Search email" /></th>
+      <th><input type="text" placeholder="Search organisation" /></th>
+      <th></th>
+      <th class="no-sort"></th>
+      <th class="no-sort"></th>
+    </tr>
+  </tfoot>
 </table>
