@@ -1,7 +1,7 @@
 <div class="list-header">
   <h2>Organisations</h2>
   <div class="buttons">
-    <%= link_to 'Add organisation', '#', class: 'button' %>
+    <%= link_to 'Add organisation', new_admin_organisation_path , class: 'button' %>
   </div>
 </div>
 
@@ -36,7 +36,7 @@
         </td>
         <td>
           <%= link_to(
-            '#',
+            admin_organisation_path(organisation),
             method: :delete,
             data: { confirm: t('delete_are_you_sure') }){ fa_icon "trash" }
           %>
