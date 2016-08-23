@@ -32,7 +32,7 @@
           <%= organisation.country && organisation.country.name %>
         </td>
         <td>
-          <%= link_to('#') { fa_icon "pencil" } %>
+          <%= link_to(edit_admin_organisation_path(organisation)) { fa_icon "pencil" } %>
         </td>
         <td>
           <%= link_to(

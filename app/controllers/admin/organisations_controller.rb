@@ -30,7 +30,7 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(user_params)
+    if @organisation.update_attributes(organisation_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
 
