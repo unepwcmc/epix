@@ -31,7 +31,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.mailer['host'] }
+
+  config.action_mailer.default_options = {
+    from: Rails.application.secrets.mailer['from']
+  }
+
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

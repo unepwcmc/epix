@@ -63,7 +63,22 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'https://epix-staging.linode.unep-wcmc.org/' }
+
+  config.action_mailer.smtp_settings = {
+    domain: Rails.application.secrets.mailer['domain'],
+    address: Rails.application.secrets.mailer['address'],
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: Rails.application.secrets.mailer['username'],
+    password: Rails.application.secrets.mailer['password']
+  }
+
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.mailer['host'] }
+
+  config.action_mailer.default_options = {
+    from: Rails.application.secrets.mailer['from']
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
