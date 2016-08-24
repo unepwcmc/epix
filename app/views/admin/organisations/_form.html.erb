@@ -14,7 +14,7 @@
       <%= f.label :role, class: 'col-sm-3 control-label' %>
       <div class="col-sm-4">
         <%= f.select :role,
-          options_for_select(Organisation::VALID_ROLES, @organisation.try(:role)),
+          options_for_select(Organisation::VALID_ROLES, @organisation.role),
           {}, class: "form-control"
         %>
       </div>
@@ -23,7 +23,7 @@
       <%= f.label :country_id, class: 'col-sm-3 control-label' %>
       <div class="col-sm-4">
         <%= f.select :country_id,
-          options_for_select(@countries_for_dropdown, @country.try(:id)),
+          options_for_select(@countries_for_dropdown, @organisation.country_id),
           {}, class: "form-control"
         %>
       </div>
