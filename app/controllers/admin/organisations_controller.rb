@@ -1,7 +1,6 @@
 class Admin::OrganisationsController < Admin::BaseController
   respond_to :html
 
-  before_action :format_organisations
   before_action :load_countries
 
   def index
@@ -41,10 +40,6 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def organisation_params
     params.require(:organisation).permit(:name, :role, :country_id)
-  end
-
-  def format_organisations
-    @organisations_for_dropdown = Organisation.all.map { |o| [o.name, o.id] }
   end
 
   def load_countries
