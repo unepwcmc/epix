@@ -1,7 +1,7 @@
 class Admin::OrganisationsController < Admin::BaseController
   respond_to :html
 
-  before_action :load_countries
+  before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
 
   def index
     @organisations = Organisation.select(
@@ -42,7 +42,10 @@ class Admin::OrganisationsController < Admin::BaseController
     params.require(:organisation).permit(:name, :role, :country_id)
   end
 
-  def load_countries
-    @countries_for_dropdown = Country.all.map { |c| [c.name, c.id] }
+  def load_countries_for_dropdown
+    @countries_for_dropdown = Country.select(
+      :id, :name
+    ).
+    order(:name).map { |c| [c.name, c.id] }
   end
 end
