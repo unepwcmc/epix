@@ -9,7 +9,7 @@ class Organisation < ApplicationRecord
   OTHER = 'Other'
   VALID_ROLES = [CITES_MA, CUSTOMS_EA, SYSTEM_MANAGERS, OTHER]
   validates :name, :role, :country, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: {scope: [:country, :role]}
   validates_inclusion_of :role, in: VALID_ROLES
 
   def display_name
