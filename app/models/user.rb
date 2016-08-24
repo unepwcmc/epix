@@ -12,4 +12,12 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_now
   end
+
+  Organisation::VALID_ROLES.each do |role|
+    role_formatted = role.downcase.tr(" ", "_")
+    define_method("is_#{role_formatted}?") do
+      self.organisation.role == role
+    end
+  end
+
 end
