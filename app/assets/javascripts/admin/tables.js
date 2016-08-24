@@ -10,6 +10,8 @@ $(document).on('turbolinks:load',function(){
       table = $(tableElementId).DataTable();
     } else {
       table = $(tableElementId).DataTable({
+        "sDom": "tip",
+        "pageLength": 50,
         "aoColumnDefs" : [{
           "bSortable": false,
           "aTargets": ["no-sort"]
