@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  load_and_authorize_resource
+
   respond_to :html
 
   before_action :load_organisations_for_dropdown, only: [:new, :create, :edit, :update]
