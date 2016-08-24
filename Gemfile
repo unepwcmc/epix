@@ -24,6 +24,7 @@ gem 'devise'
 gem 'savon'
 
 gem 'attr_encrypted', '~>3.0.0'
+gem 'cancancan', '~> 1.10'
 
 group :development do
   # Docs
