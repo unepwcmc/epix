@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
 
-  before_action :load_organisations, only: [:new, :edit]
+  before_action :load_organisations
 
   def index
     @users = User.select(
