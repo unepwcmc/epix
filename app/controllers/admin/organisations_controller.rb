@@ -37,13 +37,6 @@ class Admin::OrganisationsController < Admin::BaseController
     respond_with :admin, @organisation
   end
 
-  def destroy
-    @organisation = Organisation.find(params[:id])
-    flash[:notice] = 'Organisation was successfully deleted' if @organisation.destroy
-
-    respond_with :admin, @organisation
-  end
-
   private
 
   def organisation_params

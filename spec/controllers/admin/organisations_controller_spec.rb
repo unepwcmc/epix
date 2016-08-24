@@ -54,15 +54,4 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
       expect(response.status).to eq(302)
     end
   end
-
-  describe "DELETE destroy" do
-    it "destroys a organisation" do
-      organisation = FactoryGirl.create(:organisation)
-      expect do
-        delete :destroy, id: organisation.id
-      end.to change{ Organisation.count }
-
-      expect(response.status).to eq(302)
-    end
-  end
 end
