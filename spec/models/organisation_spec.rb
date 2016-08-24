@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Organisation, type: :model do
+  let(:switzerland){
+    FactoryGirl.create(:country, name: 'Switzerland')
+  }
+
   it "has a valid role" do
     expect(FactoryGirl.build(:organisation)).to be_valid
   end
@@ -11,8 +15,13 @@ RSpec.describe Organisation, type: :model do
   end
 
   it "has an invalid name" do
-    FactoryGirl.create(:organisation, name: 'org')
-    expect(FactoryGirl.build(:organisation, name: 'org')).to be_invalid
+    organisation_attributes = {
+      name: 'Ministry of Environment',
+      country: switzerland,
+      role: Organisation::CITES_MA
+    }
+    FactoryGirl.create(:organisation, organisation_attributes)
+    expect(FactoryGirl.build(:organisation, organisation_attributes)).to be_invalid
   end
 
   it "is invalid without name" do
@@ -28,9 +37,6 @@ RSpec.describe Organisation, type: :model do
   end
 
   describe :display_name do
-    let(:switzerland){
-      FactoryGirl.create(:country, name: 'Switzerland')
-    }
     let(:swiss_ma){
       FactoryGirl.create(:organisation, role: Organisation::CITES_MA, country: switzerland)
     }

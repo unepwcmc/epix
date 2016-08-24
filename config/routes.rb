@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :permits, only: [:index]
 
   namespace :admin do
-    resources :organisations, only: [:index]
+    resources :organisations, except: [:destroy]
     resources :users
   end
 
