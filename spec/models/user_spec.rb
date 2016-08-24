@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "cancan/matchers"
 
 RSpec.describe User, type: :model do
   it "has an invalid email" do
@@ -23,5 +24,56 @@ RSpec.describe User, type: :model do
   it 'sends an email' do
     expect { subject.send_welcome_email }
       .to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
+  describe "abilities" do
+    subject(:ability){ Ability.new(user) }
+    let(:user){ nil }
+
+    context "when is system manager" do
+      let(:user){ FactoryGirl.create(:system_managers_user) }
+      it{ is_expected.to be_able_to(:manage, :all) }
+    end
+
+    context "when is cites ma" do
+      let(:user){ FactoryGirl.create(:cites_ma_user) }
+      it { is_expected.to be_able_to(:update, Organisation, id: user.organisation.id) }
+      it { is_expected.to be_able_to(:update, Adapter, id: user.organisation.adapter.id) }
+      it { is_expected.to be_able_to(:manage, User, organisation_id: user.organisation_id) }
+    end
+
+    context "when is customs ea" do
+      let(:user){ FactoryGirl.create(:customs_ea_user) }
+      it { is_expected.to be_able_to(:update, Organisation, id: user.organisation.id) }
+      it { is_expected.to be_able_to(:manage, User, organisation_id: user.organisation_id) }
+    end
+
+    context "when is other" do
+      let(:user){ FactoryGirl.create(:other_user) }
+      it {
+        is_expected.not_to be_able_to(
+          :update, :create, :destroy,
+          Organisation, id: user.organisation.id
+        )
+      }
+      it {
+        is_expected.not_to be_able_to(
+          :update, :create, :destroy,
+          Adapter, id: user.organisation.adapter.id
+        )
+      }
+      it {
+        is_expected.not_to be_able_to(
+          :update, :create, :destroy,
+          User, organisation_id: user.organisation_id
+        )
+      }
+      it { is_expected.to be_able_to(:update, User, id: user.id) }
+    end
+
+    context "when is not admin" do
+      let(:user) { FactoryGirl.create(:user) }
+      it { is_expected.to be_able_to(:update, User, id: user.id) }
+    end
   end
 end
