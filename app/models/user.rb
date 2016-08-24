@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :organisation
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :first_name, :last_name, presence: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   def send_welcome_email
