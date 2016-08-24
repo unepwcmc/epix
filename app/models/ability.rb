@@ -13,6 +13,8 @@ class Ability
       elsif user.is_customs_ea?
         can :update, Organisation, id: user.organisation.id
         can :manage, User, organisation_id: user.organisation_id
+      else
+        can :update, User, id: user.id
       end
     else
       can :update, User, id: user.id
