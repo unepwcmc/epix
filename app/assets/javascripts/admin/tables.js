@@ -28,5 +28,11 @@ $(document).on('turbolinks:load',function(){
         });
       });
     }
+
+    // to fix back button
+    document.addEventListener("turbolinks:before-cache", function() {
+      table.destroy();
+    });
+
   }
 });
