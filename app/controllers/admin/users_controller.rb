@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
 
-  before_action :load_organisations
+  before_action :load_organisations_for_dropdown, only: [:new, :create, :edit, :update]
 
   def index
     @users = User.select(
@@ -60,10 +60,10 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  def load_organisations
     @organisations = Organisation.order(:name)
     @organisations_for_dropdown = @organisations.map { |o| [o.name, o.id] }
     @organisations_roles = @organisations.map { |o| [o.role, o.id] }
     @organisations_tokens = @organisations.map { |o| [o.adapter.try(:auth_token), o.id ] }
+  def load_organisations_for_dropdown
   end
 end
