@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Admin::UsersController, type: :controller do
+  create_organisations
   login_admin
   let!(:same_org_user) {
     FactoryGirl.create(:user,
