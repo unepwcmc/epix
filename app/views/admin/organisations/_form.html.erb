@@ -1,3 +1,7 @@
+<% @organisation.errors.full_messages.each do |message| %>
+  <%= content_tag :div, message, class: "alert alert-notice" %>
+<% end %>
+
 <%= form_for @organisation, url: {action: action}, html: {id: form_id, class: 'form-horizontal'} do |f| %>
   <div class="organisation-details">
     <div class="form-group">
