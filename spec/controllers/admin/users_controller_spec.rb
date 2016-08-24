@@ -1,6 +1,13 @@
 require "rails_helper"
 
 RSpec.describe Admin::UsersController, type: :controller do
+  login_admin
+  let!(:same_org_user) {
+    FactoryGirl.create(:user,
+      organisation_id: @cites_ma.id
+    )
+  }
+
   describe "GET index" do
     it "has a 200 status code" do
       get :index
@@ -17,14 +24,14 @@ RSpec.describe Admin::UsersController, type: :controller do
 
   describe "GET edit" do
     it "has a 200 status code" do
-      get :edit, id: FactoryGirl.create(:user).id
+      get :edit, id: same_org_user.id
       expect(response.status).to eq(200)
     end
   end
 
   describe "GET show" do
     it "has a 200 status code" do
-      get :show, id: FactoryGirl.create(:user).id
+      get :show, id: same_org_user.id
       expect(response.status).to eq(200)
     end
   end
@@ -49,19 +56,17 @@ RSpec.describe Admin::UsersController, type: :controller do
 
   describe "PATCH update" do
     it "updates a user" do
-      user = FactoryGirl.create(:user)
-      patch :update, id: user.id, user: { first_name: 'asd'}
-      user.reload
-      expect(user.first_name).to eq('asd')
+      patch :update, id: same_org_user.id, user: { first_name: 'asd'}
+      same_org_user.reload
+      expect(same_org_user.first_name).to eq('asd')
       expect(response.status).to eq(302)
     end
   end
 
   describe "DELETE destroy" do
     it "destroys a user" do
-      user = FactoryGirl.create(:user)
       expect do
-        delete :destroy, id: user.id
+        delete :destroy, id: same_org_user.id
       end.to change{ User.count }
 
       expect(response.status).to eq(302)
