@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     expect(FactoryGirl.build(:user, email: nil)).to be_invalid
   end
 
-  subject { FactoryGirl.create(:user) }
+  subject { FactoryGirl.create(:cites_ma_user) }
 
   it 'sends an email' do
     expect { subject.send_welcome_email }

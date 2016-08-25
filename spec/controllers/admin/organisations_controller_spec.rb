@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Admin::OrganisationsController, type: :controller do
+  login_admin
+
   describe "GET index" do
     it "has a 200 status code" do
       get :index
