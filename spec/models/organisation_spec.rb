@@ -14,11 +14,19 @@ RSpec.describe Organisation, type: :model do
     expect(organisation).to be_invalid
   end
 
-  it "has an invalid name" do
+  it "is a duplicate (role within country)" do
     organisation_attributes = {
-      name: 'Ministry of Environment',
       country: switzerland,
       role: Organisation::CITES_MA
+    }
+    FactoryGirl.create(:organisation, organisation_attributes)
+    expect(FactoryGirl.build(:organisation, organisation_attributes)).to be_invalid
+  end
+
+  it "is a duplicate (name within role & country)" do
+    organisation_attributes = {
+      name: 'Ministry of Environment',
+      country: switzerland
     }
     FactoryGirl.create(:organisation, organisation_attributes)
     expect(FactoryGirl.build(:organisation, organisation_attributes)).to be_invalid
