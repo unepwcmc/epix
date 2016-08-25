@@ -6,7 +6,7 @@ $(document).on('turbolinks:load',function(){
       continue;
     }
     var table;
-    if ($(tableElementId).attr('data-table-initialised')) {
+    if ($.fn.DataTable.isDataTable(tableElementId)) {
       table = $(tableElementId).DataTable();
     } else {
       table = $(tableElementId).DataTable({
@@ -17,7 +17,6 @@ $(document).on('turbolinks:load',function(){
           "aTargets": ["no-sort"]
         }]
       });
-      $(tableElementId).attr('data-table-initialised', 1);
     }
 
     if (table.data().length > 0) {
