@@ -1,0 +1,41 @@
+.permit-type-container {
+  height: 150px;
+  margin: 0;
+}
+
+.permit-row {
+  margin: 0;
+  height: 100%;
+}
+
+.permit-row-half {
+  margin: 0;
+  height: 50%;
+}
+
+.permit-col {
+  height: 100%;
+  padding: 0;
+}
+
+.border-btm {
+  border-bottom: 1px solid $light-grey;
+}
+
+.border-lft {
+  border-left: 1px solid $light-grey;
+}
+
+.border-no-btm {
+  border: 1px solid $light-grey;
+  border-bottom: none;
+}
+
+.border-full {
+  border: 1px solid $light-grey;
+}
+
+.permit-field {
+  @include bold;
+  color: $main-blue
+}
