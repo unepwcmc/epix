@@ -40,14 +40,12 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_able_to(:update, Organisation, id: user.organisation.id) }
       it { is_expected.to be_able_to(:update, Adapter, id: user.organisation.adapter.id) }
       it { is_expected.to be_able_to(:manage, User, organisation_id: user.organisation_id) }
-      it { is_expected.not_to be_able_to(:index, User) }
     end
 
     context "when is customs ea" do
       let(:user){ FactoryGirl.create(:customs_ea_user) }
       it { is_expected.to be_able_to(:update, Organisation, id: user.organisation.id) }
       it { is_expected.to be_able_to(:manage, User, organisation_id: user.organisation_id) }
-      it { is_expected.not_to be_able_to(:index, User) }
     end
 
     context "when is other" do

@@ -58,4 +58,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end

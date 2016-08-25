@@ -80,9 +80,12 @@ RSpec.describe Admin::UsersController, type: :controller do
     login_user
 
     describe "GET index" do
-      it "should redirect" do
+      it "should filter list by same organisation" do
+        same_org_id = subject.current_user.organisation_id
+        FactoryGirl.create(:user, organisation_id: same_org_id)
         get :index
-        expect(response.status).to eq(302)
+        expect(assigns(:users).size).to eq(2)
+        expect(response.status).to eq(200)
       end
     end
   end
