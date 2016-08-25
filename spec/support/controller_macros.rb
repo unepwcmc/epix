@@ -3,7 +3,7 @@ module ControllerMacros
     create_organisations
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:user, organisation_id: @cites_ma.id)
+      user = FactoryGirl.create(:user, organisation_id: @other.id)
       sign_in user
     end
   end
