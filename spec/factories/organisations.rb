@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :organisation do
     sequence(:name) { |n| "#{n}#{Faker::Company.name}" }
+    role Organisation::SYSTEM_MANAGERS
     country
     adapter
 
