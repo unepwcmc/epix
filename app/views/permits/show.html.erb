@@ -6,14 +6,26 @@
     <div class="row permit-row">
       <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
         <ul>
-          <li>EXPORT</li>
-          <li>RE-EXPORT</li>
-          <li>IMPORT</li>
-          <li>AUTRE:</li>
+          <li>
+            <%= check_box_tag "export", "export", true, { disabled: true } %>
+            <%= label_tag :export, "EXPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
+            <%= label_tag :export, "RE-EXPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "import", "import", false, { disabled: true } %>
+            <%= label_tag :export, "IMPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "autre", "autre", false, { disabled: true } %>
+            <%= label_tag :export, "AUTRE:" %>
+          </li>
         </ul>
       </div>
       <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
-        <div class="row permit-row-half text-rgt">
+        <div class="row permit-row-half text-rgt font-18">
           <div class="permit-field">Permit/Certificate No.</div>
           <div class="permit-value"><%= "Placeholder" %></div>
         </div>

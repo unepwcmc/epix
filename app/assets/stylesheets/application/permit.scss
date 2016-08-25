@@ -36,6 +36,10 @@
 }
 
 .permit-field {
-  @include bold;
+  font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold';
   color: $main-blue
+}
+
+ul {
+  list-style: none;
 }

@@ -90,7 +90,7 @@ footer {
 
 .left { float: left; }
 .right { float: right; }
-@mixin bold { font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold' }
+.bold { font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold' }
 
 li.login > a:focus {
   background: none;
@@ -207,5 +207,6 @@ li.login > a:focus {
 }
 
 .padded-10 { padding: 10px; }
+.font-18 { font-size: 18px; }
 .text-rgt { text-align: right; }
 .text-lft { text-align: left; }
