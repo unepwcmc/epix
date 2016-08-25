@@ -1,4 +1,5 @@
 class Admin::OrganisationsController < Admin::BaseController
+  load_and_authorize_resource
   respond_to :html
 
   before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
@@ -39,7 +40,11 @@ class Admin::OrganisationsController < Admin::BaseController
   private
 
   def organisation_params
-    params.require(:organisation).permit(:name, :role, :country_id)
+    if current_user.is_system_managers?
+      params.require(:organisation).permit(:name, :role, :country_id)
+    else
+      params.require(:organisation).permit(:name, :country_id)
+    end
   end
 
   def load_countries_for_dropdown
