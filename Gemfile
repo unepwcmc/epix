@@ -57,4 +57,5 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'database_cleaner'
 end
