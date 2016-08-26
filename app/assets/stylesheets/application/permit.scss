@@ -1,3 +1,8 @@
+.permit-result-title {
+  color: $main-blue;
+  border-bottom: 3px solid $light-grey;
+}
+
 .row-container {
   margin: 0;
 }
@@ -13,7 +18,7 @@
 .permit-row {
   margin: 0;
   height: 100%;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .permit-col {

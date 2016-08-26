@@ -207,22 +207,30 @@ li.login > a:focus {
 }
 
 .row.no-padding { padding: 0; }
-.row.padded-10 { padding: 10px; }
-.row.padded-15 { padding: 15px; }
-.row.padded-20 { padding: 20px; }
-.row.hor-padded-10 {
+.row.padded-10, .col.padded-10 { padding: 10px; }
+.row.padded-15, .col.padded-15 { padding: 15px; }
+.row.padded-20, .col.padded-20 { padding: 20px; }
+.row.hor-padded-10, .col.hor-padded-10 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.row.ver-padded-10 {
+.row.ver-padded-10, .col.ver-padded-10 {
   padding-left: 10px;
   padding-right: 10px;
 }
-.row.hor-padded-20 {
+.row.hor-padded-15, .col.hor-padded-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.row.ver-padded-15, .col.ver-padded-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.row.hor-padded-20, .col.hor-padded-20 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.row.ver-padded-20 {
+.row.ver-padded-20, .col.ver-padded-20 {
   padding-left: 20px;
   padding-right: 20px;
 }
