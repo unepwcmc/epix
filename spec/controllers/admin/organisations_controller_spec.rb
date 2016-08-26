@@ -49,11 +49,11 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
     end
 
     describe "PATCH update" do
-      it "updates a organisation" do
+      it "updates an organisation's role" do
         organisation = FactoryGirl.create(:cites_ma)
-        patch :update, id: organisation.id, organisation: { name: 'asd'}
+        patch :update, id: organisation.id, organisation: { role: Organisation::SYSTEM_MANAGERS }
         organisation.reload
-        expect(organisation.name).to eq('asd')
+        expect(organisation.role).to eq(Organisation::SYSTEM_MANAGERS)
         expect(response.status).to eq(302)
       end
     end
@@ -68,5 +68,33 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
         expect(response.status).to eq(302)
       end
     end
+
+    describe "PATCH update" do
+      it "updates own organisation's name" do
+        organisation = subject.current_user.organisation
+        old_name = organisation.name
+        new_name = old_name + ' ZONK'
+        patch :update, id: organisation.id, organisation: { name: new_name }
+        organisation.reload
+        expect(organisation.name).to eq(new_name)
+        expect(response.status).to eq(302)
+      end
+      it "does not update another organisation's name" do
+        organisation = FactoryGirl.create(:cites_ma)
+        old_name = organisation.name
+        patch :update, id: organisation.id, organisation: { name: old_name + ' ZONK' }
+        organisation.reload
+        expect(organisation.name).to eq(old_name)
+        expect(response.status).to eq(302)
+      end
+      it "does not update own organisation's role" do
+        organisation = subject.current_user.organisation
+        patch :update, id: organisation.id, organisation: { role: Organisation::SYSTEM_MANAGERS }
+        organisation.reload
+        expect(organisation.role).to eq(Organisation::CITES_MA)
+        expect(response.status).to eq(302)
+      end
+    end
+
   end
 end
