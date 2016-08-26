@@ -32,6 +32,8 @@ en:
   enter_permit_identifier: 'Enter permit identifier'
   permit_identifier: 'Permit identifier'
   search_button_label: 'Search'
+  my_account: 'My account'
+  my_organisation: 'My organisation'
   user_id: 'ID'
   user_first_name: 'First name'
   user_last_name: 'Last name'
