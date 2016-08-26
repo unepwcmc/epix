@@ -1,7 +1,9 @@
 <div class="form-header">
   <h2><%= t('user_show_page') %></h2>
   <div class="buttons">
-    <%= link_to t('back_button'), admin_users_path, class: 'button btn-scnd' %>
+    <% if can? :read, User, id: @user.id %>
+      <%= link_to t('back_button'), admin_users_path, class: 'button btn-scnd' %>
+    <% end %>
     <% if can? :update, User, id: @user.id %>
       <%= link_to t('edit_button'), edit_admin_user_path(@user), class: 'button' %>
     <% end %>
