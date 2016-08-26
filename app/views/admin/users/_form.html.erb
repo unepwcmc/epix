@@ -32,16 +32,6 @@
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :is_admin, class: 'col-sm-3' %>
-      <div class="col-sm-4">
-        <%= f.check_box :is_admin, checked: @user.is_admin %>
-      </div>
-    </div>
-  </div>
-
-  <h3>Organisation details</h3>
-  <div class="organisation-details form-horizontal">
-    <div class="form-group">
       <%= f.label :organisation_id, class: 'col-sm-3 control-label' %>
       <div class="col-sm-4">
         <%= f.select :organisation_id,
@@ -50,14 +40,9 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3">Organisation name</label>
-      <div class="col-sm-3">
-        <% @organisations_names.each do |name, id| %>
-          <span class="organisation-name <%= "org-#{id}" %>
-            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
-            <%= name %>
-          </span>
-        <% end %>
+      <%= f.label :is_admin, class: 'col-sm-3' %>
+      <div class="col-sm-4">
+        <%= f.check_box :is_admin, checked: @user.is_admin, disabled: !(current_user.is_organisation_admin?(@user.organisation)) %>
       </div>
     </div>
   </div>

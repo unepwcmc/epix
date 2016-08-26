@@ -66,10 +66,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def load_organisations_for_dropdown
-    @organisations = Organisation.includes(:country).select(
+    @organisations_for_dropdown = Organisation.includes(:country).select(
       :id, :name, :role, :country_id
-    ).order(:role, 'countries.name', :name)
-    @organisations_for_dropdown = @organisations.map { |o| [o.display_name, o.id] }
-    @organisations_names = @organisations.map { |o| [o.name, o.id] }
+    ).order(:role, 'countries.name', :name).map { |o| [o.display_name, o.id] }
   end
 end
