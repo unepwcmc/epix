@@ -16,10 +16,8 @@ class Organisation < ApplicationRecord
   def display_name
     if [CITES_MA, CUSTOMS_EA].include?(role) && country.present?
       [role, 'of', country.name].join(' ')
-    elsif [SYSTEM_MANAGERS, OTHER].include? role
+    else [SYSTEM_MANAGERS, OTHER].include? role
       name
-    else
-      role
     end
   end
 
