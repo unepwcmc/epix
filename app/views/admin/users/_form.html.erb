@@ -1,20 +1,20 @@
 <%= form_for @user, url: {action: action}, html: {id: form_id, class: 'form-horizontal'} do |f| %>
-  <h3>Login details</h3>
+  <h3><%= t('user_login_details') %></h3>
   <div class="login-details">
     <div class="form-group">
-      <%= f.label :first_name, class: 'col-sm-3 control-label' %>
+      <%= f.label(:first_name, class: 'col-sm-3 control-label'){ t('user_first_name') } %>
       <div class="col-sm-4">
         <%= f.text_field :first_name, value: @user.first_name, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :last_name, class: 'col-sm-3 control-label' %>
+      <%= f.label(:last_name, class: 'col-sm-3 control-label'){ t('user_last_name') } %>
       <div class="col-sm-4">
         <%= f.text_field :last_name, value: @user.last_name, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :email, class: 'col-sm-3 control-label' %>
+      <%= f.label(:email, class: 'col-sm-3 control-label'){ t('user_email') } %>
       <div class="col-sm-4">
         <%= f.email_field :email, value: @user.email, class: 'form-control' %>
       </div>

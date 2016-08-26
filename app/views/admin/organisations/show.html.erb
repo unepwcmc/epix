@@ -1,38 +1,35 @@
 <div class="form-header">
-  <h2>Organisation details</h2>
+  <h2><%= t('organisation_show_page') %></h2>
   <div class="buttons">
-    <%= link_to 'Back', admin_organisations_path, class: 'button btn-scnd' %>
-    <%= link_to 'Edit', edit_admin_organisation_path(@organisation), class: 'button' %>
+    <%= link_to t('back_button'), admin_organisations_path, class: 'button btn-scnd' %>
+    <%= link_to t('edit_button'), edit_admin_organisation_path(@organisation), class: 'button' %>
   </div>
 </div>
 <div class="form-horizontal">
   <div class="form-group">
-    <label class='col-sm-3'>Name</label>
+    <label class='col-sm-3'><%= t('organisation_name') %></label>
     <span class='col-sm-5'><%= @organisation.name %></span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Role</label>
+    <label class='col-sm-3'><%= t('organisation_role') %></label>
     <span class='col-sm-5'><%= @organisation.role %></span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Country</label>
+    <label class='col-sm-3'><%= t('organisation_country') %></label>
     <span class='col-sm-5'><%= @organisation.country.try(:name) %></span>
   </div>
 </div>
 
 <div class="form-header">
-  <h2>Web Service details</h2>
-  <div class="buttons">
-    <%= link_to 'Edit', '#', class: 'button' %>
-  </div>
+  <h2><%= t('adapter_show_page') %></h2>
 </div>
 <div class="form-horizontal">
   <% if @adapter %>
     <div class="form-group">
-      <label class='col-sm-3'>Status</label>
+      <label class='col-sm-3'><%= t('adapter_status') %></label>
       <span class='col-sm-3'>
         <%= check_box_tag :status, 'is_available', @adapter.is_available, disabled: true %>
-        <%= @adapter.is_available ? "Up" : "Down" %>
+        <%= @adapter.is_available ? t('adapter_up') : t('adapter_down') %>
       </span>
     </div>
     <div class="form-group">
@@ -41,8 +38,8 @@
     </div>
   <% else %>
     <div class="form-group">
-      <label class='col-sm-3'>Status</label>
-      <span class='col-sm-3'>Not configured</span>
+      <label class='col-sm-3'><%= t('adapter_status') %></label>
+      <span class='col-sm-3'><%= t('adapter_not_configured') %></span>
     </div>
   <% end %>
 </div>

@@ -1,25 +1,25 @@
 <div class="form-header">
-  <h2>User details</h2>
+  <h2><%= t('user_show_page') %></h2>
   <div class="buttons">
-    <%= link_to 'Back', admin_users_path, class: 'button btn-scnd' %>
-    <%= link_to 'Edit', edit_admin_user_path(@user), class: 'button' %>
+    <%= link_to t('back_button'), admin_users_path, class: 'button btn-scnd' %>
+    <%= link_to t('edit_button'), edit_admin_user_path(@user), class: 'button' %>
   </div>
 </div>
 <div class="form-horizontal">
   <div class="form-group">
-    <label class='col-sm-3'>First name</label>
+    <label class='col-sm-3'><%= t('user_first_name') %></label>
     <span class='col-sm-5'><%= @user.first_name %></span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Last name</label>
+    <label class='col-sm-3'><%= t('user_last_name') %></label>
     <span class='col-sm-5'><%= @user.last_name %></span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Email</label>
+    <label class='col-sm-3'><%= t('user_email') %></label>
     <span class='col-sm-5'><%= @user.email %></span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Organisation</label>
+    <label class='col-sm-3'><%= t('user_organisation') %></label>
     <span class='col-sm-5'>
       <% if @user.organisation %>
         <%= link_to @user.organisation.display_name, admin_organisation_path(@user.organisation) %>
@@ -27,7 +27,7 @@
     </span>
   </div>
   <div class="form-group">
-    <label class='col-sm-3'>Is admin</label>
+    <label class='col-sm-3'><%= t('user_is_admin') %></label>
     <span class='col-sm-3'>
       <%= check_box_tag :is_admin, 'is_admin', @user.is_admin, disabled: true %>
     </span>

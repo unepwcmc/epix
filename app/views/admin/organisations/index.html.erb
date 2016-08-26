@@ -1,7 +1,7 @@
 <div class="list-header">
-  <h2>Organisations</h2>
+  <h2><%= t('organisations_list') %></h2>
   <div class="buttons">
-    <%= link_to 'Add organisation', new_admin_organisation_path , class: 'button' %>
+    <%= link_to t('organisation_new_page'), new_admin_organisation_path , class: 'button' %>
   </div>
 </div>
 
@@ -43,9 +43,9 @@
   <tfoot>
     <tr>
       <th></th>
-      <th><input type="text" placeholder="Search name" ></th>
-      <th><input type="text" placeholder="Search role" ></th>
-      <th><input type="text" placeholder="Search country" /></th>
+      <th><input type="text" placeholder="<%= t('search_placeholders.name') %>" ></th>
+      <th><input type="text" placeholder="<%= t('search_placeholders.role') %>" ></th>
+      <th><input type="text" placeholder="<%= t('search_placeholders.country') %>" /></th>
       <th class="no-sort"></th>
     </tr>
   </tfoot>
