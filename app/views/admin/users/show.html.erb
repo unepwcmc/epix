@@ -1,1 +1,35 @@
-<h1>Show page</h1>
+<div class="form-header">
+  <h2>User details</h2>
+  <div class="buttons">
+    <%= link_to 'Back', admin_users_path, class: 'button btn-scnd' %>
+    <%= link_to 'Edit', edit_admin_user_path(@user), class: 'button' %>
+  </div>
+</div>
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class='col-sm-3'>First name</label>
+    <span class='col-sm-5'><%= @user.first_name %></span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'>Last name</label>
+    <span class='col-sm-5'><%= @user.last_name %></span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'>Email</label>
+    <span class='col-sm-5'><%= @user.email %></span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'>Organisation</label>
+    <span class='col-sm-5'>
+      <% if @user.organisation %>
+        <%= link_to @user.organisation.display_name, admin_organisation_path(@user.organisation) %>
+      <% end %>
+    </span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'>Is admin</label>
+    <span class='col-sm-3'>
+      <%= check_box_tag :is_admin, 'is_admin', @user.is_admin, disabled: true %>
+    </span>
+  </div>
+</div>

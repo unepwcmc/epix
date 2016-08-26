@@ -16,6 +16,7 @@
       <th><%= t('user_is_admin') %></th>
       <th class="no-sort"></th>
       <th class="no-sort"></th>
+      <th class="no-sort"></th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,9 @@
         </td>
         <td>
           <%= user.is_admin ? fa_icon('check') : '' %>
+        </td>
+        <td>
+          <%= link_to(admin_user_path(user)) { fa_icon "eye" } %>
         </td>
         <td>
           <%= link_to(edit_admin_user_path(user)) { fa_icon "pencil" } %>
