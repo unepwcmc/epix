@@ -206,6 +206,14 @@ li.login > a:focus {
   label.control-label { text-align: left; }
 }
 
+.col-70 {
+  float: left;
+  width: 70%;
+}
+.col-10 {
+  float: left;
+  width: 10%;
+}
 .row.no-padding { padding: 0; }
 .row.padded-10, .col.padded-10 { padding: 10px; }
 .row.padded-15, .col.padded-15 { padding: 15px; }
@@ -235,7 +243,11 @@ li.login > a:focus {
   padding-right: 20px;
 }
 .row.height-30 { height: 30%; }
+.row.height-40 { height: 40%; }
+.row.height-47 { height: 47%; }
 .row.height-50 { height: 50%; }
+.row.height-53 { height: 53%; }
+.row.height-60 { height: 60%; }
 .row.height-70 { height: 70%; }
 .row.height-100 { height: 100%; }
 .font-18 { font-size: 18px; }
@@ -247,8 +259,16 @@ li.login > a:focus {
   border-bottom: 1px solid $light-grey;
 }
 
+.border-btm-2 {
+  border-bottom: 2px solid $light-grey;
+}
+
 .border-lft {
   border-left: 1px solid $light-grey;
+}
+
+.border-lft-2 {
+  border-left: 2px solid $light-grey;
 }
 
 .border-no-btm {

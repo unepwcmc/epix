@@ -1,0 +1,37 @@
+<div class="permit-type-row row row-container border-btm">
+  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col"></div>
+  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col">
+    <div class="row permit-row no-padding">
+      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+        <ul>
+          <li>
+            <%= check_box_tag "export", "export", true, { disabled: true } %>
+            <%= label_tag :export, "EXPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
+            <%= label_tag :export, "RE-EXPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "import", "import", false, { disabled: true } %>
+            <%= label_tag :export, "IMPORT" %>
+          </li>
+          <li>
+            <%= check_box_tag "other", "other", false, { disabled: true } %>
+            <%= label_tag :export, "OTHER:" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+        <div class="row permit-row height-50 text-rgt font-18">
+          <div class="permit-field field-title">Permit/Certificate No.</div>
+          <div class="permit-value"><%= "Placeholder" %></div>
+        </div>
+        <div class="row permit-row height-50 border-no-btm padded-15">
+          <div class="permit-field field-title">2.Valid until</div>
+          <div class="permit-value"><%= "Placeholder" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- Permit type row -->
