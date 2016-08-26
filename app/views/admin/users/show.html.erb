@@ -24,7 +24,11 @@
     <label class='col-sm-3'><%= t('user_organisation') %></label>
     <span class='col-sm-5'>
       <% if @user.organisation %>
-        <%= link_to @user.organisation.display_name, admin_organisation_path(@user.organisation) %>
+        <% if can? :show, Organisation, id: @user.organisation_id %>
+          <%= link_to @user.organisation.display_name, admin_organisation_path(@user.organisation) %>
+        <% else %>
+          <%= @user.organisation.display_name %>
+        <% end %>
       <% end %>
     </span>
   </div>
