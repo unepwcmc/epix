@@ -6,7 +6,7 @@ RSpec.describe Organisation, type: :model do
   }
 
   it "has a valid role" do
-    expect(FactoryGirl.build(:organisation)).to be_valid
+    expect(FactoryGirl.build(:cites_ma)).to be_valid
   end
 
   it "has an invalid role" do

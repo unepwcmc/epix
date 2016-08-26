@@ -15,7 +15,7 @@
       <div class="col-sm-4">
         <%= f.select :role,
           options_for_select(Organisation::VALID_ROLES, @organisation.role),
-          {}, class: "form-control"
+          {}, {class: "form-control", disabled: !current_user.is_system_managers? }
         %>
       </div>
     </div>

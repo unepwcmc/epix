@@ -24,6 +24,7 @@ gem 'devise'
 gem 'savon'
 
 gem 'attr_encrypted', '~>3.0.0'
+gem 'cancancan', '~> 1.10'
 
 group :development do
   # Docs
@@ -56,4 +57,6 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end

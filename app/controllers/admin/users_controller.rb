@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  load_and_authorize_resource
+
   respond_to :html
 
   before_action :load_organisations_for_dropdown, only: [:new, :create, :edit, :update]
@@ -7,6 +9,9 @@ class Admin::UsersController < Admin::BaseController
     @users = User.select(
       :id, :first_name, :last_name, :email, :organisation_id, :is_admin
     )
+    if current_user && !current_user.is_system_managers?
+      @users = @users.where(organisation_id: current_user.organisation_id)
+    end
   end
 
   def new
