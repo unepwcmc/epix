@@ -206,7 +206,54 @@ li.login > a:focus {
   label.control-label { text-align: left; }
 }
 
-.padded-10 { padding: 10px; }
+.row.no-padding { padding: 0; }
+.row.padded-10 { padding: 10px; }
+.row.padded-15 { padding: 15px; }
+.row.padded-20 { padding: 20px; }
+.row.hor-padded-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.row.ver-padded-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.row.hor-padded-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.row.ver-padded-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.row.height-30 { height: 30%; }
+.row.height-50 { height: 50%; }
+.row.height-70 { height: 70%; }
+.row.height-100 { height: 100%; }
 .font-18 { font-size: 18px; }
 .text-rgt { text-align: right; }
 .text-lft { text-align: left; }
+.inline { display: inline; }
+
+.border-btm {
+  border-bottom: 1px solid $light-grey;
+}
+
+.border-lft {
+  border-left: 1px solid $light-grey;
+}
+
+.border-no-btm {
+  border: 1px solid $light-grey;
+  border-bottom: none;
+}
+
+.border-full {
+  border: 1px solid $light-grey;
+}
+
+.border-no-rgt-2 {
+  border: 2px solid $light-grey;
+  border-right: none;
+}
+

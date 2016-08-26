@@ -1,16 +1,19 @@
-.permit-type-container {
-  height: 150px;
+.row-container {
   margin: 0;
+}
+
+.permit-type-row, .import-export-row {
+  height: 150px;
+}
+
+.conditions-and-management-row {
+  height: 235px;
 }
 
 .permit-row {
   margin: 0;
   height: 100%;
-}
-
-.permit-row-half {
-  margin: 0;
-  height: 50%;
+  padding: 10px 0;
 }
 
 .permit-col {
@@ -18,26 +21,12 @@
   padding: 0;
 }
 
-.border-btm {
-  border-bottom: 1px solid $light-grey;
-}
-
-.border-lft {
-  border-left: 1px solid $light-grey;
-}
-
-.border-no-btm {
-  border: 1px solid $light-grey;
-  border-bottom: none;
-}
-
-.border-full {
-  border: 1px solid $light-grey;
-}
-
 .permit-field {
-  font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold';
   color: $main-blue
+}
+
+.field-title {
+  font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold';
 }
 
 ul {

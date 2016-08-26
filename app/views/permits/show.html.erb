@@ -1,40 +1,73 @@
 <h1>CITES Permit result</h1>
 
-<div class="permit-type-container row border-btm">
-  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col"></div>
-  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col">
-    <div class="row permit-row">
-      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
-        <ul>
-          <li>
-            <%= check_box_tag "export", "export", true, { disabled: true } %>
-            <%= label_tag :export, "EXPORT" %>
-          </li>
-          <li>
-            <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
-            <%= label_tag :export, "RE-EXPORT" %>
-          </li>
-          <li>
-            <%= check_box_tag "import", "import", false, { disabled: true } %>
-            <%= label_tag :export, "IMPORT" %>
-          </li>
-          <li>
-            <%= check_box_tag "autre", "autre", false, { disabled: true } %>
-            <%= label_tag :export, "AUTRE:" %>
-          </li>
-        </ul>
-      </div>
-      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
-        <div class="row permit-row-half text-rgt font-18">
-          <div class="permit-field">Permit/Certificate No.</div>
-          <div class="permit-value"><%= "Placeholder" %></div>
+<div class="permit-details-container">
+  <div class="permit-type-row row row-container border-btm">
+    <div class="col col-sm-6 col-md-6 col-lg-6 permit-col"></div>
+    <div class="col col-sm-6 col-md-6 col-lg-6 permit-col">
+      <div class="row permit-row no-padding">
+        <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+          <ul>
+            <li>
+              <%= check_box_tag "export", "export", true, { disabled: true } %>
+              <%= label_tag :export, "EXPORT" %>
+            </li>
+            <li>
+              <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
+              <%= label_tag :export, "RE-EXPORT" %>
+            </li>
+            <li>
+              <%= check_box_tag "import", "import", false, { disabled: true } %>
+              <%= label_tag :export, "IMPORT" %>
+            </li>
+            <li>
+              <%= check_box_tag "autre", "autre", false, { disabled: true } %>
+              <%= label_tag :export, "AUTRE:" %>
+            </li>
+          </ul>
         </div>
-        <div class="row permit-row-half border-no-btm padded-10">
-          <div class="permit-field">2.Valid until</div>
-          <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+          <div class="row permit-row height-50 text-rgt font-18">
+            <div class="permit-field field-title">Permit/Certificate No.</div>
+            <div class="permit-value"><%= "Placeholder" %></div>
+          </div>
+          <div class="row permit-row height-50 border-no-btm padded-15">
+            <div class="permit-field field-title">2.Valid until</div>
+            <div class="permit-value"><%= "Placeholder" %></div>
+          </div>
         </div>
       </div>
     </div>
+  </div> <!-- Permit type row -->
+
+  <div class="import-export-row row row-container">
+    <div class="col col-xs-6 col-md-6 col-lg-6 permit-col border-btm">
+      <div class="row permit-row height-70 border-btm">
+        <div class="permit-field">
+          <span class="field-title">3.Importer</span>
+          <span>(name and address)</span>
+        </div>
+        <div class="permit-value"><%= "Placeholder" %></div>
+      </div>
+      <div class="row permit-row height-30">
+        <div class="permit-field field-title inline">3a.Country of import</div>
+        <div class="permit-value inline"><%= "Placeholder" %></div>
+      </div>
+    </div>
+    <div class="col col-xs-6 col-md-6 col-lg-6 permit-col border-lft">
+      <div class="row permit-row height-100 ver-padded-20">
+        <div class="permit-field">
+          <span class="field-title">4.Exporter/re-exporter</span>
+          <span>(name, address and country)</span>
+        </div>
+        <div class="permit-value"><%= "Placeholder" %></div>
+      </div>
+    </div>
+  </div> <!-- Import-export row -->
+
+  <div class="conditions-and-management-row row row-container">
+    <div class="col col-xs-6 col-md-6 col-lg-6 permit-col border-btm"></div>
+    <div class="col col-xs-6 col-md-6 col-lg-6 permit-col">
+      <div class="row permit-row height-100 border-no-rgt-2"></div>
+    </div>
   </div>
 </div>
-
