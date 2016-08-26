@@ -2,7 +2,9 @@
   <h2><%= t('organisation_show_page') %></h2>
   <div class="buttons">
     <%= link_to t('back_button'), admin_organisations_path, class: 'button btn-scnd' %>
-    <%= link_to t('edit_button'), edit_admin_organisation_path(@organisation), class: 'button' %>
+    <% if can? :update, Organisation, id: @organisation.id %>
+      <%= link_to t('edit_button'), edit_admin_organisation_path(@organisation), class: 'button' %>
+    <% end %>
   </div>
 </div>
 <div class="form-horizontal organisation-details">
