@@ -71,6 +71,5 @@ class Admin::UsersController < Admin::BaseController
     ).order(:role, 'countries.name', :name)
     @organisations_for_dropdown = @organisations.map { |o| [o.display_name, o.id] }
     @organisations_names = @organisations.map { |o| [o.name, o.id] }
-    @organisations_tokens = @organisations.map { |o| [o.adapter.try(:auth_token), o.id ] }
   end
 end

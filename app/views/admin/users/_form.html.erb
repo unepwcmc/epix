@@ -60,16 +60,5 @@
         <% end %>
       </div>
     </div>
-    <div class="form-group">
-      <label class="col-sm-3">EPIX API token</label>
-      <div class="col-sm-3">
-        <% @organisations_tokens.each do |token, id| %>
-          <span class="organisation-token <%= "org-#{id}" %>
-            <%= 'selected-org' if (@organisation.try(:id) || @organisations.first.id) == id %>">
-            <%= token %>
-          </span>
-        <% end %>
-      </div>
-    </div>
   </div>
 <% end %> <!-- End Form -->
