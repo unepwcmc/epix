@@ -1,4 +1,14 @@
 module ControllerMacros
+
+  def login_unprivileged_user
+    create_organisations
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      user = FactoryGirl.create(:cites_ma_user, is_admin: false)
+      sign_in user
+    end
+  end
+
   def login_user
     create_organisations
     before(:each) do

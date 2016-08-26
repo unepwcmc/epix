@@ -26,16 +26,6 @@ RSpec.describe User, type: :model do
       .to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
-  describe :is_organisation_admin do
-    let(:organisation){ FactoryGirl.create(:cites_ma) }
-    let(:user){ FactoryGirl.create(:user, organisation: organisation) }
-    let(:admin){ FactoryGirl.create(:user, is_admin: true, organisation: organisation) }
-    let(:other_admin){ FactoryGirl.create(:cites_ma_user, is_admin: true) }
-    specify{ expect(user.is_organisation_admin?(organisation)).to eq(false) }
-    specify{ expect(admin.is_organisation_admin?(organisation)).to eq(true) }
-    specify{ expect(other_admin.is_organisation_admin?(organisation)).to eq(false) }
-  end
-
   describe "abilities" do
     subject(:ability){ Ability.new(user) }
     let(:user){ nil }

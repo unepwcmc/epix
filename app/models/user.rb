@@ -20,8 +20,4 @@ class User < ApplicationRecord
     end
   end
 
-  def is_organisation_admin?(organisation)
-    organisation_id == organisation.id && is_admin?
-  end
-
 end

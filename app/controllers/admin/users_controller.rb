@@ -51,7 +51,20 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :organisation_id, :is_admin)
+    if params[:user] && !current_user.is_system_managers?
+      params[:user][:organisation_id] = current_user.organisation_id
+    end
+    permitted_for_non_admin = [
+      :first_name, :last_name, :email, :password, :password_confirmation
+    ]
+    permitted_for_admin = permitted_for_non_admin + [
+      :is_admin, :organisation_id
+    ]
+    if current_user.is_admin?
+      params.require(:user).permit(*permitted_for_admin)
+    else
+      params.require(:user).permit(*permitted_for_non_admin)
+    end
   end
 
   def check_password_presence
@@ -63,8 +76,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def load_organisations_for_dropdown
-    @organisations_for_dropdown = Organisation.includes(:country).select(
+    @organisations_for_dropdown = Organisation.accessible_by(current_ability, :show).
+    includes(:country).select(
       :id, :name, :role, :country_id
     ).order(:role, 'countries.name', :name).map { |o| [o.display_name, o.id] }
   end
+
 end
