@@ -1,6 +1,5 @@
 <%= form_for @user, url: {action: action}, html: {id: form_id, class: 'form-horizontal'} do |f| %>
-  <h3><%= t('user_login_details') %></h3>
-  <div class="login-details">
+  <div class="user-details">
     <div class="form-group">
       <%= f.label(:first_name, class: 'col-sm-3 control-label'){ t('user_first_name') } %>
       <div class="col-sm-4">

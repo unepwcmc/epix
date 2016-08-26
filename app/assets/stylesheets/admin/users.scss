@@ -2,7 +2,6 @@ table.dataTable td, table.dataTable th { padding: 0px 2px }
 
 .dataTables_wrapper { margin-top: 30px; }
 
-.organisation-name, .organisation-token {
-  display: none;
-  &.selected-org { display: block; }
+.user-details {
+  padding: 30px 0;
 }
