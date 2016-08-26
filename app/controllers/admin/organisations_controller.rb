@@ -5,7 +5,7 @@ class Admin::OrganisationsController < Admin::BaseController
   before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
 
   def index
-    @organisations = Organisation.includes(:country).select(
+    @organisations = @organisations.includes(:country).select(
       :id, :name, :role, :country_id
     )
   end
