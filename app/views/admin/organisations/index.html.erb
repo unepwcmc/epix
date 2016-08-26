@@ -13,6 +13,7 @@
       <th class='searchable'><%= t('organisation_role') %></th>
       <th class='searchable'><%= t('organisation_country') %></th>
       <th class="no-sort"></th>
+      <th class="no-sort"></th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,9 @@
         </td>
         <td>
           <%= organisation.country && organisation.country.name %>
+        </td>
+        <td>
+          <%= link_to(admin_organisation_path(organisation)) { fa_icon "eye" } %>
         </td>
         <td>
           <%= link_to(edit_admin_organisation_path(organisation)) { fa_icon "pencil" } %>
