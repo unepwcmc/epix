@@ -206,6 +206,16 @@ li.login > a:focus {
   label.control-label { text-align: left; }
 }
 
+.col-5 {
+  float: left;
+  width: 5%;
+}
+
+.col-65 {
+  float: left;
+  width: 65%;
+}
+
 .col-70 {
   float: left;
   width: 70%;
@@ -213,6 +223,10 @@ li.login > a:focus {
 .col-10 {
   float: left;
   width: 10%;
+}
+.col-95 {
+  float: left;
+  width: 95%;
 }
 .row.no-padding { padding: 0; }
 .row.padded-10, .col.padded-10 { padding: 10px; }

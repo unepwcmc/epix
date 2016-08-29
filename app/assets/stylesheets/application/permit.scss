@@ -19,6 +19,9 @@
   height: 170px;
 }
 
+.species-details-index {
+}
+
 .conditions-and-management-row {
   height: 235px;
 }
@@ -32,6 +35,43 @@
 .permit-col {
   height: 100%;
   padding: 0;
+  float: left;
+}
+
+.index-col {
+  width: 30px;
+  float: left;
+}
+
+.block-col {
+  width: 1110px;
+  float: left;
+  border-left: 1px solid $light-grey;
+  padding-left: 15px;
+}
+
+.species-col-big {
+  width: 767px;
+  float: left;
+  border-bottom: 1px solid $light-grey;
+}
+
+.species-col-small {
+  width: 114px;
+  float: left;
+  border-bottom: 1px solid $light-grey;
+}
+
+.permit-col.country-origin {
+  width: 39%;
+}
+
+.permit-col.country-last {
+  width: 42%;
+}
+
+.permit-col.no-operation {
+  width: 19%;
 }
 
 .permit-field {
