@@ -116,17 +116,38 @@ ul {
   padding: 20px 0;
 }
 
-.issued-place-date {
+.vertical-fields {
   width: 550px;
   text-align: center;
   padding: 20px 0;
-  .issued-place {
+  .vertical-fields-first {
     width: 300px;
     margin-right: 70px;
   }
-  .issued-date {
+  .vertical-fields-second {
     width: 150px;
   }
   .permit-value { padding-bottom: 15px; }
   .permit-field { padding-top: 15px; }
+}
+
+.endorsement-table {
+  margin-top: 50px;
+  th, td {
+    border: 1px solid $light-grey;
+    height: 40px;
+    text-align: center;
+  }
+  .endorsement-block {
+    width: 80px;
+  }
+  .endorsement-quantity {
+    width: 160px;
+  }
+}
+
+.endorsement-and-bill {
+  .vertical-fields {
+    margin-top: 165px;
+  }
 }
