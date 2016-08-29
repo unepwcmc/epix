@@ -6,7 +6,7 @@
       <%= label_tag(:country, t('select_country')) %>
       <%= select_tag(
         :country,
-        options_for_select(@countries.map { |c| [c.name, c.id] }),
+        options_for_select(@countries.map { |c| [c.name, c.iso_code2] }),
         class: 'form-control'
       ) %>
     </div>
