@@ -110,3 +110,23 @@ ul {
   padding: 20px 0;
   color: $grey;
 }
+
+.issued-by {
+  height: 165px;
+  padding: 20px 0;
+}
+
+.issued-place-date {
+  width: 550px;
+  text-align: center;
+  padding: 20px 0;
+  .issued-place {
+    width: 300px;
+    margin-right: 70px;
+  }
+  .issued-date {
+    width: 150px;
+  }
+  .permit-value { padding-bottom: 15px; }
+  .permit-field { padding-top: 15px; }
+}

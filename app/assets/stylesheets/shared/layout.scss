@@ -267,7 +267,7 @@ li.login > a:focus {
 .font-18 { font-size: 18px; }
 .text-rgt { text-align: right; }
 .text-lft { text-align: left; }
-.inline { display: inline; }
+.inline { display: inline-block; }
 
 .border-btm {
   border-bottom: 1px solid $light-grey;
