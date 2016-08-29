@@ -27,6 +27,7 @@ en:
   login: 'Log in'
   epix: "facilitates and expedites the exchange of permit data among national\nCITES Authorities"
   search_permit: 'Search a CITES Permit'
+  new_permit_search: "New CITES Permit Search"
   search_permit_info: 'CITES Authorities can query and verify details of CITES permits issued'
   select_country: 'Please select country'
   enter_permit_identifier: 'Enter permit identifier'
@@ -72,3 +73,30 @@ en:
     last_name: 'Search last name'
     email: 'Search email'
     organisation: 'Search organisation'
+  permit_certificate: "Permit/Certificate No."
+  valid_until: "Valid until"
+  importer: "Importer <span>(name and address)</span>"
+  exporter: "Exporter/re-exporter <span>(name, address and country)</span>"
+  country_of_import: "Country of import"
+  special_conditions: "Special conditions"
+  management_authority: "Management Authority<span> (name, address and country) </span>"
+  purpose_of_transaction: "Purpose of the transaction"
+  security_stamp_no: "Security stamp No."
+  scientific_common_name: "Scientific name and common name<span> (genus and species) </span>of animal or plant"
+  specimens: "Description of specimens, includig identifying marks or numbers<span> (age/sex if live) </span>"
+  appendix_no: "Appendix No. and source"
+  quantity_unit: "Quantity<span> (including unit) </span>"
+  quota: "Total exported/Quota"
+  country_of_origin: "Country of origin*"
+  permit_no: "Permit No."
+  date: "Date"
+  last_country: "Country of last re-export"
+  certificate_no: "Certificate No."
+  operation_no: "No. of the operation"
+  issued_by: "This permit/certificate is issued by:"
+  place: "Place"
+  endorsement: "Export endorsement"
+  bill: "Bill of Landing/Air waybill number"
+  port: "Port of export"
+  block: "Block"
+  quantity: "Quantity"

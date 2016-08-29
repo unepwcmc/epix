@@ -19,9 +19,6 @@
   height: 170px;
 }
 
-.species-details-index {
-}
-
 .conditions-and-management-row {
   height: 235px;
 }
@@ -98,6 +95,7 @@
 
 .field-title {
   font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold';
+  span { font-family: 'SourceSansPro-Regular', 'SourceSerifPro-Regular'; }
 }
 
 ul {
