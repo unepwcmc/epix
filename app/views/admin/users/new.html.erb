@@ -3,12 +3,18 @@
 <% end %>
 
 <div class="form-header">
-  <h2>New account</h2>
-  <%= render partial: "buttons", locals: {form_id: "new_user_form"} %>
+  <h2><%= t('user_new_page') %></h2>
+  <%= render partial: "buttons", locals: {
+    form_id: "new_user_form",
+    path: new_admin_user_path
+  } %>
 </div>
 
 <%= render partial: "form", locals: {action: "create", form_id: "new_user_form"} %>
 
 <div class="form-footer">
-  <%= render partial: "buttons", locals: {form_id: "new_user_form"} %>
+  <%= render partial: "buttons", locals: {
+    form_id: "new_user_form",
+    path: new_admin_user_path
+  } %>
 </div>

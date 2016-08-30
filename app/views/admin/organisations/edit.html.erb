@@ -1,25 +1,16 @@
 <div class="form-header">
-  <h2>Edit organisation</h2>
-  <%= render partial: "buttons", locals: {form_id: "organisation_edit_form"} %>
+  <h2><%= t('organisation_edit_page') %></h2>
+  <%= render partial: "buttons", locals: {
+    form_id: "organisation_edit_form",
+    path: admin_organisation_path(@organisation)
+  } %>
 </div>
 
 <%= render partial: "form", locals: {action: "update", form_id: "organisation_edit_form"} %>
 
-<h3>Web Service details</h3>
-<div class="web-service-details form-horizontal">
-  <div class="form-group">
-    <label class='col-sm-3'>Status</label>
-    <span class='col-sm-3'>
-      <%= check_box_tag :status, 'is_available',  @adapter.try(:is_available),  disabled: true %>
-      <%= @adapter.try(:is_available)? "Up" : "Down" %>
-    </span>
-  </div>
-  <div class="form-group">
-    <label class='col-sm-3'>URI</label>
-    <span class='col-sm-5'><%= @adapter.try(:web_service_uri) %></span>
-  </div>
-</div>
-
 <div class="form-footer">
-  <%= render partial: "buttons", locals: {form_id: "organisation_edit_form"} %>
+  <%= render partial: "buttons", locals: {
+    form_id: "organisation_edit_form",
+    path: admin_organisation_path(@organisation)
+  } %>
 </div>

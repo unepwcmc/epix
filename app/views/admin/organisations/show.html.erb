@@ -1,1 +1,49 @@
-<h1>Show page</h1>
+<div class="form-header">
+  <h2><%= t('organisation_show_page') %></h2>
+  <div class="buttons">
+    <% if can? :read, Organisation, id: @organisation.id %>
+      <%= link_to t('back_button'), admin_organisations_path, class: 'button btn-scnd' %>
+    <% end %>
+    <% if can? :update, Organisation, id: @organisation.id %>
+      <%= link_to t('edit_button'), edit_admin_organisation_path(@organisation), class: 'button' %>
+    <% end %>
+  </div>
+</div>
+<div class="form-horizontal organisation-details">
+  <div class="form-group">
+    <label class='col-sm-3'><%= t('organisation_name') %></label>
+    <span class='col-sm-5'><%= @organisation.name %></span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'><%= t('organisation_role') %></label>
+    <span class='col-sm-5'><%= @organisation.role %></span>
+  </div>
+  <div class="form-group">
+    <label class='col-sm-3'><%= t('organisation_country') %></label>
+    <span class='col-sm-5'><%= @organisation.country.try(:name) %></span>
+  </div>
+</div>
+
+<div class="form-header">
+  <h2><%= t('adapter_show_page') %></h2>
+</div>
+<div class="form-horizontal organisation-details">
+  <% if @adapter %>
+    <div class="form-group">
+      <label class='col-sm-3'><%= t('adapter_status') %></label>
+      <span class='col-sm-3'>
+        <%= check_box_tag :status, 'is_available', @adapter.is_available, disabled: true %>
+        <%= @adapter.is_available ? t('adapter_up') : t('adapter_down') %>
+      </span>
+    </div>
+    <div class="form-group">
+      <label class='col-sm-3'>URI</label>
+      <span class='col-sm-5'><%= @adapter.try(:web_service_uri) %></span>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <label class='col-sm-3'><%= t('adapter_status') %></label>
+      <span class='col-sm-3'><%= t('adapter_not_configured') %></span>
+    </div>
+  <% end %>
+</div>

@@ -6,12 +6,9 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_organisations_for_dropdown, only: [:new, :create, :edit, :update]
 
   def index
-    @users = User.select(
+    @users = @users.select(
       :id, :first_name, :last_name, :email, :organisation_id, :is_admin
     )
-    if current_user && !current_user.is_system_managers?
-      @users = @users.where(organisation_id: current_user.organisation_id)
-    end
   end
 
   def new
@@ -54,7 +51,20 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :organisation_id, :is_admin)
+    if params[:user] && !current_user.is_system_managers?
+      params[:user][:organisation_id] = current_user.organisation_id
+    end
+    permitted_for_non_admin = [
+      :first_name, :last_name, :email, :password, :password_confirmation
+    ]
+    permitted_for_admin = permitted_for_non_admin + [
+      :is_admin, :organisation_id
+    ]
+    if current_user.is_admin?
+      params.require(:user).permit(*permitted_for_admin)
+    else
+      params.require(:user).permit(*permitted_for_non_admin)
+    end
   end
 
   def check_password_presence
@@ -66,11 +76,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def load_organisations_for_dropdown
-    @organisations = Organisation.includes(:country).select(
+    @organisations_for_dropdown = Organisation.accessible_by(current_ability, :show).
+    includes(:country).select(
       :id, :name, :role, :country_id
-    ).order(:role, 'countries.name', :name)
-    @organisations_for_dropdown = @organisations.map { |o| [o.display_name, o.id] }
-    @organisations_names = @organisations.map { |o| [o.name, o.id] }
-    @organisations_tokens = @organisations.map { |o| [o.adapter.try(:auth_token), o.id ] }
+    ).order(:role, 'countries.name', :name).map { |o| [o.display_name, o.id] }
   end
+
 end

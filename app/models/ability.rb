@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
     user ||= User.new
+    can :show, Organisation, id: user.organisation_id
+    can :show, User, id: user.id
     if user.is_admin
       if user.is_system_managers?
         can :manage, :all

@@ -28,8 +28,23 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Settings</a></li>
-              <% if can? :read, Organisation, id: current_user.organisation_id %>
+              <li>
+                <%= link_to(
+                  t('my_account'),
+                  admin_user_url(current_user),
+                  'data-no-turbolink' => true
+                ) %>
+              </li>
+              <% if current_user.organisation %>
+                <li>
+                  <%= link_to(
+                    t('my_organisation'),
+                    admin_organisation_url(current_user.organisation),
+                    'data-no-turbolink' => true
+                  ) %>
+                </li>
+              <% end %>
+              <% if can? :read, Organisation %>
                 <li><%= link_to(t('organisations_list'), admin_organisations_url, 'data-no-turbolink' => true) %></li>
               <% end %>
               <% if can? :read, User, organisation_id: current_user.organisation_id %>

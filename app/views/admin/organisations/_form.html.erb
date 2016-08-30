@@ -5,13 +5,13 @@
 <%= form_for @organisation, url: {action: action}, html: {id: form_id, class: 'form-horizontal'} do |f| %>
   <div class="organisation-details">
     <div class="form-group">
-      <%= f.label :name, class: 'col-sm-3 control-label' %>
+      <%= f.label(:name, class: 'col-sm-3 control-label'){ t('organisation_name') } %>
       <div class="col-sm-4">
         <%= f.text_field :name, value: @organisation.name, class: 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :role, class: 'col-sm-3 control-label' %>
+      <%= f.label(:role, class: 'col-sm-3 control-label'){ t('organisation_role') } %>
       <div class="col-sm-4">
         <%= f.select :role,
           options_for_select(Organisation::VALID_ROLES, @organisation.role),
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :country_id, class: 'col-sm-3 control-label' %>
+      <%= f.label(:country_id, class: 'col-sm-3 control-label'){ t('organisation_country') } %>
       <div class="col-sm-4">
         <%= f.select :country_id,
           options_for_select(@countries_for_dropdown, @organisation.country_id),
