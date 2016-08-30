@@ -21,6 +21,10 @@
 
 en:
   language: 'English'
+  import: "Import"
+  export: "Export"
+  re_export: "Re-export"
+  other: "Other"
   home: 'Home'
   cites_permit: 'CITES Permit'
   about: 'About'
@@ -100,3 +104,4 @@ en:
   port: "Port of export"
   block: "Block"
   quantity: "Quantity"
+  country_info: "*Country in which the specimens were taken from the wild, bred in captivity or artifically propagated (only in case of re-export)"

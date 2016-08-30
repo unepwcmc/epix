@@ -6,19 +6,19 @@
         <ul>
           <li>
             <%= check_box_tag "export", "export", true, { disabled: true } %>
-            <%= label_tag :export, "EXPORT" %>
+            <%= label_tag :export, t("export").mb_chars.upcase %>
           </li>
           <li>
             <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
-            <%= label_tag :export, "RE-EXPORT" %>
+            <%= label_tag :export, t("re_export").mb_chars.upcase %>
           </li>
           <li>
             <%= check_box_tag "import", "import", false, { disabled: true } %>
-            <%= label_tag :export, "IMPORT" %>
+            <%= label_tag :export, t("import").mb_chars.upcase %>
           </li>
           <li>
             <%= check_box_tag "other", "other", false, { disabled: true } %>
-            <%= label_tag :export, "OTHER:" %>
+            <%= label_tag :export, "#{t("other").mb_chars.upcase}:" %>
           </li>
         </ul>
       </div>
