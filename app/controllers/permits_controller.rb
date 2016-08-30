@@ -22,6 +22,7 @@ class PermitsController < ApplicationController
         country: @country
       }
     )
+    @permit = Permit.new(@response.body[:get_non_final_cites_certificate_response])
   end
 
   private
