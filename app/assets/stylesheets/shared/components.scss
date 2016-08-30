@@ -6,17 +6,11 @@
   border: none;
   text-decoration: none;
   padding: 9px 50px;
-  background: purple;
+  background: $main-green;
   color: white;
   &:hover {
-    background: rebeccapurple;
     color: white;
     text-decoration: none;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
   }
 }
 
@@ -31,7 +25,11 @@
 
 .btn-scnd {
   background: none;
-  color: purple;
+  color: $main-green;
+  &:hover {
+    color: $main-green;
+    text-decoration: none;
+  }
 }
 
 .alert-notice, .alert-alert{
