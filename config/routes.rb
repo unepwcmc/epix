@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :permits, only: [:index]
+  get 'permits/show' => 'permits#show'
 
   namespace :admin do
     resources :organisations, except: [:destroy]

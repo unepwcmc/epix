@@ -1,0 +1,45 @@
+<div class="permit-type-row row row-container border-btm">
+  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col"></div>
+  <div class="col col-sm-6 col-md-6 col-lg-6 permit-col">
+    <div class="row permit-row no-padding">
+      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+        <ul>
+          <li>
+            <%= check_box_tag "export", "export", true, { class: 'permit-check', disabled: true } %>
+            <span></span>
+            <%= label_tag :export, t("export").mb_chars.upcase %>
+          </li>
+          <li>
+            <%= check_box_tag "re-export", "re-export", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
+            <%= label_tag :export, t("re_export").mb_chars.upcase %>
+          </li>
+          <li>
+            <%= check_box_tag "import", "import", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
+            <%= label_tag :export, t("import").mb_chars.upcase %>
+          </li>
+          <li>
+            <%= check_box_tag "other", "other", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
+            <%= label_tag :export, "#{t("other").mb_chars.upcase}:" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
+        <div class="row permit-row height-50 text-rgt font-18">
+          <div class="permit-field field-title">
+            <%= t('permit_certificate') %>
+          </div>
+          <div class="permit-value"><%= "Placeholder" %></div>
+        </div>
+        <div class="row permit-row height-50 border-no-btm padded-15">
+          <div class="permit-field field-title">
+            2. <%= t('valid_until') %>
+          </div>
+          <div class="permit-value"><%= "Placeholder" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- Permit type row -->

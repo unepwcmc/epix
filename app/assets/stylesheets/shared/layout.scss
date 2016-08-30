@@ -205,3 +205,92 @@ li.login > a:focus {
 .form-horizontal {
   label.control-label { text-align: left; }
 }
+
+.col-5 {
+  float: left;
+  width: 5%;
+}
+
+.col-48 {
+  float: left;
+  width: 48%;
+  padding: 0 15px;
+}
+
+.col-70 {
+  float: left;
+  width: 70%;
+}
+
+.col-10 {
+  float: left;
+  width: 10%;
+}
+
+.row.no-padding { padding: 0; }
+.row.padded-10, .col.padded-10 { padding: 10px; }
+.row.padded-15, .col.padded-15 { padding: 15px; }
+.row.padded-20, .col.padded-20 { padding: 20px; }
+.row.hor-padded-10, .col.hor-padded-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.row.ver-padded-10, .col.ver-padded-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.row.hor-padded-15, .col.hor-padded-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.row.ver-padded-15, .col.ver-padded-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.row.hor-padded-20, .col.hor-padded-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.row.ver-padded-20, .col.ver-padded-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.row.height-30 { height: 30%; }
+.row.height-40 { height: 40%; }
+.row.height-47 { height: 47%; }
+.row.height-50 { height: 50%; }
+.row.height-53 { height: 53%; }
+.row.height-60 { height: 60%; }
+.row.height-70 { height: 70%; }
+.row.height-100 { height: 100%; }
+.font-18 { font-size: 18px; }
+.text-rgt { text-align: right; }
+.text-lft { text-align: left; }
+.inline { display: inline-block; }
+
+.border-btm {
+  border-bottom: 1px solid $light-grey;
+}
+
+.border-btm-2 {
+  border-bottom: 2px solid $light-grey;
+}
+
+.border-lft {
+  border-left: 1px solid $light-grey;
+}
+
+.border-lft-2 {
+  border-left: 2px solid $light-grey;
+}
+
+.border-no-btm {
+  border: 1px solid $light-grey;
+  border-bottom: none;
+}
+
+.border-no-rgt-2 {
+  border: 2px solid $light-grey;
+  border-right: none;
+}
+

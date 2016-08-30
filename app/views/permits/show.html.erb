@@ -1,0 +1,11 @@
+<h1 class="permit-result-title">CITES Permit result</h1>
+
+<div class="permit-details-container">
+  <%= render "permit_type" %>
+  <%= render "import_export" %>
+  <%= render "conditions_and_management" %>
+  <%= render "species_details" %>
+  <%= render "issued_by" %>
+  <%= render "endorsement_and_bill" %>
+  <%= link_to "New CITES Permit Search", permits_path, class: "button search-button" %>
+</div>

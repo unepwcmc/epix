@@ -1,0 +1,174 @@
+.permit-result-title {
+  color: $main-blue;
+  border-bottom: 3px solid $light-grey;
+}
+
+.row-container {
+  margin: 0;
+}
+
+.permit-type-row, .import-export-row {
+  height: 150px;
+}
+
+.species-details-header {
+  height: 90px;
+}
+
+.species-details-block {
+  height: 170px;
+}
+
+.conditions-and-management-row {
+  height: 235px;
+}
+
+.permit-row {
+  margin: 0;
+  height: 100%;
+  padding: 15px 0;
+}
+
+.permit-col {
+  height: 100%;
+  padding: 0;
+  float: left;
+}
+
+.index-col {
+  width: 30px;
+  float: left;
+  border-bottom: 2px solid $light-grey;
+  .index-value {
+    position: relative;
+    top: 45%;
+    text-align: center;
+    color: $main-blue;
+  }
+}
+
+.block-col {
+  width: 1110px;
+  float: left;
+  border-left: 1px solid $light-grey;
+  padding-left: 15px;
+}
+
+.species-col-big {
+  width: 767px;
+  float: left;
+  border-bottom: 1px solid $light-grey;
+}
+
+.species-col-small {
+  width: 114px;
+  float: left;
+  border-bottom: 1px solid $light-grey;
+}
+
+.other-details-row > .permit-col {
+  border-bottom: 2px solid $light-grey;
+}
+
+.permit-col.country-origin {
+  width: 39%;
+}
+
+.permit-col.country-last {
+  width: 43%;
+}
+
+.permit-col.no-operation {
+  width: 18%;
+  margin-left: -15px;
+}
+
+.permit-value.border-lft {
+  height: 45px;
+  border-left: 1px solid $light-grey;
+  padding-left: 10px;
+}
+
+.permit-field {
+  color: $main-blue
+}
+
+.field-title {
+  font-family: 'SourceSansPro-Bold', 'SourceSerifPro-Bold';
+  span { font-family: 'SourceSansPro-Regular', 'SourceSerifPro-Regular'; }
+}
+
+ul {
+  list-style: none;
+}
+
+.country-info {
+  height: 65px;
+  font-style: italic;
+  padding: 20px 0;
+  color: $grey;
+}
+
+.issued-by {
+  height: 165px;
+  padding: 20px 0;
+}
+
+.vertical-fields {
+  width: 550px;
+  text-align: center;
+  padding: 20px 0;
+  .vertical-fields-first {
+    width: 300px;
+    margin-right: 70px;
+  }
+  .vertical-fields-second {
+    width: 150px;
+  }
+  .permit-value { padding-bottom: 15px; }
+  .permit-field { padding-top: 15px; }
+}
+
+.endorsement-table {
+  margin-top: 50px;
+  th, td {
+    border: 1px solid $light-grey;
+    height: 40px;
+    text-align: center;
+  }
+  .endorsement-block {
+    width: 80px;
+  }
+  .endorsement-quantity {
+    width: 160px;
+  }
+}
+
+.endorsement-and-bill {
+  .vertical-fields {
+    margin-top: 165px;
+  }
+  margin-bottom: 30px;
+}
+
+input.permit-check {
+  display: none;
+}
+
+input.permit-check ~ span {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #888;
+  padding: 1px;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+input.permit-check:checked ~ span {
+  background: image-url('Checkmark-52.png');
+  background-size: 100%;
+}
+
