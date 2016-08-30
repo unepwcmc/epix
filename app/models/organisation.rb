@@ -13,6 +13,13 @@ class Organisation < ApplicationRecord
   validates :role, uniqueness: {scope: :country}
   validates_inclusion_of :role, in: VALID_ROLES
 
+  scope :cites_mas, -> {
+    where(role: CITES_MA)
+  }
+  scope :with_available_adapters, -> {
+    joins(:adapter).where('adapters.is_available' => true)
+  }
+
   def display_name
     if [CITES_MA, CUSTOMS_EA].include?(role) && country.present?
       [role, 'of', country.name].join(' ')

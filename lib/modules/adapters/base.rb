@@ -1,30 +1,29 @@
 class Adapters::Base
   attr_reader :params
 
-  def self.run(adapter)
+  def self.run(adapter, message = {})
     instance = self.new(adapter)
-    instance.request
+    instance.request(message)
   end
 
   def initialize(adapter)
     @params = {}
   end
 
-  def request
-    send(@params[:request_type])
+  def request(message = {})
+    send(@params[:request_type], message)
   end
 
   private
 
-  def soap_request
+  def soap_request(message = {})
     wsdl = @params[:wsdl]
     operation = @params[:operation]
     auth = @params[:auth]
-    options = @params[:options]
     timeout = @params[:timeout]
     begin
       Timeout::timeout(timeout) {
-       Transports::Soap.request(wsdl, operation, auth, options)
+       Transports::Soap.request(wsdl, operation, auth, message)
       }
     rescue => e
       if e.is_a?(Timeout::Error)
@@ -35,7 +34,7 @@ class Adapters::Base
     end
   end
 
-  def rest_request
+  def rest_request(message = {})
   end
 
 end

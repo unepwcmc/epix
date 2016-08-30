@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get 'permits/:country/:permit_identifier' => 'permits#show',
+    as: 'permit',
+    constraint: { country: /\w\w/ }
   resources :permits, only: [:index]
-  get 'permits/show' => 'permits#show'
 
   namespace :admin do
     resources :organisations, except: [:destroy]
