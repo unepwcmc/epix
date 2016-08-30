@@ -5,19 +5,23 @@
       <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
         <ul>
           <li>
-            <%= check_box_tag "export", "export", true, { disabled: true } %>
+            <%= check_box_tag "export", "export", true, { class: 'permit-check', disabled: true } %>
+            <span></span>
             <%= label_tag :export, t("export").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "re-export", "re-export", false, { disabled: true } %>
+            <%= check_box_tag "re-export", "re-export", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
             <%= label_tag :export, t("re_export").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "import", "import", false, { disabled: true } %>
+            <%= check_box_tag "import", "import", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
             <%= label_tag :export, t("import").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "other", "other", false, { disabled: true } %>
+            <%= check_box_tag "other", "other", false, { class: 'permit-check', disabled: true } %>
+            <span></span>
             <%= label_tag :export, "#{t("other").mb_chars.upcase}:" %>
           </li>
         </ul>
