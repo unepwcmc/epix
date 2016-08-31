@@ -9,33 +9,33 @@ class Permit
 
   # always present
   def identifier
-    header_exchanged_document[:id]
+    header_exchanged_document.at_xpath('urn1:ID').content
   end
 
   # TODO: where does this go?
   def name
-    header_exchanged_document[:name]
+    header_exchanged_document.at_xpath('urn1:Name').content
   end
 
   # always present
   def type_code
-    header_exchanged_document[:type_code]
+    header_exchanged_document.at_xpath('urn1:TypeCode').content
   end
 
   # TODO: where does this go?
   def copy_indicator
-    header_exchanged_document[:copy_indicator]
+    header_exchanged_document.at_xpath('urn1:CopyIndicator').content
   end
 
   # Box 2
 
   # TODO: where does this go?
   def valid_from
-    header_exchanged_document[:effective_specified_period][:start_date_time]
+    header_exchanged_document.at_xpath('urn1:EffectiveSpecifiedPeriod/urn1:StartDateTime').content
   end
 
   def valid_until
-    header_exchanged_document[:effective_specified_period][:end_date_time]
+    header_exchanged_document.at_xpath('urn1:EffectiveSpecifiedPeriod/urn1:EndDateTime').content
   end
 
   # Box 3
@@ -43,19 +43,19 @@ class Permit
   # TODO: where does this go?
   def consignee_id
     trade_party_id(
-      specified_supply_chain_consignment[:consignee_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsigneeTradeParty')
     )
   end
 
   def consignee_name
     trade_party_name(
-      specified_supply_chain_consignment[:consignee_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsigneeTradeParty')
     )
   end
 
   def consignee_postal_address
     trade_party_postal_address(
-      specified_supply_chain_consignment[:consignee_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsigneeTradeParty')
     )
   end
 
@@ -63,7 +63,7 @@ class Permit
 
   def consignee_country
     trade_party_country(
-      specified_supply_chain_consignment[:consignee_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsigneeTradeParty')
     )
   end
 
@@ -72,49 +72,49 @@ class Permit
   # TODO: where does this go?
   def consignor_id
     trade_party_id(
-      specified_supply_chain_consignment[:consignor_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsignorTradeParty')
     )
   end
 
   def consignor_name
     trade_party_name(
-      specified_supply_chain_consignment[:consignor_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsignorTradeParty')
     )
   end
 
   def consignor_postal_address
     trade_party_postal_address(
-      specified_supply_chain_consignment[:consignor_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsignorTradeParty')
     )
   end
 
   def consignor_country
     trade_party_country(
-      specified_supply_chain_consignment[:consignor_trade_party]
+      specified_supply_chain_consignment.at_xpath('urn1:ConsignorTradeParty')
     )
   end
 
   # Box 5a
 
   def purpose
-    header_exchanged_document[:purpose]
+    header_exchanged_document.at_xpath('urn1:Purpose').content
   end
 
   # always present
   def purpose_code
-    header_exchanged_document[:purpose_code]
+    header_exchanged_document.at_xpath('urn1:PurposeCode').content
   end
 
   # Box 5
 
   def special_conditions
-    header_exchanged_document[:information]
+    header_exchanged_document.at_xpath('urn1:Information').content
   end
 
   # Box 5b
 
   def security_stamp_no
-    first_signatory_document_authentication[:id]
+    first_signatory_document_authentication.at_xpath('urn1:ID').content
   end
 
   # Box 6
@@ -122,76 +122,76 @@ class Permit
   # TODO: where does this go?
   def issuing_authority_id
     trade_party_id(
-      first_signatory_document_authentication[:provider_trade_party]
+      first_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty')
     )
   end
 
   def issuing_authority_name
     trade_party_name(
-      first_signatory_document_authentication[:provider_trade_party]
+      first_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty')
     )
   end
 
   def issuing_authority_postal_address
     trade_party_postal_address(
-      first_signatory_document_authentication[:provider_trade_party]
+      first_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty')
     )
   end
 
   def issuing_authority_country
     trade_party_country(
-      first_signatory_document_authentication[:provider_trade_party]
+      first_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty')
     )
   end
 
   def issuing_authority_representative_person
-    first_signatory_document_authentication[:provider_trade_party][:specified_representative_person][:name]
+    first_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty/urn1:SpecifiedRepresentativePerson/urn1:Name').content
   end
 
   # Box 13
 
   def issue_place
-    header_exchanged_document[:issue_logistics_location][:name]
+    header_exchanged_document.at_xpath('urn1:IssueLogisticsLocation/urn1:Name').content
   end
 
   # always present
   def issue_date_time
-    header_exchanged_document[:issue_date_time]
+    header_exchanged_document.at_xpath('urn1:IssueDateTime').content
   end
 
   private
 
   def header_exchanged_document
-    @body[:cbf_ship][:header_exchanged_document]
+    @body.xpath('//CBFShip/urn:HeaderExchangedDocument')
   end
 
   def specified_supply_chain_consignment
-    @body[:cbf_ship][:specified_supply_chain_consignment]
+    @body.xpath('//CBFShip/urn:SpecifiedSupplyChainConsignment')
   end
 
   def first_signatory_document_authentication
-    header_exchanged_document[:first_signatory_document_authentication]
+    header_exchanged_document.at_xpath('urn1:FirstSignatoryDocumentAuthentication')
   end
 
   def trade_party_id(node)
-    node[:id]
+    node.at_xpath('urn1:ID').content
   end
 
   def trade_party_name(node)
-    node[:name]
+    node.at_xpath('urn1:Name').content
   end
 
   def trade_party_postal_address(node)
-    [:street_name, :post_office_box, :city_name, :postcode_code].map do |address_part|
-      node[:postal_trade_address][address_part]
+    ['StreetName', 'PostOfficeBox', 'CityName', 'PostcodeCode'].map do |address_part|
+      node.at_xpath("urn1:PostalTradeAddress/urn1:#{address_part}").content
     end.compact.join(', ')
   end
 
   def trade_party_country(node)
-    parts = [:id, :name].map do |country_name_part|
-      node[:postal_trade_address][:country_identification_trade_country][country_name_part]
+    parts = ['ID', 'Name'].map do |country_name_part|
+      node.at_xpath("urn1:PostalTradeAddress/urn1:CountryIdentificationTradeCountry/urn1:#{country_name_part}").content
     end
-    parts << node[:postal_trade_address][:country_identification_trade_country][:subordinate_trade_country_sub_division][:name]
+    parts << node.at_xpath('urn1:PostalTradeAddress/urn1:CountryIdentificationTradeCountry/urn1:SubordinateTradeCountrySubDivision/urn1:Name').content
     parts.compact.join(', ')
   end
 end
