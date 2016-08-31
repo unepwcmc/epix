@@ -25,18 +25,12 @@ header.row.desktop-header {
     display: none;
   }
   color: white;
+  .container {
+    display: flex;
+    align-items: center;
+  }
   nav#logo {
-    ul li.bold {
-        font-size: 2em;
-      @media screen and (max-width: $break_desktop) {
-        font-size: 1.4em;
-      }
-    }
-    ul li:last-child {
-      @media screen and (max-width: $break_desktop) {
-        font-size: 0.7em;
-      }
-    }
+    img { width: 150px; }
   }
   .navbar {
     min-height: 0;
@@ -52,8 +46,7 @@ header.row.desktop-header {
     }
   }
 
-  #main_nav {
-    padding: 10px;
+  #nav_bar {
     li.nav-elem {
       margin-left: 15px;
       a { padding: 5px 10px; }
@@ -62,7 +55,6 @@ header.row.desktop-header {
   }
 
   .languages-dropdown {
-    margin-top: 9px;
     .btn {
       background: none;
       border: none;
@@ -97,7 +89,13 @@ footer {
       padding: 20px 0 0;
     }
     .epix-col {
+      position: relative;
+      top: 30%;
+      margin-left: 30px;
       color: $main-blue;
+    }
+    .logo-col {
+      img { width: 200px; }
     }
   }
 }
@@ -178,7 +176,6 @@ li.login > a:focus {
 .header-dropdown {
   display: flex;
   align-items: center;
-  margin-top: 9px;
   .btn {
     background: none;
     border: none;
@@ -288,6 +285,10 @@ li.login > a:focus {
 
 .border-btm-2 {
   border-bottom: 2px solid $light-grey;
+}
+
+.border-rgt {
+  border-right: 1px solid $light-grey;
 }
 
 .border-lft {
