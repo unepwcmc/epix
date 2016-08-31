@@ -55,6 +55,13 @@ header.row.desktop-header {
     }
   }
 
+  #user_nav {
+    display: flex;
+    align-items: center;
+    a { color: white; }
+    a:hover { background: none; }
+  }
+
   .languages-dropdown {
     .btn {
       background: none;
