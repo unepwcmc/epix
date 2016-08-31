@@ -5,6 +5,9 @@
   @media screen and (max-width: $break_desktop) {
     font-size: 0.8em;
   }
+  p.epix-signature {
+    color: $main-blue;
+  }
   p.epix-intro {
     white-space: pre-line;
     line-height: 30px;
@@ -13,21 +16,20 @@
 }
 .logo-container {
   position: relative;
-  border : 1px solid $extralight-grey;
   width: 600px;
   @media screen and(max-width: $break_desktop) {
     width: 300px;
   }
   height: 240px;
   margin: 20px auto;
-  .cites-logo {
+  .epix-main-logo {
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 300px;
+    width: 500px;
     @media screen and(max-width: $break_desktop) {
       width: 180px;
     }

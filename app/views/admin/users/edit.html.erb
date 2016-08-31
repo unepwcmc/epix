@@ -2,7 +2,7 @@
   <h2><%= t('user_edit_page') %></h2>
   <%= render partial: "buttons", locals: {
     form_id: "user_edit_form",
-    path: admin_user_path(@user)
+    cancel_path: admin_users_path
   } %>
 </div>
 
@@ -11,6 +11,6 @@
 <div class="form-footer">
   <%= render partial: "buttons", locals: {
     form_id: "user_edit_form",
-    path: admin_user_path(@user)
+    cancel_path: admin_users_path
   } %>
 </div>

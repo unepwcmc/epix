@@ -1,12 +1,15 @@
+<%= render "layouts/mobile_footer" %>
 <footer>
   <div class="footer-container container">
-    <div class="upper-footer"></div>
-    <div class="lower-footer row">
-      <div class="col-xs-7 col-md-7 col-lg-7">
-        <span class="bold">Wildlife Trade EPIX -</span>
-        <span>Electronic Permit Information eXchange</span>
+    <div class="footer-row row">
+      <div class="col col-xs-3 col-md-3 col-lg-3 logo-col border-rgt">
+        <%= image_tag("epix_main_logo_transparent") %>
       </div>
-      <div class="col-xs-5 col-md-5 col-lg-5"></div>
+      <div class="col col-xs-3 col-md-3 col-lg-3 epix-col">
+        <div class="bold">CITES EPIX </div>
+        <div>Electronic Permit Information eXchange</div>
+      </div>
+      <div class="col col-xs-6 col-md-6 col-lg-6 logos-col"></div>
     </div>
   </div>
 </footer>

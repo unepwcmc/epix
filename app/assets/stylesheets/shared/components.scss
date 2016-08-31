@@ -6,32 +6,31 @@
   border: none;
   text-decoration: none;
   padding: 9px 50px;
-  background: purple;
+  background: $main-green;
   color: white;
   &:hover {
-    background: rebeccapurple;
     color: white;
     text-decoration: none;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
   }
 }
 
 .btn-long { width: 200px; }
 
 .btn-menu {
-  background: white;
-  color: $dark-grey;
-  border: 1px solid $light-grey;
+  background: none;
+  color: white;
+  border: 2px solid white;
   padding: 5px 25px;
+  margin-right: 10px;
 }
 
 .btn-scnd {
   background: none;
-  color: purple;
+  color: $main-green;
+  &:hover {
+    color: $main-green;
+    text-decoration: none;
+  }
 }
 
 .alert-notice, .alert-alert{
