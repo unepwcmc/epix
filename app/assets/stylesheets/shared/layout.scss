@@ -7,9 +7,10 @@
 }
 
 .borders-wrapper {
-  border: 10px solid $main-blue;
   padding-bottom: 300px;
+  border: 10px solid $main-blue;
   @media screen and(max-width: $break_desktop) {
+    border: none;
     border-bottom: 5px solid $main-blue;
   }
 }

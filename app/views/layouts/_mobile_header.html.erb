@@ -1,7 +1,7 @@
 <header class="mobile-header">
   <div class="row">
     <div class="mobile-logo col-md-6 col-xs-6">
-      LOGO
+      <%= image_tag("epix_white_logo") %>
     </div>
     <div class="menu-button col-md-6 col-xs-6">
       <%= link_to "Menu", "#",  class: 'button btn-menu' %>
@@ -10,10 +10,10 @@
   <div class="menu">
     <div class="mobile-nav">
       <ul class="mobile-nav-list">
-        <li class="mobile-nav-elem"><%= link_to t('home'), root_path %></li>
-        <li class="mobile-nav-elem"><%= link_to t('cites_permit'), '#' %></li>
-        <li class="mobile-nav-elem"><%= link_to t('about'), '#' %></li>
-        <li class="mobile-nav-elem login">
+        <li class="mobile-nav-elem bold"><%= link_to t('home'), root_path %></li>
+        <li class="mobile-nav-elem bold"><%= link_to t('cites_permit'), '#' %></li>
+        <li class="mobile-nav-elem bold"><%= link_to t('about'), '#' %></li>
+        <li class="mobile-nav-elem login bold">
           <a href="#" data-toggle="modal" data-target="#login_modal">
             <i class="fa fa-sign-in"></i>
             <span><%= t('login') %></span>
