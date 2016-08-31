@@ -75,6 +75,9 @@ header.row.desktop-header {
 }
 
 footer {
+  @media screen and (max-width: $break_desktop) {
+    display: none;
+  }
   position: absolute;
   width: 100%;
   height: 120px;

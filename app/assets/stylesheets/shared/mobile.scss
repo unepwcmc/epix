@@ -10,10 +10,10 @@ header.mobile-header {
     margin-top: 10px;
     border: 1px solid $light-grey;
   }
+  img { width: 150px; }
   @media screen and (max-width: $break_desktop) {
     display: block;
   }
-  img { width: 150px; }
 }
 
 ul.mobile-nav-list {
@@ -46,5 +46,25 @@ ul.mobile-languages-list {
     a { color: $main-blue }
     a.active { color: $dark-grey; }
     display: inline;
+  }
+}
+
+footer.mobile-footer {
+  display: none;
+  .logo-row {
+    border-bottom: 1px solid $light-grey;
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    img { width: 150px; }
+  }
+  .signature-row {
+    margin: 15px;
+    color: $main-blue;
+  }
+  .icons-row {
+  }
+  @media screen and (max-width: $break_desktop) {
+    display: block;
   }
 }
