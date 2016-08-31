@@ -1,6 +1,6 @@
 class Permit
 
-  # Initialise using body of permit response converted to a hash
+  # Initialise using XML body of permit response
   def initialize(body)
     @body = body
   end
@@ -150,13 +150,35 @@ class Permit
 
   # Box 13
 
+  def issued_by
+    trade_party_name(
+      third_signatory_document_authentication.at_xpath('urn1:ProviderTradeParty')
+    )
+  end
+
   def issue_place
     header_exchanged_document.at_xpath('urn1:IssueLogisticsLocation/urn1:Name').content
   end
 
   # always present
-  def issue_date_time
+  def issue_date
     header_exchanged_document.at_xpath('urn1:IssueDateTime').content
+  end
+
+  # Box 14
+
+  def date_of_export
+    specified_supply_chain_consignment.at_xpath('urn1:ExaminationTransportEvent/urn1:ActualOccurrenceDateTime').content
+  end
+
+  def port_of_export
+    specified_supply_chain_consignment.at_xpath('urn1:ExaminationTransportEvent/urn1:OccurrenceLogisticsLocation/urn1:ID').content
+  end
+
+  # Box 15
+
+  def transport_document
+    specified_supply_chain_consignment.at_xpath('urn1:TransportContractReferencedDocument/urn1:ID').content
   end
 
   private
@@ -171,6 +193,10 @@ class Permit
 
   def first_signatory_document_authentication
     header_exchanged_document.at_xpath('urn1:FirstSignatoryDocumentAuthentication')
+  end
+
+  def third_signatory_document_authentication
+    header_exchanged_document.at_xpath('urn1:ThirdSignatoryDocumentAuthentication')
   end
 
   def trade_party_id(node)

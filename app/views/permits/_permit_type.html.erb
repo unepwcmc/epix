@@ -37,7 +37,7 @@
           <div class="permit-field field-title">
             2. <%= t('valid_until') %>
           </div>
-          <div class="permit-value"><%= @permit.valid_until %></div>
+          <div class="permit-value"><%= date_format(@permit.valid_until) %></div>
         </div>
       </div>
     </div>
