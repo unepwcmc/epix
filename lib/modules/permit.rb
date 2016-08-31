@@ -5,6 +5,12 @@ class Permit
     @body = body
   end
 
+  def line_items
+    specified_supply_chain_consignment.xpath('urn1:IncludedSupplyChainConsignmentItem').map do |xml|
+      PermitLineItem.new(xml)
+    end
+  end
+
   # Box 1
 
   # always present

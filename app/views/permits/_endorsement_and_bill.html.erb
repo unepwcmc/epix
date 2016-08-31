@@ -12,26 +12,15 @@
           </tr>
         </thead>
         <tbody>
-          <%# for each species (see species table) do %>
+          <% @permit.line_items.each do |line_item| %>
             <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-quantity"><%= "Placeholder" %></td>
+              <td class="endorsement-block"><%= line_item.id %></td>
+              <td class="endorsement-quantity">
+                <%= line_item.final_quantity %>
+                <%= line_item.final_unit_code %>
+              </td>
             </tr>
-          <%# end %>
-          <!-- just as an example -->
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-          <!-- just as an example -->
+          <% end %>
         </tbody>
       </table>
     </div>
