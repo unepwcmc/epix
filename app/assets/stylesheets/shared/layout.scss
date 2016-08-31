@@ -124,6 +124,7 @@ li.login > a:focus {
 .modal-title {
   padding: 0;
   border: none;
+  color: $main-blue;
 }
 
 .modal-dialog {
@@ -149,6 +150,11 @@ li.login > a:focus {
   background: white;
 }
 
+.modal-content {
+  border-top: 5px solid $main-blue;
+  border-radius: 0;
+}
+
 .modal-body {
   padding-bottom: 30px;
 }
@@ -169,7 +175,7 @@ li.login > a:focus {
 
 .close {
   float: right;
-  background: #606061;
+  background: $main-blue;
   color: #FFFFFF;
   line-height: 25px;
   position: relative;
@@ -182,7 +188,9 @@ li.login > a:focus {
   border-radius: 12px;
 }
 
-.close:hover { background: #00d9ff; }
+.forgot-password {
+  a { color: $main-green; }
+}
 
 .header-dropdown {
   display: flex;
