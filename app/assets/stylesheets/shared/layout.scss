@@ -58,7 +58,7 @@ header.row.desktop-header {
   #user_nav {
     display: flex;
     align-items: center;
-    a { color: white; }
+    .login > a { color: white; }
     a:hover { background: none; }
   }
 
