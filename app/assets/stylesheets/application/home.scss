@@ -5,6 +5,9 @@
   @media screen and (max-width: $break_desktop) {
     font-size: 0.8em;
   }
+  p.epix-signature {
+    color: $main-blue;
+  }
   p.epix-intro {
     white-space: pre-line;
     line-height: 30px;
