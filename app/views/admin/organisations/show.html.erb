@@ -1,5 +1,5 @@
 <div class="form-header">
-  <h2><%= t('organisation_show_page') %></h2>
+  <h1><%= t('organisation_show_page') %></h1>
   <div class="buttons">
     <% if can? :read, Organisation, id: @organisation.id %>
       <%= link_to t('back_button'), admin_organisations_path, class: 'button btn-scnd' %>
