@@ -4,20 +4,23 @@
       <div class="permit-field field-title">
         5. <%= t('special_conditions') %>
       </div>
-      <div class="permit-value"><%= "Placeholder" %></div>
+      <div class="permit-value"><%= @permit.special_conditions %></div>
     </div>
     <div class="row permit-row height-30 no-padding">
       <div class="col col-xs-6 col-md-6 col-lg-6 permit-col hor-padded-15">
         <div class="permit-field field-title">
           5a. <%= t('purpose_of_transaction').html_safe %>
         </div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value">
+          <%= @permit.purpose_code %>
+          <%= @permit.purpose %>
+        </div>
       </div>
       <div class="col col-xs-6 col-md-6 col-lg-6 permit-col border-lft padded-15">
         <div class="permit-field field-title">
           5b. <%= t('security_stamp_no') %>
         </div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value"><%= @permit.security_stamp_no %></div>
       </div>
     </div>
   </div>
@@ -28,7 +31,12 @@
           6. <%= t('management_authority').html_safe %>
         </span>
       </div>
-      <div class="permit-value"><%= "Placeholder" %></div>
+      <div class="permit-value">
+        <p><%= @permit.issuing_authority_name %></p>
+        <p><%= @permit.issuing_authority_postal_address %></p>
+        <p><%= @permit.issuing_authority_country %></p>
+        <p><%= @permit.issuing_authority_representative_person %></p>
+      </div>
     </div>
   </div>
 </div> <!-- Conditions and management row -->

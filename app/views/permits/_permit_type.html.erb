@@ -5,22 +5,22 @@
       <div class="col-col-sm-6 col-md-6 col-lg-6 permit-col">
         <ul>
           <li>
-            <%= check_box_tag "export", "export", true, { class: 'permit-check', disabled: true } %>
+            <%= check_box_tag "export", "export", @permit.type_code == 'E', { class: 'permit-check', disabled: true } %>
             <span></span>
             <%= label_tag :export, t("export").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "re-export", "re-export", false, { class: 'permit-check', disabled: true } %>
+            <%= check_box_tag "re-export", "re-export", @permit.type_code == 'R', { class: 'permit-check', disabled: true } %>
             <span></span>
             <%= label_tag :export, t("re_export").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "import", "import", false, { class: 'permit-check', disabled: true } %>
+            <%= check_box_tag "import", "import", @permit.type_code == 'I', { class: 'permit-check', disabled: true } %>
             <span></span>
             <%= label_tag :export, t("import").mb_chars.upcase %>
           </li>
           <li>
-            <%= check_box_tag "other", "other", false, { class: 'permit-check', disabled: true } %>
+            <%= check_box_tag "other", "other", @permit.type_code == 'O', { class: 'permit-check', disabled: true } %>
             <span></span>
             <%= label_tag :export, "#{t("other").mb_chars.upcase}:" %>
           </li>
@@ -31,13 +31,13 @@
           <div class="permit-field field-title">
             <%= t('permit_certificate') %>
           </div>
-          <div class="permit-value"><%= "Placeholder" %></div>
+          <div class="permit-value"><%= @permit.identifier %></div>
         </div>
         <div class="row permit-row height-50 border-no-btm padded-15">
           <div class="permit-field field-title">
             2. <%= t('valid_until') %>
           </div>
-          <div class="permit-value"><%= "Placeholder" %></div>
+          <div class="permit-value"><%= date_format(@permit.valid_until) %></div>
         </div>
       </div>
     </div>

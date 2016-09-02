@@ -23,7 +23,7 @@ class Adapters::Base
     timeout = @params[:timeout]
     begin
       Timeout::timeout(timeout) {
-       Transports::Soap.request(wsdl, operation, auth, message)
+        Transports::Soap.request(wsdl, operation, auth, message)
       }
     rescue => e
       if e.is_a?(Timeout::Error)

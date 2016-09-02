@@ -6,13 +6,16 @@
           3. <%= t('importer').html_safe %>
         </span>
       </div>
-      <div class="permit-value"><%= "Placeholder" %></div>
+      <div class="permit-value">
+        <p><%= @permit.consignee_name %></p>
+        <p><%= @permit.consignee_postal_address %></p>
+      </div>
     </div>
     <div class="row permit-row height-30">
       <div class="permit-field field-title inline">
         3a. <%= t('country_of_import') %>
       </div>
-      <div class="permit-value inline"><%= "Placeholder" %></div>
+      <div class="permit-value inline"><%= @permit.consignee_country %></div>
     </div>
   </div>
   <div class="col col-xs-6 col-md-6 col-lg-6 permit-col border-lft">
@@ -22,7 +25,11 @@
           4. <%= t('exporter').html_safe %>
         </span>
       </div>
-      <div class="permit-value"><%= "Placeholder" %></div>
+      <div class="permit-value">
+        <p><%= @permit.consignor_name %></p>
+        <p><%= @permit.consignor_postal_address %></p>
+        <p><%= @permit.consignor_country %></p>
+      </div>
     </div>
   </div>
 </div> <!-- Import-export row -->

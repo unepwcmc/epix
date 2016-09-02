@@ -22,6 +22,9 @@ class PermitsController < ApplicationController
         country: @country
       }
     )
+
+    xml = Nokogiri::XML(@response.to_xml)
+    @permit = Permit.new(xml)
   end
 
   private

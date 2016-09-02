@@ -1,6 +1,6 @@
 <div class="species-details-block row row-container">
   <div class="col permit-col index-col">
-    <div class="index-value bold">A</div>
+    <div class="index-value bold"><%= line_item.id %></div>
   </div>
   <div class="col block-col permit-col">
     <div class="row species-details-row height-53">
@@ -8,25 +8,42 @@
         <div class="row row-container permit-row hor-padded-15">
           <div class="col col-48">
             <div class="permit-field field-title">7./8.</div>
-            <div class="permit-value"><%= "Placeholder" %></div>
+            <div class="permit-value">
+              <%= line_item.scientific_name %>
+              <%= line_item.common_name %>
+            </div>
           </div>
           <div class="col col-48">
             <div class="permit-field field-title">9.</div>
-            <div class="permit-value"><%= "Placeholder" %></div>
+            <div class="permit-value">
+              <%= line_item.term %>
+              <%= line_item.term_code %>
+            </div>
           </div>
         </div>
       </div>
       <div class="col species-col-small permit-col border-lft padded-15 border-btm">
         <div class="permit-field field-title">10.</div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value">
+          <%= line_item.appendix %>
+          <%= line_item.source %>
+        </div>
       </div>
       <div class="col species-col-small permit-col border-lft padded-15 border-btm">
         <div class="permit-field field-title">11.</div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value">
+          <%= line_item.quantity %>
+          <%= line_item.unit_code %>
+        </div>
       </div>
       <div class="col species-col-small permit-col border-lft padded-15 border-btm">
         <div class="permit-field field-title">11a.</div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value">
+          <%= line_item.used_to_date_quantity %>
+          <%= line_item.used_to_date_unit_code %> /
+          <%= line_item.annual_quota_quantity %>
+          <%= line_item.annual_quota_unit_code %>
+        </div>
       </div>
     </div>
     <div class="row other-details-row height-47">
@@ -36,19 +53,19 @@
             <div class="permit-field field-title">
               12. <%= t('country_of_origin') %>
             </div>
-            <div class="permit-value"><%= "Placeholder" %></div>
+            <div class="permit-value"><%= line_item.origin_country %></div>
           </div>
           <div class="col col-xs-4 col-md-4 col-lg-4 permit-no">
             <div class="permit-field field-title">
               <%= t('permit_no') %>
             </div>
-            <div class="permit-value border-lft"><%= "Placeholder" %></div>
+            <div class="permit-value border-lft"><%= line_item.origin_permit_id %></div>
           </div>
           <div class="col col-xs-3 col-md-3 col-lg-3 date">
             <div class="permit-field field-title">
               <%= t('date') %>
             </div>
-            <div class="permit-value border-lft"><%= "Placeholder" %></div>
+            <div class="permit-value border-lft"><%= date_format(line_item.origin_permit_date) %></div>
           </div>
         </div>
       </div>
@@ -58,19 +75,19 @@
             <div class="permit-field field-title">
               12a. <%= t('last_country') %>
             </div>
-            <div class="permit-value"><%= "Placeholder" %></div>
+            <div class="permit-value"><%= line_item.export_country %></div>
           </div>
           <div class="col col-xs-3 col-md-3 col-lg-3 certificate-no">
             <div class="permit-field field-title">
               <%= t('certificate_no') %>
             </div>
-            <div class="permit-value border-lft"><%= "Placeholder" %></div>
+            <div class="permit-value border-lft"><%= line_item.export_permit_id %></div>
           </div>
           <div class="col col-xs-3 col-md-3 col-lg-3 date">
             <div class="permit-field field-title">
               <%= t('date') %>
             </div>
-            <div class="permit-value border-lft"><%= "Placeholder" %></div>
+            <div class="permit-value border-lft"><%= date_format(line_item.export_permit_date) %></div>
           </div>
         </div>
       </div>
@@ -78,7 +95,9 @@
         <div class="permit-field field-title">
           12b. <%= t('operation_no') %>
         </div>
-        <div class="permit-value"><%= "Placeholder" %></div>
+        <div class="permit-value">
+          <%= date_format(line_item.operation_no) %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,10 +1,7 @@
 <div class="species-details-table">
-  <%# for each species_details do |species_detial| %>
-    <%= render "species_details_block" %>
-    <%= render "species_details_block" %>
-    <%= render "species_details_block" %>
-    <%= render "species_details_block" %>
-  <%# end %>
+  <% @permit.line_items.each do |line_item| %>
+    <%= render "species_details_block", line_item: line_item %>
+  <% end %>
 </div>
 <div class="country-info border-btm">
 <%= t('country_info') %>

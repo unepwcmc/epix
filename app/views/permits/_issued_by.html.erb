@@ -2,16 +2,16 @@
   <div class="permit-field field-title inline">
     13. <%= t('issued_by') %>
   </div>
-  <div class="permit-value inline"><%= "Placeholder" %></div>
+  <div class="permit-value inline"><%= @permit.issued_by %></div>
   <div class="vertical-fields">
     <div class="vertical-fields-first inline">
-      <div class="permit-value border-btm"><%= "Placeholder" %></div>
+      <div class="permit-value border-btm"><%= @permit.issue_place %></div>
       <div class="permit-field field-title">
         <%= t('place') %>
       </div>
     </div>
     <div class="vertical-fields-second inline">
-      <div class="permit-value border-btm"><%= "Placeholder" %></div>
+      <div class="permit-value border-btm"><%= date_format(@permit.issue_date) %></div>
       <div class="permit-field field-title">
         <%= t('date') %>
       </div>

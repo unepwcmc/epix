@@ -12,26 +12,15 @@
           </tr>
         </thead>
         <tbody>
-          <%# for each species (see species table) do %>
+          <% @permit.line_items.each do |line_item| %>
             <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-quantity"><%= "Placeholder" %></td>
+              <td class="endorsement-block"><%= line_item.id %></td>
+              <td class="endorsement-quantity">
+                <%= line_item.final_quantity %>
+                <%= line_item.final_unit_code %>
+              </td>
             </tr>
-          <%# end %>
-          <!-- just as an example -->
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-            <tr>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-              <td class="endorsement-block"><%= "Placeholder" %></td>
-            </tr>
-          <!-- just as an example -->
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -39,16 +28,16 @@
       <div class="permit-field field-title inline">
         15. <%= t('bill') %>
       </div>
-      <div class="permit-value inline"><%= "Placeholder" %></div>
+      <div class="permit-value inline"><%= @permit.transport_document %></div>
       <div class="vertical-fields">
         <div class="vertical-fields-first inline">
-          <div class="permit-value border-btm"><%= "Placeholder" %></div>
+          <div class="permit-value border-btm"><%= @permit.port_of_export %></div>
           <div class="permit-field field-title">
             <%= t('port') %>
           </div>
         </div>
         <div class="vertical-fields-second inline">
-          <div class="permit-value border-btm"><%= "Placeholder" %></div>
+          <div class="permit-value border-btm"><%= @permit.date_of_export %></div>
           <div class="permit-field field-title">
             <%= t('date') %>
           </div>
