@@ -1,3 +1,16 @@
+.permit-details-container {
+  @media screen and (max-width: $break_desktop) {
+    display: none;
+  }
+}
+
+.permit-details-container-mobile {
+  display: none;
+  @media screen and (max-width: $break_desktop) {
+    display: block;
+  }
+}
+
 .permit-result-title {
   color: $main-blue;
   border-bottom: 3px solid $light-grey;
@@ -27,6 +40,11 @@
   margin: 0;
   height: 100%;
   padding: 15px 0;
+}
+
+.permit-row-mobile {
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 .permit-col {
@@ -87,6 +105,12 @@
   height: 45px;
   border-left: 1px solid $light-grey;
   padding-left: 10px;
+}
+
+.permit-value-mobile {
+  border-left: 1px solid $light-grey;
+  margin-top: 5px;
+  padding-left: 15px;
 }
 
 .permit-field {
@@ -172,3 +196,29 @@ input.permit-check:checked ~ span {
   background-size: 100%;
 }
 
+.species-details-header-mobile {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  height: 30px;
+  background-color: $main-blue;
+  color: white;
+}
+
+.species-details-content-mobile {
+  margin: 15px;
+}
+
+.inner-field {
+  color: $main-blue;
+}
+
+.endorsement-and-bill-mobile {
+  margin-bottom: 15px;
+  border-bottom: 1px solid $light-grey;
+}
+
+.endorsement-table-mobile {
+  padding-top: 15px;
+  border-top: 1px solid $light-grey;
+}
