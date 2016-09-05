@@ -1,0 +1,19 @@
+<%= render partial: "permits/mobile/permit_row_mobile",
+  locals: {
+    field_title: "13. #{t('issued_by')}",
+    values: [
+      {
+        field: "Issued by",
+        value: @permit.issued_by
+      },
+      {
+        field: "Place",
+        value: @permit.issue_place
+      },
+      {
+        field: "Date",
+        value: date_format(@permit.issue_date)
+      }
+    ]
+  }
+%>

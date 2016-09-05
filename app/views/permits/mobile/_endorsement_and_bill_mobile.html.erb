@@ -1,0 +1,55 @@
+<div class="endorsement-and-bill-mobile">
+  <%= render partial: "permits/mobile/permit_row_mobile",
+    locals: {
+      field_title: "14. #{t('endorsement')}",
+      values: []
+    }
+  %>
+  <%= render partial: "permits/mobile/permit_row_mobile",
+    locals: {
+      field_title: "15. #{t('bill')}",
+      values: [
+        {
+          value: @permit.transport_document
+        }
+      ]
+    }
+  %>
+
+  <div class="endorsement-table-mobile">
+    <%= render partial: "permits/mobile/permit_row_mobile",
+      locals: {
+        field_title: "#{t('quantity')}",
+        values:
+          @permit.line_items.map do |line_item|
+            {
+              field: line_item.id,
+              value: "#{line_item.final_quantity} #{line_item.final_unit_code}"
+            }
+          end
+      }
+    %>
+  </div>
+
+  <%= render partial: "permits/mobile/permit_row_mobile",
+    locals: {
+      field_title: "#{t('port')}",
+      values: [
+        {
+          value: @permit.port_of_export
+        }
+      ]
+    }
+  %>
+
+  <%= render partial: "permits/mobile/permit_row_mobile",
+    locals: {
+      field_title: "#{t('date')}",
+      values: [
+        {
+          value: @permit.date_of_export
+        }
+      ]
+    }
+  %>
+</div>
