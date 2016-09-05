@@ -3,11 +3,11 @@
     field_title: "3. #{t('importer')}",
     values: [
       {
-        field: "Name",
+        field: t('name'),
         value: @permit.consignee_name
       },
       {
-        field: "Address",
+        field: t('address'),
         value: @permit.consignee_postal_address
       }
     ]
@@ -28,15 +28,15 @@
     field_title: "4. #{t('exporter')}",
     values: [
       {
-        field: "Name",
+        field: t('name'),
         value: @permit.consignor_name
       },
       {
-        field: "Address",
+        field: t('address'),
         value: @permit.consignor_postal_address
       },
       {
-        field: "Country",
+        field: t('country'),
         value: @permit.consignor_country
       }
     ]

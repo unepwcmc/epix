@@ -36,20 +36,20 @@
     field_title: "6. #{t('management_authority')}",
     values: [
       {
-        field: "Name",
+        field: t('name'),
         value: @permit.issuing_authority_name
       },
       {
-        field: "Address",
+        field: t('address'),
         value: @permit.issuing_authority_postal_address
       },
       {
-        field: "National seal/stamp",
-        value: @permit.issuing_authority_country
-      },
-      {
-        field: "Country",
-        value: @permit.issuing_authority_representative_person
+        field: t('country'),
+        value:
+          """
+            #{@permit.issuing_authority_country}
+            #{@permit.issuing_authority_representative_person}
+          """
       }
     ]
   }

@@ -88,15 +88,15 @@
             field_title: "12. #{t('country_of_origin')}",
             values: [
               {
-                field: "Country",
+                field: t('country'),
                 value: line_item.origin_country
               },
               {
-                field: "Permit No.",
+                field: t('permit_no'),
                 value: line_item.origin_permit_id
               },
               {
-                field: "Date",
+                field: t('date'),
                 value: date_format(line_item.origin_permit_date)
               }
             ]
@@ -107,15 +107,15 @@
             field_title: "12a. #{t('last_country')}",
             values: [
               {
-                field: "Country",
+                field: t('country'),
                 value: line_item.export_country
               },
               {
-                field: "Permit No.",
+                field: t('permit_no'),
                 value: line_item.export_permit_id
               },
               {
-                field: "Date",
+                field: t('date'),
                 value: date_format(line_item.export_permit_date)
               }
             ]

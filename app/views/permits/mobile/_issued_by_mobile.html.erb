@@ -3,15 +3,15 @@
     field_title: "13. #{t('issued_by')}",
     values: [
       {
-        field: "Issued by",
+        field: t('issued'),
         value: @permit.issued_by
       },
       {
-        field: "Place",
+        field: t('place'),
         value: @permit.issue_place
       },
       {
-        field: "Date",
+        field: t('date'),
         value: date_format(@permit.issue_date)
       }
     ]
