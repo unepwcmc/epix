@@ -1,0 +1,137 @@
+<div class="species-details-table-mobile">
+  <% @permit.line_items.each do |line_item| %>
+    <div class="species-details-block-mobile">
+      <div class="species-details-header-mobile bold">
+        <%= line_item.scientific_name %>
+      </div>
+      <div class="species-details-content-mobile">
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "7. #{t('scientific_name')}",
+            values: [
+              {
+                value: line_item.scientific_name
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "8. #{t('common_name')}",
+            values: [
+              {
+                value: line_item.common_name
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "9. #{t('specimens')}",
+            values: [
+              {
+                value: line_item.term
+              },
+              {
+                value: line_item.term_code
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "10. #{t('appendix_no')}",
+            values: [
+              {
+                value: line_item.appendix
+              },
+              {
+                value: line_item.source
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "11. #{t('quantity_unit')}",
+            values: [
+              {
+                value: line_item.quantity
+              },
+              {
+                value: line_item.unit_code
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "11a. #{t('quota')}",
+            values: [
+              {
+                value: line_item.used_to_date_quantity
+              },
+              {
+                value: line_item.used_to_date_unit_code
+              },
+              {
+                value: line_item.annual_quota_quantity
+              },
+              {
+                value: line_item.annual_quota_unit_code
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "12. #{t('country_of_origin')}",
+            values: [
+              {
+                field: t('country'),
+                value: line_item.origin_country
+              },
+              {
+                field: t('permit_no'),
+                value: line_item.origin_permit_id
+              },
+              {
+                field: t('date'),
+                value: date_format(line_item.origin_permit_date)
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "12a. #{t('last_country')}",
+            values: [
+              {
+                field: t('country'),
+                value: line_item.export_country
+              },
+              {
+                field: t('permit_no'),
+                value: line_item.export_permit_id
+              },
+              {
+                field: t('date'),
+                value: date_format(line_item.export_permit_date)
+              }
+            ]
+          }
+        %>
+        <%= render partial: "permits/mobile/permit_row_mobile",
+          locals: {
+            field_title: "12b. #{t('operation_no')}",
+            values: [
+              {
+                value: date_format(line_item.operation_no)
+              }
+            ]
+          }
+        %>
+      </div>
+    </div>
+  <% end %>
+</div>

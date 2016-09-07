@@ -1,0 +1,21 @@
+<div class="permit-row-mobile">
+  <div class="row permit-field field-title">
+    <%= field_title.html_safe %>
+  </div>
+  <div class="row permit-value-mobile">
+    <% values.each do |value| %>
+      <div class="row row-container">
+        <% if value[:field] %>
+          <div class="col col-xs-4 col-md-4 col-lg-4 permit-col">
+            <span class="inner-field"><%= value[:field] %></span>
+          </div>
+          <div class="col col-xs-8 col-md-8 col-lg-8 permit-col">
+            <span class="inner-value"><%= value[:value] %></span>
+          </div>
+        <% else %>
+          <span class="inner-value"><%= value[:value] %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

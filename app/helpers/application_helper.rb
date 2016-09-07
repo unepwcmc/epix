@@ -3,7 +3,7 @@ module ApplicationHelper
     begin
       Date.parse(datetime_string).strftime("%d-%m-%Y")
     rescue ArgumentError
-      ''
+      datetime_string
     end
   end
 end

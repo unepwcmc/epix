@@ -9,3 +9,13 @@
   <%= render "endorsement_and_bill" %>
   <%= link_to "New CITES Permit Search", permits_path, class: "button search-button" %>
 </div>
+
+<div class="permit-details-container-mobile">
+  <%= render "permits/mobile/permit_type_mobile" %>
+  <%= render "permits/mobile/import_export_mobile" %>
+  <%= render "permits/mobile/conditions_and_management_mobile" %>
+  <%= render "permits/mobile/species_details_mobile" %>
+  <%= render "permits/mobile/issued_by_mobile" %>
+  <%= render "permits/mobile/endorsement_and_bill_mobile" %>
+  <%= link_to "New CITES Permit Search", permits_path, class: "button search-button" %>
+</div>

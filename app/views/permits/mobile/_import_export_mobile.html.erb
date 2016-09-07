@@ -1,0 +1,45 @@
+<%= render partial: "permits/mobile/permit_row_mobile",
+  locals: {
+    field_title: "3. #{t('importer')}",
+    values: [
+      {
+        field: t('name'),
+        value: @permit.consignee_name
+      },
+      {
+        field: t('address'),
+        value: @permit.consignee_postal_address
+      }
+    ]
+  }
+%>
+<%= render partial: "permits/mobile/permit_row_mobile",
+  locals: {
+    field_title: "3a. #{t('country_of_import')}",
+    values: [
+      {
+        value: @permit.consignee_country
+      }
+    ]
+  }
+%>
+<%= render partial: "permits/mobile/permit_row_mobile",
+  locals: {
+    field_title: "4. #{t('exporter')}",
+    values: [
+      {
+        field: t('name'),
+        value: @permit.consignor_name
+      },
+      {
+        field: t('address'),
+        value: @permit.consignor_postal_address
+      },
+      {
+        field: t('country'),
+        value: @permit.consignor_country
+      }
+    ]
+  }
+%>
+
