@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     passwords: 'users/passwords'
   }
+  wash_out "api/v1/soap_api"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'permits/:country/:permit_identifier' => 'permits#show',
