@@ -1,5 +1,9 @@
 class Api::V1::SoapApiController < Api::V1::BaseController
-  soap_service namespace: 'urn:WashOut'
+  soap_service namespace: 'urn:WashOut', wsse_auth_callback: ->(email, password) {
+    user = User.find_by(email: email)
+    return false unless user.present?
+    return user.valid_password?(password)
+  }
 
   soap_action :get_final_cites_certificate,
               args: {
