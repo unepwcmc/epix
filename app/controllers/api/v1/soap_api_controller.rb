@@ -28,11 +28,15 @@ class Api::V1::SoapApiController < Api::V1::BaseController
                 CertificateNumber: :string,
                 TokenId: :string,
                 IsoCountryCode: :string,
-                ConfirmedQuantities: :string
+                ConfirmedQuantities: WashOut::Types::CitesPositionsType
               },
               return: :string
   def confirm_quantities
-    render soap: (params[:CertificateNumber] + params[:TokenId] + params[:IsoCountryCode] + params[:ConfirmedQuantities])
+    if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
+      render soap: (params[:CertificateNumber] + params[:TokenId] + params[:IsoCountryCode] + params[:ConfirmedQuantities])
+    else
+      render soap: "XML structure is not valid. ID must be a token"
+    end
   end
 
   soap_action :service_state,
