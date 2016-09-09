@@ -9,7 +9,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_final_cites_certificate
-    render soap: (params[:CertificateNumber] + params[:TokenId] + params[:IsoCountryCode])
+    render xml: Adapters::SimpleAdapter.run(Adapter.first).to_xml
   end
 
   soap_action :get_non_final_cites_certificate,
@@ -20,7 +20,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_non_final_cites_certificate
-    render soap: (params[:CertificateNumber] + params[:TokenId] + params[:IsoCountryCode])
+    render xml: Adapters::SimpleAdapter.run(Adapter.first).to_xml
   end
 
   soap_action :confirm_quantities,
@@ -33,7 +33,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               return: :string
   def confirm_quantities
     if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
-      render soap: (params[:CertificateNumber] + params[:TokenId] + params[:IsoCountryCode] + params[:ConfirmedQuantities])
+      render xml: Adapters::SimpleAdapter.run(Adapter.first).to_xml
     else
       render soap: "XML structure is not valid. ID must be a token"
     end
@@ -43,7 +43,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               args: {},
               return: :string
   def service_state
-    render soap: ("a"+"b")
+    render xml: Adapters::SimpleAdapter.run(Adapter.first).to_xml
   end
 
 end
