@@ -61,5 +61,5 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.wash_out.camelize_wsdl = true
-
+  config.wash_out.parser = :nokogiri
 end

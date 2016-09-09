@@ -280,6 +280,7 @@ DEPENDENCIES
   font-awesome-rails
   jquery-rails
   letter_opener
+  nokogiri
   pg (~> 0.18.4)
   rails (~> 5.0.0)
   rails-controller-testing
