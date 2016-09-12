@@ -22,9 +22,11 @@ gem 'appsignal', '~> 1.1.9'
 gem 'devise'
 
 gem 'savon'
+gem 'wash_out'
 
 gem 'attr_encrypted', '~>3.0.0'
 gem 'cancancan', '~> 1.10'
+gem 'nokogiri'
 
 group :development do
   # Docs
