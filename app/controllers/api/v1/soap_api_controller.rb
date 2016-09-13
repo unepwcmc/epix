@@ -43,7 +43,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
       render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
     else
-      render soap: "XML structure is not valid. ID must be a token"
+      render_soap_error "XML structure is not valid. ID must be a token", "Client"
     end
   end
 
