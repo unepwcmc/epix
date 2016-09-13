@@ -1,9 +1,15 @@
 class Transports::Soap < Transports::Base
 
-  def self.request(wsdl, operation, auth={}, options={})
-    client = get_client(wsdl, auth)
+  def self.request(wsdl, operation, timeout, auth={}, message={})
+    begin
+      Timeout::timeout(timeout) {
+        client = get_client(wsdl, auth)
 
-    result = client.call(operation, message: options)
+        result = client.call(operation, message: message)
+      }
+    rescue => e
+      raise Adapters::SoapAdapterException, e.class
+    end
   end
 
   private
