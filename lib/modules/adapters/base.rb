@@ -26,11 +26,7 @@ class Adapters::Base
         Transports::Soap.request(wsdl, operation, auth, message)
       }
     rescue => e
-      if e.is_a?(Timeout::Error)
-        p 'This request took too long to process...'
-      else
-        p 'Something went wrong'
-      end
+      raise Adapters::AdapterException, e.class
     end
   end
 
