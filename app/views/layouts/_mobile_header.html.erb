@@ -13,12 +13,48 @@
         <li class="mobile-nav-elem bold"><%= link_to t('home'), root_path %></li>
         <li class="mobile-nav-elem bold"><%= link_to t('cites_permit'), '#' %></li>
         <li class="mobile-nav-elem bold"><%= link_to t('about'), '#' %></li>
-        <li class="mobile-nav-elem login bold">
-          <a href="#" data-toggle="modal" data-target="#login_modal">
-            <i class="fa fa-sign-in"></i>
-            <span><%= t('login') %></span>
-          </a>
-        </li>
+        <% unless current_user %>
+          <li class="mobile-nav-elem login bold">
+            <a href="#" data-toggle="modal" data-target="#login_modal">
+              <i class="fa fa-sign-in"></i>
+              <span><%= t('login') %></span>
+            </a>
+          </li>
+        <% else %>
+          <li class="mobile-nav-elem bold">
+            <%= link_to(
+              t('my_account'),
+              admin_user_url(current_user),
+              'data-no-turbolink' => true
+            ) %>
+          </li>
+          <% if current_user.organisation %>
+            <li class="mobile-nav-elem bold">
+              <%= link_to(
+                t('my_organisation'),
+                admin_organisation_url(current_user.organisation),
+                'data-no-turbolink' => true
+              ) %>
+            </li>
+          <% end %>
+          <% if can? :read, Organisation %>
+            <li class="mobile-nav-elem bold">
+              <%= link_to(
+                t('organisations_list'),
+                admin_organisations_url,
+                'data-no-turbolink' => true)
+              %>
+            </li>
+          <% end %>
+          <% if can? :read, User, organisation_id: current_user.organisation_id %>
+            <li class="mobile-nav-elem bold">
+              <%= link_to(t('users_list'), admin_users_url, 'data-no-turbolink' => true) %>
+            </li>
+          <% end %>
+          <li class="mobile-nav-elem bold">
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          </li>
+        <% end %>
       </ul>
       <ul class="mobile-languages-list">
         <li class="mobile-language-elem">
