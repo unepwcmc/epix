@@ -26,7 +26,7 @@ class Adapters::Base
         Transports::Soap.request(wsdl, operation, auth, message)
       }
     rescue => e
-      raise Adapters::AdapterException, e.class
+      raise Adapters::SoapAdapterException, e.class
     end
   end
 

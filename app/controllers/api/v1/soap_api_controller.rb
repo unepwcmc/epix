@@ -7,8 +7,6 @@ class Api::V1::SoapApiController < Api::V1::BaseController
 
   before_action :load_adapter
 
-  rescue_from Adapters::AdapterException, with: :adapter_exception
-
   soap_action :get_final_cites_certificate,
               args: {
                 CertificateNumber: :string,
@@ -66,13 +64,4 @@ class Api::V1::SoapApiController < Api::V1::BaseController
       @adapter = organisation.adapter
     end
   end
-
-  def adapter_exception(e)
-    if e.message == "Timeout::Error"
-      render_soap_error 'This request took too long to process...'
-    else
-      render_soap_error 'Something went wrong'
-    end
-  end
-
 end
