@@ -7,7 +7,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
 
   before_action :load_adapter
 
-  soap_action :get_final_cites_certificate,
+  soap_action 'get_final_cites_certificate',
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -18,7 +18,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
   end
 
-  soap_action :get_non_final_cites_certificate,
+  soap_action 'get_non_final_cites_certificate',
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -29,7 +29,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
   end
 
-  soap_action :confirm_quantities,
+  soap_action 'confirm_quantities',
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -45,7 +45,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     end
   end
 
-  soap_action :service_state,
+  soap_action 'service_state',
               args: {},
               return: :string
   def service_state
