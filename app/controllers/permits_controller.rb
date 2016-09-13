@@ -2,6 +2,8 @@ class PermitsController < ApplicationController
   before_action :sanitise_params, only: [:index, :show]
   before_action :load_adapter, only: [:show]
 
+  rescue_from Adapters::SoapAdapterException, with: :soap_adapter_exception
+
   def index
     if @country && @permit_identifier
       redirect_to(permit_path(
@@ -43,6 +45,16 @@ class PermitsController < ApplicationController
       redirect_to(permits_path) && return
     end
     @adapter = organisation.adapter
+  end
+
+  def soap_adapter_exception(e)
+    message = ''
+    if e.message == "Timeout::Error"
+      message = 'This request took too long to be processed...'
+    else
+      message = 'Something went wrong'
+    end
+    redirect_to permits_path, flash: { error: message }
   end
 
 
