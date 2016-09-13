@@ -89,7 +89,7 @@ en:
   scientific_name: "Scientific name<span> (genus and species) </span>of animal or plant"
   common_name: "Common name of animal or plant"
   scientific_common_name: "Scientific name and common name<span> (genus and species) </span>of animal or plant"
-  specimens: "Description of specimens, includig identifying marks or numbers<span> (age/sex if live) </span>"
+  specimens: "Description of specimens, including identifying marks or numbers<span> (age/sex if live) </span>"
   appendix_no: "Appendix No. and source"
   quantity_unit: "Quantity<span> (including unit) </span>"
   quota: "Total exported/Quota"
