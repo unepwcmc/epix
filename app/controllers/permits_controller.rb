@@ -50,6 +50,11 @@ class PermitsController < ApplicationController
   def soap_adapter_exception(e)
     message = if e.cause.is_a?(Timeout::Error)
                 'This request took too long to be processed...'
+              elsif e.cause.is_a?(Savon::SOAPFault)
+                """
+                Something went wrong:
+                #{e.cause.to_hash[:fault][:details][:cites_data_exchange_fault][:error_message]}
+                """
               else
                 'Something went wrong'
               end
