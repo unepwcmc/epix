@@ -17,9 +17,9 @@ class PermitsController < ApplicationController
   def show
     @response = Adapters::SimpleAdapter.run(
       @adapter, {
-        certificate_number: @permit_identifier,
-        token_id: '?',
-        country: @country
+        CertificateNumber: @permit_identifier,
+        TokenId: '?',
+        IsoCountryCode: @country
       }
     )
 
