@@ -21,17 +21,7 @@ class Adapters::Base
     operation = @params[:operation]
     auth = @params[:auth]
     timeout = @params[:timeout]
-    begin
-      Timeout::timeout(timeout) {
-        Transports::Soap.request(wsdl, operation, auth, message)
-      }
-    rescue => e
-      if e.is_a?(Timeout::Error)
-        p 'This request took too long to process...'
-      else
-        p 'Something went wrong'
-      end
-    end
+    Transports::Soap.request(wsdl, operation, timeout, auth, message)
   end
 
   def rest_request(message = {})

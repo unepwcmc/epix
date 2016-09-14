@@ -5,9 +5,9 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     return user.valid_password?(password)
   }
 
-  before_action :load_adapter
+  before_action :load_adapter, except: :_generate_wsdl
 
-  soap_action 'get_final_cites_certificate',
+  soap_action :get_final_cites_certificate,
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -15,10 +15,10 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_final_cites_certificate
-    render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
+    render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
   end
 
-  soap_action 'get_non_final_cites_certificate',
+  soap_action :get_non_final_cites_certificate,
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -26,10 +26,10 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_non_final_cites_certificate
-    render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
+    render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
   end
 
-  soap_action 'confirm_quantities',
+  soap_action :confirm_quantities,
               args: {
                 CertificateNumber: :string,
                 TokenId: :string,
@@ -39,13 +39,13 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               return: :string
   def confirm_quantities
     if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
-      render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
+      render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
     else
-      render soap: "XML structure is not valid. ID must be a token"
+      render_soap_error "XML structure is not valid. ID must be a token", "Client"
     end
   end
 
-  soap_action 'service_state',
+  soap_action :service_state,
               args: {},
               return: :string
   def service_state
@@ -59,10 +59,9 @@ class Api::V1::SoapApiController < Api::V1::BaseController
       joins(:country).where('countries.iso_code2' => params[:IsoCountryCode]).
       first
     unless organisation.present?
-      raise WashOut::Dispatcher::SOAPError, "AdapterNotFound"
+      render_soap_error "AdapterNotFound"
     else
       @adapter = organisation.adapter
     end
   end
-
 end
