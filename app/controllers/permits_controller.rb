@@ -48,12 +48,11 @@ class PermitsController < ApplicationController
   end
 
   def soap_adapter_exception(e)
-    message = ''
-    if e.message == "Timeout::Error"
-      message = 'This request took too long to be processed...'
-    else
-      message = 'Something went wrong'
-    end
+    message = if e.cause.is_a?(Timeout::Error)
+                'This request took too long to be processed...'
+              else
+                'Something went wrong'
+              end
     redirect_to permits_path, flash: { error: message }
   end
 
