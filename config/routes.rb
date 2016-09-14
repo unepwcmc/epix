@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     constraint: { country: /\w\w/ }
   resources :permits, only: [:index]
 
+  get 'permits/:country/' => redirect('permits/')
+
   namespace :admin do
     resources :organisations, except: [:destroy]
     resources :users
