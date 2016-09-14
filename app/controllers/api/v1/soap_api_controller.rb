@@ -5,7 +5,9 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     return user.valid_password?(password)
   }
 
-  before_action :load_adapter
+  before_action do
+    load_adapter if request.original_url.split('/').last != 'wsdl'
+  end
 
   soap_action :get_final_cites_certificate,
               args: {
