@@ -17,7 +17,8 @@ class Adapters::SimpleAdapter < Adapters::Base
       auth: {
         username: '',
         password: ''
-      }
+      },
+      skip_ssl_verification: adapter.skip_ssl_verification
     }
   end
 end

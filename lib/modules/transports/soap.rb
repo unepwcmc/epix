@@ -1,9 +1,9 @@
 class Transports::Soap < Transports::Base
 
-  def self.request(wsdl, operation, timeout, auth={}, message={})
+  def self.request(wsdl, operation, timeout, auth={}, skip_ssl_verification=false, message={})
     begin
       Timeout::timeout(timeout) {
-        client = get_client(wsdl, auth)
+        client = get_client(wsdl, auth, skip_ssl_verification)
 
         result = client.call(operation, message: message)
       }
@@ -14,12 +14,15 @@ class Transports::Soap < Transports::Base
 
   private
 
-  def self.get_client(wsdl, auth)
+  def self.get_client(wsdl, auth, skip_ssl_verification)
     common_options = {
       wsdl: wsdl,
-      convert_request_keys_to: :none,
-      ssl_verify_mode: :none # TODO: temporary self-signed cert for dummy WS
+      convert_request_keys_to: :none
     }
+    if skip_ssl_verification
+      # for self-signed certs
+      common_options.merge!({ ssl_verify_mode: :none })
+    end
     Savon::Client.new(common_options) if auth.empty?
     if auth['token_auth'].present?
       Savon::Client.new(

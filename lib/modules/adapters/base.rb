@@ -21,7 +21,8 @@ class Adapters::Base
     operation = @params[:operation]
     auth = @params[:auth]
     timeout = @params[:timeout]
-    Transports::Soap.request(wsdl, operation, timeout, auth, message)
+    skip_ssl_verification = @params[:skip_ssl_verification]
+    Transports::Soap.request(wsdl, operation, timeout, auth, skip_ssl_verification, message)
   end
 
   def rest_request(message = {})
