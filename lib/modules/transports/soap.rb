@@ -18,6 +18,7 @@ class Transports::Soap < Transports::Base
     common_options = {
       wsdl: wsdl,
       convert_request_keys_to: :none,
+      ssl_verify_mode: :none # TODO: temporary self-signed cert for dummy WS
     }
     Savon::Client.new(common_options) if auth.empty?
     if auth['token_auth'].present?
