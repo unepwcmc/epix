@@ -52,8 +52,10 @@ class Admin::OrganisationsController < Admin::BaseController
   def organisation_params
     if current_user.is_system_managers?
       params.require(:organisation).permit(:name, :role, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
-    else
+    elsif current_user.is_cites_ma?
       params.require(:organisation).permit(:name, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
+    else
+      params.require(:organisation).permit(:name, :country_id)
     end
   end
 

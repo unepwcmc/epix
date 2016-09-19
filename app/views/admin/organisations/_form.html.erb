@@ -39,7 +39,12 @@
           <%= ff.select :countries_with_access_ids,
                 options_for_select(@countries_for_dropdown),
                 {include_hidden: false},
-                {id: 'countries_with_access', multiple: true, data: { tags: @selected_countries_with_access }}
+                {
+                  id: 'countries_with_access',
+                  multiple: true,
+                  disabled: !current_user.is_cites_ma?,
+                  data: { tags: @selected_countries_with_access }
+                }
           %>
         </div>
       <% end %>
