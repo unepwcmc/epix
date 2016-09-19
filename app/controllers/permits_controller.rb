@@ -44,6 +44,11 @@ class PermitsController < ApplicationController
       flash.alert = 'Adapter not found or not available'
       redirect_to(permits_path) && return
     end
+    user_country = current_user.organisation.country_id
+    unless organisation.adapter.countries_with_access_ids.include?(user_country)
+      flash.alert = 'You are not allow to acces this Adapter'
+      redirect_to(permits_path) && return
+    end
     @adapter = organisation.adapter
   end
 

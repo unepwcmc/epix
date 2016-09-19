@@ -58,10 +58,19 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     organisation = Organisation.cites_mas.with_available_adapters.
       joins(:country).where('countries.iso_code2' => params[:IsoCountryCode]).
       first
-    unless organisation.present?
+    user_country = get_user_country
+    if !organisation.present?
       render_soap_error "AdapterNotFound"
+    elsif !organisation.adapter.countries_with_access_ids.include?(user_country)
+      render_soap_error "AdapterNotAvailable"
     else
       @adapter = organisation.adapter
     end
+  end
+
+  def get_user_country
+    wsse_token = request.env['WSSE_TOKEN']
+    user_email = wsse_token.values_at(:username, :Username).compact.first
+    User.find_by_email(user_email).organisation.country_id
   end
 end
