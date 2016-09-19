@@ -26,7 +26,11 @@ class PermitsController < ApplicationController
     )
 
     xml = Nokogiri::XML(@response.to_xml)
-    @permit = Cites::V1::Permit.new(xml)
+    @permit = if @adapter.cites_toolkit_v2?
+      Cites::V2::Permit.new(xml)
+    else
+      Cites::V1::Permit.new(xml)
+    end
   end
 
   private
