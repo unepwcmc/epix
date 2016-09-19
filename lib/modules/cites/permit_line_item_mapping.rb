@@ -1,9 +1,4 @@
-class PermitLineItem
-
-  # Initialise using XML body of permit line item
-  def initialize(body)
-    @body = body
-  end
+module Cites::PermitLineItemMapping
 
   def id
     @body.at_xpath('urn1:ID').content
@@ -31,7 +26,9 @@ class PermitLineItem
     @body.at_xpath('urn1:IncludedSupplyChainTradeLineItem/urn1:SpecifiedTradeProduct/urn1:TypeCode').content
   end
 
-  # TODO: in CITES Toolkit v2 there's an additional element for markings called PhysicalLogisticsShippingMarks
+  def markings
+    @body.at_xpath('urn1:PhysicalLogisticsShippingMarks/urn1:Marking').content
+  end
 
   # Box 10
 
@@ -56,19 +53,19 @@ class PermitLineItem
   # Box 11a
 
   def used_to_date_quantity
-    @body.at_xpath('urn1:ApplicableCrossBorderGovernmentProcedure/urn1:UsedToDateQuotaQuantity').content
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:UsedToDateQuotaQuantity').content
   end
 
   def used_to_date_unit_code
-    @body.at_xpath('urn1:ApplicableCrossBorderGovernmentProcedure/urn1:UsedToDateQuotaQuantity').attribute('unitCode')
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:UsedToDateQuotaQuantity').attribute('unitCode')
   end
 
   def annual_quota_quantity
-    @body.at_xpath('urn1:ApplicableCrossBorderGovernmentProcedure/urn1:AnnualQuotaQuantity').content
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:AnnualQuotaQuantity').content
   end
 
   def annual_quota_unit_code
-    @body.at_xpath('urn1:ApplicableCrossBorderGovernmentProcedure/urn1:AnnualQuotaQuantity').attribute('unitCode')
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:AnnualQuotaQuantity').attribute('unitCode')
   end
 
   # Box 12
@@ -101,22 +98,38 @@ class PermitLineItem
 
   # Box 12b
 
-  # TODO: in CITES Toolkit v2 there's an additional element for this called CategoryCode
+  def category_code
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:CategoryCode').content
+  end
+
+  def acquisition_date_time
+    applicable_cross_border_regulatory_procedure.at_xpath('urn1:AcquisitionDateTime').content
+  end
+
   def operation_no
-    @body.at_xpath('urn1:ApplicableCrossBorderGovernmentProcedure/urn1:AcquisitionDateTime').content
+    previous_referenced_document = applicable_cross_border_regulatory_procedure.
+      at_xpath('urn1:PreviousReferencedDocument')
+    [
+      previous_referenced_document.at_xpath('urn1:ID'),
+      previous_referenced_document.at_xpath('urn1:Name')
+    ].map(&:content).join(', ')
   end
 
   # Box 14
 
   def final_quantity
-    @body.at_xpath('urn1:ExaminationTransportEvent/urn1:InspectedUnitQuantity').content
+    @body.at_xpath('urn1:ExaminationTransportEvent/urn1:UnitQuantity').content
   end
 
   def final_unit_code
-    @body.at_xpath('urn1:ExaminationTransportEvent/urn1:InspectedUnitQuantity').attribute('unitCode')
+    @body.at_xpath('urn1:ExaminationTransportEvent/urn1:UnitQuantity').attribute('unitCode')
   end
 
   private
+
+  def applicable_cross_border_regulatory_procedure
+    @body.at_xpath('urn1:ApplicableCrossBorderRegulatoryProcedure')
+  end
 
   def associated_referenced_documents
     @body.xpath('urn1:AssociatedReferencedDocument')

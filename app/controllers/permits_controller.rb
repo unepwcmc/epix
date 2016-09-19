@@ -26,7 +26,7 @@ class PermitsController < ApplicationController
     )
 
     xml = Nokogiri::XML(@response.to_xml)
-    @permit = Permit.new(xml)
+    @permit = Cites::V1::Permit.new(xml)
   end
 
   private

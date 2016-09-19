@@ -1,15 +1,4 @@
-class Permit
-
-  # Initialise using XML body of permit response
-  def initialize(body)
-    @body = body
-  end
-
-  def line_items
-    specified_supply_chain_consignment.xpath('urn1:IncludedSupplyChainConsignmentItem').map do |xml|
-      PermitLineItem.new(xml)
-    end
-  end
+module Cites::PermitMapping
 
   # Box 1
 
@@ -190,11 +179,11 @@ class Permit
   private
 
   def header_exchanged_document
-    @body.xpath('//CBFShip/urn:HeaderExchangedDocument')
+    @body.xpath('//CITESEPermit/urn:HeaderExchangedDocument')
   end
 
   def specified_supply_chain_consignment
-    @body.xpath('//CBFShip/urn:SpecifiedSupplyChainConsignment')
+    @body.xpath('//CITESEPermit/urn:SpecifiedSupplyChainConsignment')
   end
 
   def first_signatory_document_authentication
@@ -220,10 +209,9 @@ class Permit
   end
 
   def trade_party_country(node)
-    parts = ['ID', 'Name'].map do |country_name_part|
-      node.at_xpath("urn1:PostalTradeAddress/urn1:CountryIdentificationTradeCountry/urn1:#{country_name_part}").content
-    end
-    parts << node.at_xpath('urn1:PostalTradeAddress/urn1:CountryIdentificationTradeCountry/urn1:SubordinateTradeCountrySubDivision/urn1:Name').content
-    parts.compact.join(', ')
+    ['CountryID', 'CountryName', 'CountrySubDivisionName'].map do |country_name_part|
+      node.at_xpath("urn1:PostalTradeAddress/urn1:#{country_name_part}").content
+    end.compact.join(', ')
   end
+
 end
