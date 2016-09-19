@@ -1,6 +1,6 @@
 namespace :sync do
   task :countries => :environment do
-    response = HTTParty.get('http://speciesplus.net/api/v1/geo_entities')
+    response = HTTParty.get('http://speciesplus.net/api/v1/geo_entities?geo_entity_types_set=3')
     unless response.code == 200
       Rails.logger.info "Something went wrong while fetching countries"
       Rails.logger.info "Message: #{response.message}"
