@@ -28,6 +28,7 @@
         %>
       </div>
     </div>
+    <h3><%= t('adapter_show_page') %></h3>
     <div class="form-group">
       <%= f.fields_for :adapter do |ff| %>
         <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
