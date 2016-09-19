@@ -1,3 +1,25 @@
 .organisation-details {
   padding: 30px 0;
 }
+
+.access-list-container {
+  margin: 10px 0;
+  width: 600px;
+  background-color: $lightest-grey;
+}
+
+.access-list-table {
+  width: 520px;
+  margin: 0 auto;
+  th {
+    border-bottom: 1px solid $light-grey;
+    padding: 10px 0;
+    color: $grey;
+  }
+  td {
+    padding: 20px 0;
+  }
+  .fa { margin-right: 5px; }
+  .fa-check { color: $main-blue; }
+  .fa-times { color: $red; }
+}

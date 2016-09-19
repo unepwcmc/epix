@@ -3,6 +3,7 @@ class Admin::OrganisationsController < Admin::BaseController
   respond_to :html
 
   before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
+  before_action :load_available_countries, only: [:new, :edit, :show]
 
   def index
     @organisations = @organisations.includes(:country).select(
@@ -12,6 +13,10 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def new
     @organisation = Organisation.new
+  end
+
+  def show
+    @adapter = @organisation.try(:adapter)
   end
 
   def edit
@@ -57,5 +62,9 @@ class Admin::OrganisationsController < Admin::BaseController
       :id, :name
     ).
     order(:name).map { |c| [c.name, c.id] }
+  end
+
+  def load_available_countries
+    @available_countries = Country.with_organisations
   end
 end
