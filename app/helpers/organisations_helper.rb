@@ -1,12 +1,11 @@
 module OrganisationsHelper
 
   def has_access(country)
-    if @adapter.countries_with_access_ids.include?(country.id)
-      content_tag(:span, '', class: 'fa fa-check') +
+    yes = content_tag(:span, '', class: 'fa fa-check') +
       content_tag(:span, 'Yes')
-    else
-      content_tag(:span, '', class: 'fa fa-times') +
+    no = content_tag(:span, '', class: 'fa fa-times') +
       content_tag(:span, 'No')
-    end
+    return no unless @adapter
+    @adapter.countries_with_access_ids.include?(country.id) ? yes : no
   end
 end
