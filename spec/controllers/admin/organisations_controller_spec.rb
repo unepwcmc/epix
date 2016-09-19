@@ -20,14 +20,14 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
 
     describe "GET edit" do
       it "has a 200 status code" do
-        get :edit, id: FactoryGirl.create(:cites_ma).id
+        get :edit, params: {id: FactoryGirl.create(:cites_ma).id}
         expect(response.status).to eq(200)
       end
     end
 
     describe "GET show" do
       it "has a 200 status code" do
-        get :show, id: FactoryGirl.create(:cites_ma).id
+        get :show, params: {id: FactoryGirl.create(:cites_ma).id}
         expect(response.status).to eq(200)
       end
     end
@@ -51,7 +51,9 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
     describe "PATCH update" do
       it "updates an organisation's role" do
         organisation = FactoryGirl.create(:cites_ma)
-        patch :update, id: organisation.id, organisation: { role: Organisation::SYSTEM_MANAGERS }
+        patch :update, params: {
+          id: organisation.id, organisation: {role: Organisation::SYSTEM_MANAGERS}
+        }
         organisation.reload
         expect(organisation.role).to eq(Organisation::SYSTEM_MANAGERS)
         expect(response.status).to eq(302)
@@ -74,7 +76,9 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
         organisation = subject.current_user.organisation
         old_name = organisation.name
         new_name = old_name + ' ZONK'
-        patch :update, id: organisation.id, organisation: { name: new_name }
+        patch :update, params: {
+          id: organisation.id, organisation: {name: new_name}
+        }
         organisation.reload
         expect(organisation.name).to eq(new_name)
         expect(response.status).to eq(302)
@@ -82,14 +86,18 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
       it "does not update another organisation's name" do
         organisation = FactoryGirl.create(:cites_ma)
         old_name = organisation.name
-        patch :update, id: organisation.id, organisation: { name: old_name + ' ZONK' }
+        patch :update, params: {
+          id: organisation.id, organisation: {name: old_name + ' ZONK'}
+        }
         organisation.reload
         expect(organisation.name).to eq(old_name)
         expect(response.status).to eq(302)
       end
       it "does not update own organisation's role" do
         organisation = subject.current_user.organisation
-        patch :update, id: organisation.id, organisation: { role: Organisation::SYSTEM_MANAGERS }
+        patch :update, params: {
+          id: organisation.id, organisation: {role: Organisation::SYSTEM_MANAGERS}
+        }
         organisation.reload
         expect(organisation.role).to eq(Organisation::CITES_MA)
         expect(response.status).to eq(302)
