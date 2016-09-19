@@ -28,5 +28,20 @@
         %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.fields_for :adapter do |ff| %>
+        <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
+            t('organisation_countries')
+          }
+        %>
+        <div class="col-sm-4">
+          <%= ff.select :countries_with_access_ids,
+                options_for_select(@countries_for_dropdown),
+                {include_hidden: false},
+                {id: 'countries_with_access', multiple: true, data: { tags: @selected_countries_with_access }}
+          %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %> <!-- End Form -->

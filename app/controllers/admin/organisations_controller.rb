@@ -17,6 +17,11 @@ class Admin::OrganisationsController < Admin::BaseController
   def edit
     @organisation = Organisation.find(params[:id])
     @adapter = @organisation.try(:adapter)
+    if @adapter.present?
+      country_ids = @adapter.countries_with_access_ids
+      @selected_countries_with_access = Country.where(id: country_ids).order(:name).
+        map{ |c| {id: c.id, text: c.name} }
+    end
   end
 
   def create
@@ -41,9 +46,9 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def organisation_params
     if current_user.is_system_managers?
-      params.require(:organisation).permit(:name, :role, :country_id)
+      params.require(:organisation).permit(:name, :role, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
     else
-      params.require(:organisation).permit(:name, :country_id)
+      params.require(:organisation).permit(:name, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
     end
   end
 

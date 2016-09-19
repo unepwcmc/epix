@@ -58,6 +58,7 @@ en:
   organisation_name: 'Name'
   organisation_role: 'Role'
   organisation_country: 'Country'
+  organisation_countries: 'Countries with access'
   user_show_page: 'User details'
   user_new_page: 'New user'
   user_edit_page: 'Edit user'
