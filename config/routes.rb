@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   get 'permits/:country/:permit_identifier' => 'permits#show',
     as: 'permit',
-    constraint: { country: /\w\w/ }
+    country: /\w\w/
+  # in case country malformed
+  get 'permits/:country/:permit_identifier' => redirect('permits/')
+  # in case permit number not given
+  get 'permits/:country' => redirect('permits/')
   resources :permits, only: [:index]
-
-  get 'permits/:country/' => redirect('permits/')
 
   namespace :admin do
     resources :organisations, except: [:destroy]

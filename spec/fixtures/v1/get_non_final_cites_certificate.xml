@@ -1,0 +1,800 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="urn:CitesDataExchange/v1/" xmlns:urn="urn:un:unece:uncefact:data:draft:CBFShip:1" xmlns:urn1="urn:un:unece:uncefact:data:draft:ReusableAggregateBusinessInformationEntity:1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:GetNonFinalCitesCertificateResponse>
+         <CBFShip>
+            <urn:SpecifiedExchangedDocumentContext>
+               <!--Zero or more repetitions:-->
+               <urn1:BusinessProcessSpecifiedDocumentContextParameter>
+                  <!--Optional:-->
+                  <urn1:ID>1</urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Value>CITES Permitting</urn1:Value>
+                  <!--Optional:-->
+                  <urn1:SpecifiedDocumentVersion>
+                     <!--Optional:-->
+                     <urn1:ID>1</urn1:ID>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime></urn1:IssueDateTime>
+                  </urn1:SpecifiedDocumentVersion>
+               </urn1:BusinessProcessSpecifiedDocumentContextParameter>
+               <!--Zero or more repetitions:-->
+               <urn1:BIMSpecifiedDocumentContextParameter>
+                  <!--Optional:-->
+                  <urn1:ID>09A</urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Value></urn1:Value>
+                  <!--Optional:-->
+                  <urn1:SpecifiedDocumentVersion>
+                     <!--Optional:-->
+                     <urn1:ID>1</urn1:ID>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime>2009-07-14T00:00:00.000+02:00</urn1:IssueDateTime>
+                  </urn1:SpecifiedDocumentVersion>
+               </urn1:BIMSpecifiedDocumentContextParameter>
+            </urn:SpecifiedExchangedDocumentContext>
+            <urn:HeaderExchangedDocument>
+               <!--Optional:-->
+               <urn1:ID>XA000000</urn1:ID>
+               <!--Zero or more repetitions:-->
+               <urn1:Name></urn1:Name>
+               <!--Optional:-->
+               <urn1:TypeCode>R</urn1:TypeCode>
+               <!--Optional:-->
+               <urn1:IssueDateTime>2014-01-06T12:03:52.00+01:00</urn1:IssueDateTime>
+               <!--Optional:-->
+               <urn1:CopyIndicator>false</urn1:CopyIndicator>
+               <!--Optional:-->
+               <urn1:Purpose></urn1:Purpose>
+               <!--Zero or more repetitions:-->
+               <urn1:PurposeCode>T</urn1:PurposeCode>
+               <!--Zero or more repetitions:-->
+               <urn1:Information>For live animals, this permit is only valid if the transportation requirements
+in accordance to the Guidelines for Transport of Live Animals or, in the case of air transport to
+the IATA Live Animals Regulations</urn1:Information>
+               <!--Zero or more repetitions:-->
+               <urn1:ReferenceReferencedDocument>
+                  <!--Optional:-->
+                  <urn1:IssueDateTime></urn1:IssueDateTime>
+                  <!--Optional:-->
+                  <urn1:TypeCode></urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Zero or more repetitions:-->
+                  <urn1:Name></urn1:Name>
+                  <!--Optional:-->
+                  <urn1:EffectiveSpecifiedPeriod>
+                     <!--Optional:-->
+                     <urn1:StartDateTime>2014-01-06T12:03:52.000+01:00</urn1:StartDateTime>
+                     <!--Optional:-->
+                     <urn1:EndDateTime>2014-07-05T12:03:52.000+02:00</urn1:EndDateTime>
+                  </urn1:EffectiveSpecifiedPeriod>
+               </urn1:ReferenceReferencedDocument>
+               <!--Optional:-->
+               <urn1:EffectiveSpecifiedPeriod>
+                  <!--Optional:-->
+                  <urn1:StartDateTime>2014-01-06T12:03:52.000+01:00</urn1:StartDateTime>
+                  <!--Optional:-->
+                  <urn1:EndDateTime>2014-07-05T12:03:52.000+02:00</urn1:EndDateTime>
+               </urn1:EffectiveSpecifiedPeriod>
+               <!--Optional:-->
+               <urn1:IssueLogisticsLocation>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Zero or more repetitions:-->
+                  <urn1:Name></urn1:Name>
+               </urn1:IssueLogisticsLocation>
+               <!--Optional:-->
+               <urn1:FirstSignatoryDocumentAuthentication>
+                  <!--Optional:-->
+                  <urn1:TypeCode>A</urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Statement></urn1:Statement>
+                  <!--Optional:-->
+                  <urn1:ProviderTradeParty>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Optional:-->
+                     <urn1:Name>Authority name</urn1:Name>
+                     <!--Optional:-->
+                     <urn1:PostalTradeAddress>
+                        <!--Zero or more repetitions:-->
+                        <urn1:PostcodeCode>00000</urn1:PostcodeCode>
+                        <!--Optional:-->
+                        <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                        <!--Zero or more repetitions:-->
+                        <urn1:StreetName>Street</urn1:StreetName>
+                        <!--Optional:-->
+                        <urn1:CityName>City</urn1:CityName>
+                        <!--Optional:-->
+                        <urn1:CountryIdentificationTradeCountry>
+                           <!--Zero or more repetitions:-->
+                           <urn1:ID>XA</urn1:ID>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name>Neverland</urn1:Name>
+                           <!--Optional:-->
+                           <urn1:SubordinateTradeCountrySubDivision>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                           </urn1:SubordinateTradeCountrySubDivision>
+                        </urn1:CountryIdentificationTradeCountry>
+                     </urn1:PostalTradeAddress>
+                     <!--Optional:-->
+                     <urn1:SpecifiedRepresentativePerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedRepresentativePerson>
+                     <!--Zero or more repetitions:-->
+                     <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                  </urn1:ProviderTradeParty>
+               </urn1:FirstSignatoryDocumentAuthentication>
+               <!--Optional:-->
+               <urn1:SecondSignatoryDocumentAuthentication>
+                  <!--Optional:-->
+                  <urn1:TypeCode>B</urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Statement></urn1:Statement>
+                  <!--Optional:-->
+                  <urn1:ProviderTradeParty>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:PostalTradeAddress>
+                        <!--Zero or more repetitions:-->
+                        <urn1:PostcodeCode></urn1:PostcodeCode>
+                        <!--Optional:-->
+                        <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                        <!--Zero or more repetitions:-->
+                        <urn1:StreetName></urn1:StreetName>
+                        <!--Optional:-->
+                        <urn1:CityName></urn1:CityName>
+                        <!--Optional:-->
+                        <urn1:CountryIdentificationTradeCountry>
+                           <!--Zero or more repetitions:-->
+                           <urn1:ID></urn1:ID>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                           <!--Optional:-->
+                           <urn1:SubordinateTradeCountrySubDivision>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                           </urn1:SubordinateTradeCountrySubDivision>
+                        </urn1:CountryIdentificationTradeCountry>
+                     </urn1:PostalTradeAddress>
+                     <!--Optional:-->
+                     <urn1:SpecifiedRepresentativePerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedRepresentativePerson>
+                     <!--Zero or more repetitions:-->
+                     <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                  </urn1:ProviderTradeParty>
+               </urn1:SecondSignatoryDocumentAuthentication>
+               <!--Optional:-->
+               <urn1:ThirdSignatoryDocumentAuthentication>
+                  <!--Optional:-->
+                  <urn1:TypeCode>C</urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Statement></urn1:Statement>
+                  <!--Optional:-->
+                  <urn1:ProviderTradeParty>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:PostalTradeAddress>
+                        <!--Zero or more repetitions:-->
+                        <urn1:PostcodeCode></urn1:PostcodeCode>
+                        <!--Optional:-->
+                        <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                        <!--Zero or more repetitions:-->
+                        <urn1:StreetName></urn1:StreetName>
+                        <!--Optional:-->
+                        <urn1:CityName></urn1:CityName>
+                        <!--Optional:-->
+                        <urn1:CountryIdentificationTradeCountry>
+                           <!--Zero or more repetitions:-->
+                           <urn1:ID></urn1:ID>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                           <!--Optional:-->
+                           <urn1:SubordinateTradeCountrySubDivision>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                           </urn1:SubordinateTradeCountrySubDivision>
+                        </urn1:CountryIdentificationTradeCountry>
+                     </urn1:PostalTradeAddress>
+                     <!--Optional:-->
+                     <urn1:SpecifiedRepresentativePerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedRepresentativePerson>
+                     <!--Zero or more repetitions:-->
+                     <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                  </urn1:ProviderTradeParty>
+               </urn1:ThirdSignatoryDocumentAuthentication>
+               <!--Optional:-->
+               <urn1:FourthSignatoryDocumentAuthentication>
+                  <!--Optional:-->
+                  <urn1:TypeCode>D</urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Statement></urn1:Statement>
+                  <!--Optional:-->
+                  <urn1:ProviderTradeParty>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:PostalTradeAddress>
+                        <!--Zero or more repetitions:-->
+                        <urn1:PostcodeCode></urn1:PostcodeCode>
+                        <!--Optional:-->
+                        <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                        <!--Zero or more repetitions:-->
+                        <urn1:StreetName></urn1:StreetName>
+                        <!--Optional:-->
+                        <urn1:CityName></urn1:CityName>
+                        <!--Optional:-->
+                        <urn1:CountryIdentificationTradeCountry>
+                           <!--Zero or more repetitions:-->
+                           <urn1:ID></urn1:ID>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                           <!--Optional:-->
+                           <urn1:SubordinateTradeCountrySubDivision>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                           </urn1:SubordinateTradeCountrySubDivision>
+                        </urn1:CountryIdentificationTradeCountry>
+                     </urn1:PostalTradeAddress>
+                     <!--Optional:-->
+                     <urn1:SpecifiedRepresentativePerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedRepresentativePerson>
+                     <!--Zero or more repetitions:-->
+                     <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                  </urn1:ProviderTradeParty>
+               </urn1:FourthSignatoryDocumentAuthentication>
+            </urn:HeaderExchangedDocument>
+            <urn:SpecifiedSupplyChainConsignment>
+               <!--Optional:-->
+               <urn1:ConsignorTradeParty>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Name>Consignor name</urn1:Name>
+                  <!--Optional:-->
+                  <urn1:PostalTradeAddress>
+                     <!--Zero or more repetitions:-->
+                     <urn1:PostcodeCode>00000</urn1:PostcodeCode>
+                     <!--Optional:-->
+                     <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                     <!--Zero or more repetitions:-->
+                     <urn1:StreetName>Street</urn1:StreetName>
+                     <!--Optional:-->
+                     <urn1:CityName>City</urn1:CityName>
+                     <!--Optional:-->
+                     <urn1:CountryIdentificationTradeCountry>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID>XA</urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name>Neverland</urn1:Name>
+                        <!--Optional:-->
+                        <urn1:SubordinateTradeCountrySubDivision>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SubordinateTradeCountrySubDivision>
+                     </urn1:CountryIdentificationTradeCountry>
+                  </urn1:PostalTradeAddress>
+                  <!--Optional:-->
+                  <urn1:SpecifiedRepresentativePerson>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:SpecifiedRepresentativePerson>
+                  <!--Zero or more repetitions:-->
+                  <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:SpecifiedAuthoritativeSignatoryPerson>
+               </urn1:ConsignorTradeParty>
+               <!--Optional:-->
+               <urn1:ConsigneeTradeParty>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Optional:-->
+                  <urn1:Name>Consignee name</urn1:Name>
+                  <!--Optional:-->
+                  <urn1:PostalTradeAddress>
+                     <!--Zero or more repetitions:-->
+                     <urn1:PostcodeCode>00000</urn1:PostcodeCode>
+                     <!--Optional:-->
+                     <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                     <!--Zero or more repetitions:-->
+                     <urn1:StreetName>Street</urn1:StreetName>
+                     <!--Optional:-->
+                     <urn1:CityName>City</urn1:CityName>
+                     <!--Optional:-->
+                     <urn1:CountryIdentificationTradeCountry>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID>XB</urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name>Wonderland</urn1:Name>
+                        <!--Optional:-->
+                        <urn1:SubordinateTradeCountrySubDivision>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SubordinateTradeCountrySubDivision>
+                     </urn1:CountryIdentificationTradeCountry>
+                  </urn1:PostalTradeAddress>
+                  <!--Optional:-->
+                  <urn1:SpecifiedRepresentativePerson>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:SpecifiedRepresentativePerson>
+                  <!--Zero or more repetitions:-->
+                  <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:SpecifiedAuthoritativeSignatoryPerson>
+               </urn1:ConsigneeTradeParty>
+               <!--Optional:-->
+               <urn1:TransportContractReferencedDocument>
+                  <!--Optional:-->
+                  <urn1:IssueDateTime></urn1:IssueDateTime>
+                  <!--Optional:-->
+                  <urn1:TypeCode></urn1:TypeCode>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Zero or more repetitions:-->
+                  <urn1:Name></urn1:Name>
+                  <!--Optional:-->
+                  <urn1:EffectiveSpecifiedPeriod>
+                     <!--Optional:-->
+                     <urn1:StartDateTime></urn1:StartDateTime>
+                     <!--Optional:-->
+                     <urn1:EndDateTime></urn1:EndDateTime>
+                  </urn1:EffectiveSpecifiedPeriod>
+               </urn1:TransportContractReferencedDocument>
+               <!--Zero or more repetitions:-->
+               <urn1:ExaminationTransportEvent>
+                  <!--Optional:-->
+                  <urn1:ActualOccurrenceDateTime></urn1:ActualOccurrenceDateTime>
+                  <!--Optional:-->
+                  <urn1:InspectedUnitQuantity unitCode="?"></urn1:InspectedUnitQuantity>
+                  <!--Optional:-->
+                  <urn1:OccurrenceLogisticsLocation>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:OccurrenceLogisticsLocation>
+                  <!--Zero or more repetitions:-->
+                  <urn1:CertifyingTradeParty>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Optional:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:PostalTradeAddress>
+                        <!--Zero or more repetitions:-->
+                        <urn1:PostcodeCode></urn1:PostcodeCode>
+                        <!--Optional:-->
+                        <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                        <!--Zero or more repetitions:-->
+                        <urn1:StreetName></urn1:StreetName>
+                        <!--Optional:-->
+                        <urn1:CityName></urn1:CityName>
+                        <!--Optional:-->
+                        <urn1:CountryIdentificationTradeCountry>
+                           <!--Zero or more repetitions:-->
+                           <urn1:ID></urn1:ID>
+                           <!--Zero or more repetitions:-->
+                           <urn1:Name></urn1:Name>
+                           <!--Optional:-->
+                           <urn1:SubordinateTradeCountrySubDivision>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                           </urn1:SubordinateTradeCountrySubDivision>
+                        </urn1:CountryIdentificationTradeCountry>
+                     </urn1:PostalTradeAddress>
+                     <!--Optional:-->
+                     <urn1:SpecifiedRepresentativePerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedRepresentativePerson>
+                     <!--Zero or more repetitions:-->
+                     <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                  </urn1:CertifyingTradeParty>
+               </urn1:ExaminationTransportEvent>
+               <!--Zero or more repetitions:-->
+               <urn1:IncludedSupplyChainConsignmentItem>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID>A</urn1:ID>
+                  <!--Optional:-->
+                  <urn1:OriginTradeCountry>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>XC</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name>Pixieland</urn1:Name>
+                     <!--Optional:-->
+                     <urn1:SubordinateTradeCountrySubDivision>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SubordinateTradeCountrySubDivision>
+                  </urn1:OriginTradeCountry>
+                  <!--Optional:-->
+                  <urn1:ExportTradeCountry>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>XA</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name>Neverland</urn1:Name>
+                     <!--Optional:-->
+                     <urn1:SubordinateTradeCountrySubDivision>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SubordinateTradeCountrySubDivision>
+                  </urn1:ExportTradeCountry>
+                  <!--Zero or more repetitions:-->
+                  <urn1:AssociatedReferencedDocument>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime>2007-07-09T00:00:00.000+02:00</urn1:IssueDateTime>
+                     <!--Optional:-->
+                     <urn1:TypeCode>861</urn1:TypeCode>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>XC12345</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:EffectiveSpecifiedPeriod>
+                        <!--Optional:-->
+                        <urn1:StartDateTime></urn1:StartDateTime>
+                        <!--Optional:-->
+                        <urn1:EndDateTime></urn1:EndDateTime>
+                     </urn1:EffectiveSpecifiedPeriod>
+                  </urn1:AssociatedReferencedDocument>
+                  <urn1:AssociatedReferencedDocument>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime>2012-02-23T00:00:00.000+01:00</urn1:IssueDateTime>
+                     <!--Optional:-->
+                     <urn1:TypeCode>811</urn1:TypeCode>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>XA12345</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:EffectiveSpecifiedPeriod>
+                        <!--Optional:-->
+                        <urn1:StartDateTime></urn1:StartDateTime>
+                        <!--Optional:-->
+                        <urn1:EndDateTime></urn1:EndDateTime>
+                     </urn1:EffectiveSpecifiedPeriod>
+                  </urn1:AssociatedReferencedDocument>
+                  <!--Zero or more repetitions:-->
+                  <urn1:TransportLogisticsPackage>
+                     <!--Optional:-->
+                     <urn1:ItemQuantity unitCode="PCS">5</urn1:ItemQuantity>
+                  </urn1:TransportLogisticsPackage>
+                  <!--Zero or more repetitions:-->
+                  <urn1:IncludedSupplyChainTradeLineItem>
+                     <!--Optional:-->
+                     <urn1:TypeCode>II</urn1:TypeCode>
+                     <!--Optional:-->
+                     <urn1:TypeExtensionCode>W</urn1:TypeExtensionCode>
+                     <!--Optional:-->
+                     <urn1:SpecifiedTradeProduct>
+                        <!--Optional:-->
+                        <urn1:SellerAssignedID></urn1:SellerAssignedID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Description>watchstraps</urn1:Description>
+                        <!--Zero or more repetitions:-->
+                        <urn1:TypeCode>LPS</urn1:TypeCode>
+                        <!--Zero or more repetitions:-->
+                        <urn1:CommonName>American Alligator</urn1:CommonName>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ScientificName>Alligator mississippiensis</urn1:ScientificName>
+                     </urn1:SpecifiedTradeProduct>
+                  </urn1:IncludedSupplyChainTradeLineItem>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ExaminationTransportEvent>
+                     <!--Optional:-->
+                     <urn1:ActualOccurrenceDateTime></urn1:ActualOccurrenceDateTime>
+                     <!--Optional:-->
+                     <urn1:InspectedUnitQuantity unitCode="?"></urn1:InspectedUnitQuantity>
+                     <!--Optional:-->
+                     <urn1:OccurrenceLogisticsLocation>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:OccurrenceLogisticsLocation>
+                     <!--Zero or more repetitions:-->
+                     <urn1:CertifyingTradeParty>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                        <!--Optional:-->
+                        <urn1:PostalTradeAddress>
+                           <!--Zero or more repetitions:-->
+                           <urn1:PostcodeCode></urn1:PostcodeCode>
+                           <!--Optional:-->
+                           <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                           <!--Zero or more repetitions:-->
+                           <urn1:StreetName></urn1:StreetName>
+                           <!--Optional:-->
+                           <urn1:CityName></urn1:CityName>
+                           <!--Optional:-->
+                           <urn1:CountryIdentificationTradeCountry>
+                              <!--Zero or more repetitions:-->
+                              <urn1:ID></urn1:ID>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                              <!--Optional:-->
+                              <urn1:SubordinateTradeCountrySubDivision>
+                                 <!--Zero or more repetitions:-->
+                                 <urn1:Name></urn1:Name>
+                              </urn1:SubordinateTradeCountrySubDivision>
+                           </urn1:CountryIdentificationTradeCountry>
+                        </urn1:PostalTradeAddress>
+                        <!--Optional:-->
+                        <urn1:SpecifiedRepresentativePerson>
+                           <!--Optional:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SpecifiedRepresentativePerson>
+                        <!--Zero or more repetitions:-->
+                        <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                           <!--Optional:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                     </urn1:CertifyingTradeParty>
+                  </urn1:ExaminationTransportEvent>
+                  <!--Optional:-->
+                  <urn1:ApplicableCrossBorderGovernmentProcedure>
+                     <!--Optional:-->
+                     <urn1:UsedToDateQuotaQuantity unitCode="?"></urn1:UsedToDateQuotaQuantity>
+                     <!--Optional:-->
+                     <urn1:AnnualQuotaQuantity unitCode="?"></urn1:AnnualQuotaQuantity>
+                     <!--Optional:-->
+                     <urn1:AcquisitionDateTime></urn1:AcquisitionDateTime>
+                     <!--Zero or more repetitions:-->
+                     <urn1:PreviousReferencedDocument>
+                        <!--Optional:-->
+                        <urn1:IssueDateTime></urn1:IssueDateTime>
+                        <!--Optional:-->
+                        <urn1:TypeCode></urn1:TypeCode>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                        <!--Optional:-->
+                        <urn1:EffectiveSpecifiedPeriod>
+                           <!--Optional:-->
+                           <urn1:StartDateTime></urn1:StartDateTime>
+                           <!--Optional:-->
+                           <urn1:EndDateTime></urn1:EndDateTime>
+                        </urn1:EffectiveSpecifiedPeriod>
+                     </urn1:PreviousReferencedDocument>
+                  </urn1:ApplicableCrossBorderGovernmentProcedure>
+               </urn1:IncludedSupplyChainConsignmentItem>
+
+               <urn1:IncludedSupplyChainConsignmentItem>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID>B</urn1:ID>
+                  <!--Optional:-->
+                  <urn1:OriginTradeCountry>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>TH</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name>Thailand</urn1:Name>
+                     <!--Optional:-->
+                     <urn1:SubordinateTradeCountrySubDivision>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SubordinateTradeCountrySubDivision>
+                  </urn1:OriginTradeCountry>
+                  <!--Optional:-->
+                  <urn1:ExportTradeCountry>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>FR</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name>France</urn1:Name>
+                     <!--Optional:-->
+                     <urn1:SubordinateTradeCountrySubDivision>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:SubordinateTradeCountrySubDivision>
+                  </urn1:ExportTradeCountry>
+                  <!--Zero or more repetitions:-->
+                  <urn1:AssociatedReferencedDocument>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime>2007-07-09T00:00:00.000+02:00</urn1:IssueDateTime>
+                     <!--Optional:-->
+                     <urn1:TypeCode>861</urn1:TypeCode>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID></urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:EffectiveSpecifiedPeriod>
+                        <!--Optional:-->
+                        <urn1:StartDateTime></urn1:StartDateTime>
+                        <!--Optional:-->
+                        <urn1:EndDateTime></urn1:EndDateTime>
+                     </urn1:EffectiveSpecifiedPeriod>
+                  </urn1:AssociatedReferencedDocument>
+                     <urn1:AssociatedReferencedDocument>
+                     <!--Optional:-->
+                     <urn1:IssueDateTime>2012-02-23T00:00:00.000+01:00</urn1:IssueDateTime>
+                     <!--Optional:-->
+                     <urn1:TypeCode>811</urn1:TypeCode>
+                     <!--Zero or more repetitions:-->
+                     <urn1:ID>FR1202501030-R</urn1:ID>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                     <!--Optional:-->
+                     <urn1:EffectiveSpecifiedPeriod>
+                        <!--Optional:-->
+                        <urn1:StartDateTime></urn1:StartDateTime>
+                        <!--Optional:-->
+                        <urn1:EndDateTime></urn1:EndDateTime>
+                     </urn1:EffectiveSpecifiedPeriod>
+                  </urn1:AssociatedReferencedDocument>
+                  <!--Zero or more repetitions:-->
+                  <urn1:TransportLogisticsPackage>
+                     <!--Optional:-->
+                     <urn1:ItemQuantity unitCode="PCS">10</urn1:ItemQuantity>
+                  </urn1:TransportLogisticsPackage>
+                  <!--Zero or more repetitions:-->
+                  <urn1:IncludedSupplyChainTradeLineItem>
+                     <!--Optional:-->
+                     <urn1:TypeCode>I</urn1:TypeCode>
+                     <!--Optional:-->
+                     <urn1:TypeExtensionCode>D</urn1:TypeExtensionCode>
+                     <!--Optional:-->
+                     <urn1:SpecifiedTradeProduct>
+                        <!--Optional:-->
+                        <urn1:SellerAssignedID></urn1:SellerAssignedID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Description>watchstraps</urn1:Description>
+                        <!--Zero or more repetitions:-->
+                        <urn1:TypeCode>LPS</urn1:TypeCode>
+                        <!--Zero or more repetitions:-->
+                        <urn1:CommonName>Siamese Crocodile</urn1:CommonName>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ScientificName>Crocodylus siamensis</urn1:ScientificName>
+                     </urn1:SpecifiedTradeProduct>
+                  </urn1:IncludedSupplyChainTradeLineItem>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ExaminationTransportEvent>
+                     <!--Optional:-->
+                     <urn1:ActualOccurrenceDateTime></urn1:ActualOccurrenceDateTime>
+                     <!--Optional:-->
+                     <urn1:InspectedUnitQuantity unitCode="?"></urn1:InspectedUnitQuantity>
+                     <!--Optional:-->
+                     <urn1:OccurrenceLogisticsLocation>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                     </urn1:OccurrenceLogisticsLocation>
+                     <!--Zero or more repetitions:-->
+                     <urn1:CertifyingTradeParty>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Optional:-->
+                        <urn1:Name></urn1:Name>
+                        <!--Optional:-->
+                        <urn1:PostalTradeAddress>
+                           <!--Zero or more repetitions:-->
+                           <urn1:PostcodeCode></urn1:PostcodeCode>
+                           <!--Optional:-->
+                           <urn1:PostOfficeBox></urn1:PostOfficeBox>
+                           <!--Zero or more repetitions:-->
+                           <urn1:StreetName></urn1:StreetName>
+                           <!--Optional:-->
+                           <urn1:CityName></urn1:CityName>
+                           <!--Optional:-->
+                           <urn1:CountryIdentificationTradeCountry>
+                              <!--Zero or more repetitions:-->
+                              <urn1:ID></urn1:ID>
+                              <!--Zero or more repetitions:-->
+                              <urn1:Name></urn1:Name>
+                              <!--Optional:-->
+                              <urn1:SubordinateTradeCountrySubDivision>
+                                 <!--Zero or more repetitions:-->
+                                 <urn1:Name></urn1:Name>
+                              </urn1:SubordinateTradeCountrySubDivision>
+                           </urn1:CountryIdentificationTradeCountry>
+                        </urn1:PostalTradeAddress>
+                        <!--Optional:-->
+                        <urn1:SpecifiedRepresentativePerson>
+                           <!--Optional:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SpecifiedRepresentativePerson>
+                        <!--Zero or more repetitions:-->
+                        <urn1:SpecifiedAuthoritativeSignatoryPerson>
+                           <!--Optional:-->
+                           <urn1:Name></urn1:Name>
+                        </urn1:SpecifiedAuthoritativeSignatoryPerson>
+                     </urn1:CertifyingTradeParty>
+                  </urn1:ExaminationTransportEvent>
+                  <!--Optional:-->
+                  <urn1:ApplicableCrossBorderGovernmentProcedure>
+                     <!--Optional:-->
+                     <urn1:UsedToDateQuotaQuantity unitCode="?"></urn1:UsedToDateQuotaQuantity>
+                     <!--Optional:-->
+                     <urn1:AnnualQuotaQuantity unitCode="?"></urn1:AnnualQuotaQuantity>
+                     <!--Optional:-->
+                     <urn1:AcquisitionDateTime></urn1:AcquisitionDateTime>
+                     <!--Zero or more repetitions:-->
+                     <urn1:PreviousReferencedDocument>
+                        <!--Optional:-->
+                        <urn1:IssueDateTime></urn1:IssueDateTime>
+                        <!--Optional:-->
+                        <urn1:TypeCode></urn1:TypeCode>
+                        <!--Zero or more repetitions:-->
+                        <urn1:ID></urn1:ID>
+                        <!--Zero or more repetitions:-->
+                        <urn1:Name></urn1:Name>
+                        <!--Optional:-->
+                        <urn1:EffectiveSpecifiedPeriod>
+                           <!--Optional:-->
+                           <urn1:StartDateTime></urn1:StartDateTime>
+                           <!--Optional:-->
+                           <urn1:EndDateTime></urn1:EndDateTime>
+                        </urn1:EffectiveSpecifiedPeriod>
+                     </urn1:PreviousReferencedDocument>
+                  </urn1:ApplicableCrossBorderGovernmentProcedure>
+               </urn1:IncludedSupplyChainConsignmentItem>
+               
+               <!--Optional:-->
+               <urn1:ImportTradeCountry>
+                  <!--Zero or more repetitions:-->
+                  <urn1:ID></urn1:ID>
+                  <!--Zero or more repetitions:-->
+                  <urn1:Name></urn1:Name>
+                  <!--Optional:-->
+                  <urn1:SubordinateTradeCountrySubDivision>
+                     <!--Zero or more repetitions:-->
+                     <urn1:Name></urn1:Name>
+                  </urn1:SubordinateTradeCountrySubDivision>
+               </urn1:ImportTradeCountry>
+            </urn:SpecifiedSupplyChainConsignment>
+         </CBFShip>
+         <!--Zero or more repetitions:-->
+         <Attachments>
+            <AttachmentName>Test.pdf</AttachmentName>
+            <AttachmentContent>cid:451619371907</AttachmentContent>
+         </Attachments>
+         <Composite>false</Composite>
+      </v1:GetNonFinalCitesCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
