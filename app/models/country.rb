@@ -2,6 +2,6 @@ class Country < ApplicationRecord
   has_many :organisations
 
   scope :with_organisations, -> {
-    joins(:organisations).where('organisations.country_id IS NOT NULL').uniq
+    joins(:organisations).where("organisations.role <> 'System Managers'").distinct
   }
 end
