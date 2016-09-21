@@ -23,6 +23,8 @@ RSpec.describe PermitsController, type: :controller do
   end
 
   describe "GET show" do
+    login_user
+
     let(:cites_ma){
       FactoryGirl.create(:cites_ma)
     }
@@ -42,7 +44,10 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when country adapter supports CITES Toolkit V1" do
       let!(:adapter){
-        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 1)
+        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 1,
+                             countries_with_access_ids:
+                               [subject.current_user.organisation.country_id]
+                          )
       }
       let(:fixture){
         File.read("spec/fixtures/v1/get_non_final_cites_certificate.xml")
@@ -61,7 +66,10 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when country adapter supports CITES Toolkit V2" do
       let!(:adapter){
-        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 2)
+        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 2,
+                             countries_with_access_ids:
+                               [subject.current_user.organisation.country_id]
+                          )
       }
       let(:fixture){
         File.read("spec/fixtures/v2/get_non_final_cites_certificate.xml")
@@ -80,7 +88,10 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when connection times out" do
       let!(:adapter){
-        FactoryGirl.create(:adapter)
+        FactoryGirl.create(:adapter, organisation: cites_ma,
+                           countries_with_access_ids:
+                             [subject.current_user.organisation.country_id]
+                          )
       }
       it "redirects to permits with an error" do
         allow_any_instance_of(Savon::Client).to receive(:call).and_raise(Timeout::Error)
@@ -95,7 +106,10 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when some other error" do
       let!(:adapter){
-        FactoryGirl.create(:adapter)
+        FactoryGirl.create(:adapter, organisation: cites_ma,
+                           countries_with_access_ids:
+                             [subject.current_user.organisation.country_id]
+                          )
       }
       it "redirects to permits with an error" do
         allow_any_instance_of(Savon::Client).to receive(:call).and_raise(StandardError)

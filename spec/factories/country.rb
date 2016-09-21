@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :country do
-    name 'Italy'
-    iso_code2 'IT'
+    name { Faker::Address.country }
+    iso_code2 { Faker::Address.country_code }
   end
 end

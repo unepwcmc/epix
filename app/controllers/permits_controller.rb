@@ -68,7 +68,7 @@ class PermitsController < ApplicationController
               else
                 'Something went wrong'
               end
-    redirect_to permits_path, flash: { alert: message }
+    redirect_to permits_path, flash: { error: message }
   end
 
 
