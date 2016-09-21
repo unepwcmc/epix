@@ -9,11 +9,12 @@ module ControllerMacros
     end
   end
 
-  def login_user
+  def login_user(role=nil)
     create_organisations
+    role ||= :cites_ma
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:cites_ma_user)
+      user = FactoryGirl.create(:"#{role}_user")
       sign_in user
     end
   end

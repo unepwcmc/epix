@@ -20,6 +20,8 @@ class Organisation < ApplicationRecord
     joins(:adapter).where('adapters.is_available' => true)
   }
 
+  accepts_nested_attributes_for :adapter
+
   def display_name
     if [CITES_MA, CUSTOMS_EA].include?(role) && country.present?
       [role, 'of', country.name].join(' ')

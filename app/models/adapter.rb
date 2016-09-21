@@ -4,4 +4,12 @@ class Adapter < ApplicationRecord
   attr_encrypted :auth_password, key: Rails.application.secrets.adapter["auth_password_key"]
 
   belongs_to :organisation
+
+  def has_country?(country_id)
+    self.countries_with_access_ids.include?(country_id)
+  end
+
+  def countries_with_access
+    Country.where(id: self.countries_with_access_ids).order(:name)
+  end
 end

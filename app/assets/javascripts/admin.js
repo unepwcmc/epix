@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/dataTables.bootstrap
+//= require select2-full
 //= require_tree ./shared
 //= require_tree ./admin
