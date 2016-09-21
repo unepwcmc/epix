@@ -25,6 +25,28 @@
 </div>
 
 <div class="form-header">
+  <h2>Access control list</h2>
+</div>
+<div class="form-horizontal organisation-details access-list-container">
+  <table class="access-list-table">
+    <thead>
+      <tr>
+        <th>Party</th>
+        <th>Access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @available_countries.each do |country| %>
+        <tr class="access-row">
+          <td class="country-name bold"><%= country.name %></td>
+          <td class="has-access"><%= has_access(country) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="form-header">
   <h2><%= t('adapter_show_page') %></h2>
 </div>
 <div class="form-horizontal organisation-details">

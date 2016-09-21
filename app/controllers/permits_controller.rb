@@ -1,5 +1,6 @@
 class PermitsController < ApplicationController
   before_action :sanitise_params, only: [:index, :show]
+  before_action :authenticate_user!
   before_action :load_adapter, only: [:show]
 
   rescue_from Adapters::SoapAdapterException, with: :soap_adapter_exception
@@ -45,7 +46,12 @@ class PermitsController < ApplicationController
       joins(:country).where('countries.iso_code2' => params[:country]).
       first
     unless organisation.present?
-      flash.alert = 'Adapter not found or not available'
+      flash.alert = 'Web Service not found or not available'
+      redirect_to(permits_path) && return
+    end
+    user_country = current_user.organisation.country_id
+    unless organisation.adapter.has_country?(user_country)
+      flash.alert = 'Web Service access denied'
       redirect_to(permits_path) && return
     end
     @adapter = organisation.adapter
@@ -62,7 +68,7 @@ class PermitsController < ApplicationController
               else
                 'Something went wrong'
               end
-    redirect_to permits_path, flash: { error: message }
+    redirect_to permits_path, flash: { alert: message }
   end
 
 

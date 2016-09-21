@@ -30,6 +30,8 @@ gem 'nokogiri'
 gem 'whenever', require: false
 gem 'httparty'
 
+gem 'select2-rails'
+
 group :development do
   # Docs
   gem 'yard', '~> 0.8.7.6'

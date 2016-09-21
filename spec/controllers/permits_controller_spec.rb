@@ -8,6 +8,7 @@ RSpec.describe PermitsController, type: :controller do
   # after(:all) { savon.unmock! }
 
   describe "GET index" do
+    login_user
     it "has a 200 status code" do
       get :index
       expect(response.status).to eq(200)
