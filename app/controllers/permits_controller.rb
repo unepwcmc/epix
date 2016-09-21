@@ -1,5 +1,6 @@
 class PermitsController < ApplicationController
   before_action :sanitise_params, only: [:index, :show]
+  before_action :require_login, only: [:show]
   before_action :load_adapter, only: [:show]
 
   rescue_from Adapters::SoapAdapterException, with: :soap_adapter_exception
@@ -50,6 +51,11 @@ class PermitsController < ApplicationController
       redirect_to(permits_path) && return
     end
     @adapter = organisation.adapter
+  end
+
+  def require_login
+    error = "You are not authorised to access this page"
+    redirect_to permits_path, flash: {error: error }  unless current_user
   end
 
   def soap_adapter_exception(e)
