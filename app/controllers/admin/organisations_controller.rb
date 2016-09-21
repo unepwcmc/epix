@@ -23,8 +23,7 @@ class Admin::OrganisationsController < Admin::BaseController
     @organisation = Organisation.find(params[:id])
     @adapter = @organisation.try(:adapter)
     if @adapter.present?
-      country_ids = @adapter.countries_with_access_ids
-      @selected_countries_with_access = Country.where(id: country_ids).order(:name).
+      @selected_countries_with_access = @adapter.countries_with_access.
         map{ |c| {id: c.id, text: c.name} }
     end
   end
