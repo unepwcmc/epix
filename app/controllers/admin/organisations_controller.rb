@@ -23,6 +23,8 @@ class Admin::OrganisationsController < Admin::BaseController
     @organisation = Organisation.find(params[:id])
     @adapter = @organisation.try(:adapter)
     if @adapter.present?
+      @available_countries_for_dropdown = @available_countries.
+        order(:name).map { |c| [c.name, c.id] }
       @selected_countries_with_access = @adapter.countries_with_access.
         map{ |c| {id: c.id, text: c.name} }
     end
