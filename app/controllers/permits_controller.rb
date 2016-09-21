@@ -42,7 +42,7 @@ class PermitsController < ApplicationController
       joins(:country).where('countries.iso_code2' => params[:country]).
       first
     unless organisation.present?
-      flash.alert = 'Adapter not found or not available'
+      flash.alert = 'Web Service not found or not available'
       redirect_to(permits_path) && return
     end
     user_country = current_user.organisation.country_id
