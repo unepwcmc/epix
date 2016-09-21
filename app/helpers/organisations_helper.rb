@@ -6,6 +6,6 @@ module OrganisationsHelper
     no = content_tag(:span, '', class: 'fa fa-times') +
       content_tag(:span, 'No')
     return no unless @adapter
-    @adapter.countries_with_access_ids.include?(country.id) ? yes : no
+    @adapter.has_country?(country.id) ? yes : no
   end
 end

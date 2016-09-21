@@ -61,7 +61,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     user_country = get_user_country
     if !organisation.present?
       render_soap_error "AdapterNotFound"
-    elsif !organisation.adapter.countries_with_access_ids.include?(user_country)
+    elsif !organisation.adapter.has_country?(user_country)
       render_soap_error "AdapterNotAvailable"
     else
       @adapter = organisation.adapter
