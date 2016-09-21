@@ -46,7 +46,7 @@ class PermitsController < ApplicationController
     end
     user_country = current_user.organisation.country_id
     unless organisation.adapter.countries_with_access_ids.include?(user_country)
-      flash.alert = 'You are not allow to acces this Adapter'
+      flash.alert = 'Web Service access denied'
       redirect_to(permits_path) && return
     end
     @adapter = organisation.adapter
