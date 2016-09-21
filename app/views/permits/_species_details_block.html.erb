@@ -18,6 +18,7 @@
             <div class="permit-value">
               <%= line_item.term %>
               <%= line_item.term_code %>
+              <%= line_item.markings %>
             </div>
           </div>
         </div>
@@ -96,7 +97,9 @@
           12b. <%= t('operation_no') %>
         </div>
         <div class="permit-value">
-          <%= date_format(line_item.operation_no) %>
+          <%= line_item.category_code %>
+          <%= date_format(line_item.acquisition_date_time) %>
+          <%= line_item.operation_no %>
         </div>
       </div>
     </div>

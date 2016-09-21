@@ -26,14 +26,14 @@ RSpec.describe Admin::UsersController, type: :controller do
 
     describe "GET edit" do
       it "has a 200 status code" do
-        get :edit, id: same_org_user.id
+        get :edit, params: {id: same_org_user.id}
         expect(response.status).to eq(200)
       end
     end
 
     describe "GET show" do
       it "has a 200 status code" do
-        get :show, id: same_org_user.id
+        get :show, params: {id: same_org_user.id}
         expect(response.status).to eq(200)
       end
     end
@@ -58,7 +58,9 @@ RSpec.describe Admin::UsersController, type: :controller do
 
     describe "PATCH update" do
       it "updates a user" do
-        patch :update, id: same_org_user.id, user: { first_name: 'asd'}
+        patch :update, params: {
+          id: same_org_user.id, user: {first_name: 'asd'}
+        }
         same_org_user.reload
         expect(same_org_user.first_name).to eq('asd')
         expect(response.status).to eq(302)
@@ -68,7 +70,7 @@ RSpec.describe Admin::UsersController, type: :controller do
     describe "DELETE destroy" do
       it "destroys a user" do
         expect do
-          delete :destroy, id: same_org_user.id
+          delete :destroy, params: {id: same_org_user.id}
         end.to change{ User.count }
 
         expect(response.status).to eq(302)
@@ -94,7 +96,9 @@ RSpec.describe Admin::UsersController, type: :controller do
         user = subject.current_user
         old_last_name = user.last_name
         new_last_name = user.last_name + 'ZONK'
-        patch :update, id: user.id, user: { last_name: new_last_name}
+        patch :update, params: {
+          id: user.id, user: {last_name: new_last_name}
+        }
         user.reload
         expect(user.last_name).to eq(new_last_name)
         expect(response.status).to eq(302)
@@ -104,7 +108,9 @@ RSpec.describe Admin::UsersController, type: :controller do
         other_user = FactoryGirl.create(:user, organisation: user.organisation)
         old_last_name = other_user.last_name
         new_last_name = other_user.last_name + 'ZONK'
-        patch :update, id: other_user.id, user: { last_name: new_last_name}
+        patch :update, params: {
+          id: other_user.id, user: {last_name: new_last_name}
+        }
         other_user.reload
         expect(other_user.last_name).to eq(new_last_name)
         expect(response.status).to eq(302)
@@ -114,7 +120,9 @@ RSpec.describe Admin::UsersController, type: :controller do
         other_user = FactoryGirl.create(:user, organisation: FactoryGirl.create(:organisation))
         old_last_name = other_user.last_name
         new_last_name = other_user.last_name + 'ZONK'
-        patch :update, id: other_user.id, user: { last_name: new_last_name}
+        patch :update, params: {
+          id: other_user.id, user: {last_name: new_last_name}
+        }
         other_user.reload
         expect(other_user.last_name).to eq(old_last_name)
         expect(response.status).to eq(302)
@@ -123,7 +131,9 @@ RSpec.describe Admin::UsersController, type: :controller do
         user = subject.current_user
         old_organisation = user.organisation
         new_organisation = FactoryGirl.create(:organisation)
-        patch :update, id: user.id, user: { organisation_id: new_organisation.id }
+        patch :update, params: {
+          id: user.id, user: {organisation_id: new_organisation.id}
+        }
         user.reload
         expect(user.organisation_id).to eq(old_organisation.id)
         expect(response.status).to eq(302)
@@ -140,7 +150,9 @@ RSpec.describe Admin::UsersController, type: :controller do
         user = subject.current_user
         old_last_name = user.last_name
         new_last_name = user.last_name + 'ZONK'
-        patch :update, id: user.id, user: { last_name: new_last_name}
+        patch :update, params: {
+          id: user.id, user: {last_name: new_last_name}
+        }
         user.reload
         expect(user.last_name).to eq(new_last_name)
         expect(response.status).to eq(302)

@@ -27,7 +27,11 @@ class PermitsController < ApplicationController
     )
 
     xml = Nokogiri::XML(@response.to_xml)
-    @permit = Permit.new(xml)
+    @permit = if @adapter.cites_toolkit_v2?
+                Cites::V2::Permit.new(xml)
+              else
+                Cites::V1::Permit.new(xml)
+              end
   end
 
   private
@@ -64,7 +68,7 @@ class PermitsController < ApplicationController
               else
                 'Something went wrong'
               end
-    redirect_to permits_path, flash: { alert: message }
+    redirect_to permits_path, flash: { error: message }
   end
 
 
