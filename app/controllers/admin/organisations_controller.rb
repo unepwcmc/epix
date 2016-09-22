@@ -41,14 +41,6 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    adapter_attributes = if params[:access_to_all]
-                           organisation_params[:adapter_attributes].merge(
-                             countries_with_access_ids: @available_countries.pluck(:id)
-                           )
-                         else
-                           organisation_params[:adapter_attributes]
-                         end
-    updated_params = organisation_params.merge(adapter_attributes: adapter_attributes)
     if @organisation.update_attributes(updated_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
@@ -77,5 +69,20 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def load_available_countries
     @available_countries = Country.with_organisations
+  end
+
+  def updated_params
+    adapter_attributes = if params[:access_to_all]
+                           organisation_params[:adapter_attributes].merge(
+                             countries_with_access_ids: @available_countries.pluck(:id)
+                           )
+                         else
+                           nil
+                         end
+    if adapter_attributes
+      organisation_params.merge(adapter_attributes: adapter_attributes)
+    else
+      organisation_params
+    end
   end
 end
