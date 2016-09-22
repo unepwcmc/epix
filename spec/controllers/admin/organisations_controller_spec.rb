@@ -83,6 +83,24 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
         expect(organisation.name).to eq(new_name)
         expect(response.status).to eq(302)
       end
+      it "adds all countries to access list" do
+        organisation = subject.current_user.organisation
+        available_countries = Country.with_organisations
+        patch :update, params: {
+          id: organisation.id,
+          organisation: {
+            adapter_attributes: {
+              id: organisation.adapter.id,
+              countries_with_access: [""]
+            }
+          },
+          access_to_all: 1
+        }
+        organisation.reload
+        adapter = organisation.adapter
+        expect(adapter.countries_with_access_ids.count).to eq(available_countries.count)
+        expect(response.status).to eq(302)
+      end
       it "does not update another organisation's name" do
         organisation = FactoryGirl.create(:cites_ma)
         old_name = organisation.name
