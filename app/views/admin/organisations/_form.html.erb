@@ -38,7 +38,7 @@
         <div class="col-sm-4">
           <%= ff.select :countries_with_access_ids,
                 options_for_select(@available_countries_for_dropdown),
-                {include_hidden: false},
+                {},
                 {
                   id: 'countries_with_access',
                   multiple: true,
