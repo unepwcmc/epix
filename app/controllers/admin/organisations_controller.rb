@@ -3,7 +3,7 @@ class Admin::OrganisationsController < Admin::BaseController
   respond_to :html
 
   before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
-  before_action :load_available_countries, only: [:new, :edit, :show]
+  before_action :load_available_countries, only: [:new, :edit, :update, :show]
 
   def index
     @organisations = @organisations.includes(:country).select(
@@ -41,7 +41,15 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(organisation_params)
+    adapter_attributes = if params[:access_to_all]
+                           organisation_params[:adapter_attributes].merge(
+                             countries_with_access_ids: @available_countries.pluck(:id)
+                           )
+                         else
+                           organisation_params[:adapter_attributes]
+                         end
+    updated_params = organisation_params.merge(adapter_attributes: adapter_attributes)
+    if @organisation.update_attributes(updated_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
 
