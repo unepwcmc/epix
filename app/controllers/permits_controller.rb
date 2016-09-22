@@ -43,7 +43,7 @@ class PermitsController < ApplicationController
 
   def load_adapter
     organisation = Organisation.cites_mas.with_available_adapters.
-      joins(:country).where('countries.iso_code2' => params[:country]).
+      joins(:country).where('countries.iso_code2' => params[:country].try(:upcase)).
       first
     unless organisation.present?
       flash.alert = 'Web Service not found or not available'
