@@ -41,7 +41,7 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(updated_params)
+    if @organisation.update_attributes(organisation_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
 
@@ -52,9 +52,15 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def organisation_params
     if current_user.is_system_managers?
-      params.require(:organisation).permit(:name, :role, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
+      params.require(:organisation).permit(:name, :role, :country_id,
+                                             adapter_attributes:
+                                               [:id, :blanket_permission, countries_with_access_ids: []]
+                                          )
     elsif current_user.is_cites_ma? && current_user.is_admin?
-      params.require(:organisation).permit(:name, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
+      params.require(:organisation).permit(:name, :country_id,
+                                             adapter_attributes:
+                                               [:id, :blanket_permission, countries_with_access_ids: []]
+                                          )
     else
       params.require(:organisation).permit(:name, :country_id)
     end
@@ -71,18 +77,4 @@ class Admin::OrganisationsController < Admin::BaseController
     @available_countries = Country.with_organisations
   end
 
-  def updated_params
-    adapter_attributes = if params[:access_to_all]
-                           organisation_params[:adapter_attributes].merge(
-                             countries_with_access_ids: @available_countries.pluck(:id)
-                           )
-                         else
-                           nil
-                         end
-    if adapter_attributes
-      organisation_params.merge(adapter_attributes: adapter_attributes)
-    else
-      organisation_params
-    end
-  end
 end
