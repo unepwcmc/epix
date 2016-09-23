@@ -50,7 +50,8 @@ class PermitsController < ApplicationController
       redirect_to(permits_path) && return
     end
     user_country = current_user.organisation.country_id
-    unless organisation.adapter.has_country?(user_country)
+    if !organisation.adapter.has_country?(user_country) &&
+      !current_user.is_system_managers?
       flash.alert = 'Web Service access denied'
       redirect_to(permits_path) && return
     end
