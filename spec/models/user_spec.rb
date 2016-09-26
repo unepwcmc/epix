@@ -21,11 +21,6 @@ RSpec.describe User, type: :model do
 
   subject { FactoryGirl.create(:cites_ma_user) }
 
-  it 'sends an email' do
-    expect { subject.send_welcome_email }
-      .to change { ActionMailer::Base.deliveries.count }.by(1)
-  end
-
   describe "abilities" do
     subject(:ability){ Ability.new(user) }
     let(:user){ nil }
