@@ -25,7 +25,6 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      @user.send_welcome_email
       flash[:notice] = 'User was successfully created'
     end
     respond_with :admin, @user
