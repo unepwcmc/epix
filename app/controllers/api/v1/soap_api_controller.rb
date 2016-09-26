@@ -62,7 +62,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     if !organisation.present?
       render_soap_error "AdapterNotFound"
     elsif !organisation.adapter.has_country?(user.organisation.country_id) &&
-      !user.is_system_managers?
+      !user.can_access_adapter?(organisation.country_id)
       render_soap_error "AdapterNotAvailable"
     else
       @adapter = organisation.adapter

@@ -13,6 +13,10 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
+  def can_access_adapter?(country_id)
+    self.is_system_managers? || self.organisation.country_id == country_id
+  end
+
   Organisation::VALID_ROLES.each do |role|
     role_formatted = role.downcase.tr(" ", "_")
     define_method("is_#{role_formatted}?") do
