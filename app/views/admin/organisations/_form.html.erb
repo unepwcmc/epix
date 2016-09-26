@@ -29,8 +29,8 @@
       </div>
     </div>
     <h3><%= t('adapter_show_page') %></h3>
-    <div class="form-group">
-      <%= f.fields_for :adapter do |ff| %>
+    <%= f.fields_for :adapter do |ff| %>
+      <div class="form-group">
         <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
             t('organisation_countries')
           }
@@ -38,16 +38,24 @@
         <div class="col-sm-4">
           <%= ff.select :countries_with_access_ids,
                 options_for_select(@available_countries_for_dropdown),
-                {include_hidden: false},
+                {},
                 {
                   id: 'countries_with_access',
                   multiple: true,
-                  disabled: !current_user.is_cites_ma?,
                   data: { tags: @selected_countries_with_access }
                 }
           %>
         </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="form-group">
+        <%= ff.label(:blanket_permission, class: "col-sm-3"){
+            "Grant access to all countries"
+          }
+        %>
+        <div class="col-sm-4">
+          <%= ff.check_box :blanket_permission %>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %> <!-- End Form -->

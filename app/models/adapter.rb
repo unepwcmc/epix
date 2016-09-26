@@ -10,7 +10,7 @@ class Adapter < ApplicationRecord
   end
 
   def has_country?(country_id)
-    self.countries_with_access_ids.include?(country_id)
+    self.countries_with_access_ids.include?(country_id) || self.blanket_permission
   end
 
   def countries_with_access

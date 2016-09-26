@@ -24,6 +24,7 @@
   </div>
 </div>
 
+<% if @adapter %>
 <div class="form-header">
   <h2>Access control list</h2>
 </div>
@@ -45,6 +46,7 @@
     </tbody>
   </table>
 </div>
+<% end %>
 
 <div class="form-header">
   <h2><%= t('adapter_show_page') %></h2>

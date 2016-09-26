@@ -3,7 +3,7 @@ class Admin::OrganisationsController < Admin::BaseController
   respond_to :html
 
   before_action :load_countries_for_dropdown, only: [:new, :create, :edit, :update]
-  before_action :load_available_countries, only: [:new, :edit, :show]
+  before_action :load_available_countries, only: [:new, :edit, :update, :show]
 
   def index
     @organisations = @organisations.includes(:country).select(
@@ -52,9 +52,15 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def organisation_params
     if current_user.is_system_managers?
-      params.require(:organisation).permit(:name, :role, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
+      params.require(:organisation).permit(:name, :role, :country_id,
+                                             adapter_attributes:
+                                               [:id, :blanket_permission, countries_with_access_ids: []]
+                                          )
     elsif current_user.is_cites_ma? && current_user.is_admin?
-      params.require(:organisation).permit(:name, :country_id, adapter_attributes: [:id, countries_with_access_ids: []])
+      params.require(:organisation).permit(:name, :country_id,
+                                             adapter_attributes:
+                                               [:id, :blanket_permission, countries_with_access_ids: []]
+                                          )
     else
       params.require(:organisation).permit(:name, :country_id)
     end
@@ -70,4 +76,5 @@ class Admin::OrganisationsController < Admin::BaseController
   def load_available_countries
     @available_countries = Country.with_organisations
   end
+
 end
