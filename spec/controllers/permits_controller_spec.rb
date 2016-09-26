@@ -122,5 +122,50 @@ RSpec.describe PermitsController, type: :controller do
       end
     end
 
+    context "when user country is not in the access list" do
+      let(:fixture){
+        File.read("spec/fixtures/v2/get_non_final_cites_certificate.xml")
+      }
+      let!(:adapter){
+        FactoryGirl.create(:adapter, organisation: cites_ma,
+                           countries_with_access_ids: []
+                          )
+      }
+      it "redirects to permits with access denied error" do
+        get :show, params: {
+          country: cites_ma.country.iso_code2,
+          permit_identifier: '123'
+        }
+        expect(response).to redirect_to(permits_path)
+        expect(flash[:alert]).to eq('Web Service access denied')
+      end
+
+      context "when adapter has blanket permission set to true" do
+        it "has a 200 status code" do
+          adapter.update_attributes(blanket_permission: true)
+          expect(Adapters::SimpleAdapter).to receive(:run).and_return(savon_response)
+          expect(savon_response).to receive(:to_xml).and_return(fixture)
+          get :show, params: {
+            country: cites_ma.country.iso_code2,
+            permit_identifier: '123'
+          }
+          expect(response.status).to eq(200)
+        end
+      end
+
+      context "when user is a system manager" do
+        it "has a 200 status code" do
+          subject.current_user.update_attributes(organisation_id: @system_managers.id)
+          expect(Adapters::SimpleAdapter).to receive(:run).and_return(savon_response)
+          expect(savon_response).to receive(:to_xml).and_return(fixture)
+          get :show, params: {
+            country: cites_ma.country.iso_code2,
+            permit_identifier: '123'
+          }
+          expect(response.status).to eq(200)
+        end
+      end
+    end
+
   end
 end
