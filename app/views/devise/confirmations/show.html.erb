@@ -1,6 +1,7 @@
 <h2>Account Activation<% if resource.try(:email) %> for <%= resource.email %><% end %></h2>
 
-<%= form_for resource, as: resource_name, url: update_user_confirmation_path, html: {:method => 'patch', class: 'form-horizontal'}, :id => 'activation-form' do |f| %>
+<%= form_for resource, as: resource_name, url: update_user_confirmation_path,
+  html: {:method => 'patch', class: 'form-horizontal'}, :id => 'activation-form' do |f| %>
   <%= devise_error_messages! %>
   <fieldset>
     <% if @requires_password %>
