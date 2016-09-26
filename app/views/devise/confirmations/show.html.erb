@@ -1,15 +1,23 @@
-<h2>Account Activation</h2>
+<h2>Account Activation<% if resource.try(:email) %> for <%= resource.email %><% end %></h2>
 
-<%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f| %>
+<%= form_for resource, as: resource_name, url: update_user_confirmation_path, html: {:method => 'patch', class: 'form-horizontal'}, :id => 'activation-form' do |f| %>
   <%= devise_error_messages! %>
   <fieldset>
-    <legend>Account Activation<% if resource.try(:user_name) %> for <%= resource.user_name %><% end %></legend>
-
     <% if @requires_password %>
-      <p><%= f.label :password,'Choose a Password:' %> <%= f.password_field :password %></p>
-      <p><%= f.label :password_confirmation,'Password Confirmation:' %> <%= f.password_field :password_confirmation %></p>
+      <div class="form-group">
+        <%= f.label(:password, class: 'col-sm-3 control-label'){ t('choose_password') } %>
+        <div class="col-sm-3">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label(:password_confirmation, class: 'col-sm-3 control-label'){ t('password_confirmation') } %>
+        <div class="col-sm-3">
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
     <% end %>
-    <%= hidden_field_tag :confirmation_token,@confirmation_token %>
-    <p><%= f.submit "Activate" %></p>
+    <%= hidden_field_tag :confirmation_token, @confirmation_token %>
+    <p><%= f.submit "Activate", class: 'button' %></p>
   </fieldset>
 <% end %>
