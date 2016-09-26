@@ -165,6 +165,21 @@ RSpec.describe PermitsController, type: :controller do
           expect(response.status).to eq(200)
         end
       end
+
+      context "when user is from same country as adapter" do
+        it "has a 200 status code" do
+          user_org = subject.current_user.organisation
+          adapter_org = adapter.organisation
+          user_org.update_attributes(country_id: adapter_org.country_id)
+          expect(Adapters::SimpleAdapter).to receive(:run).and_return(savon_response)
+          expect(savon_response).to receive(:to_xml).and_return(fixture)
+          get :show, params: {
+            country: cites_ma.country.iso_code2,
+            permit_identifier: '123'
+          }
+          expect(response.status).to eq(200)
+        end
+      end
     end
 
   end
