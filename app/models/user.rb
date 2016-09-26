@@ -9,10 +9,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
-  end
-
   def can_access_adapter?(country_id)
     self.is_system_managers? || self.organisation.country_id == country_id
   end
