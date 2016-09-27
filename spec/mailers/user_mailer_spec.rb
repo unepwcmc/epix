@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe UserMailer, type: :mailer do
   describe 'instructions' do
     let(:user) { FactoryGirl.create(:user,{ first_name: 'Gandalf', email: 'gandalf@email.com' }) }
-    let(:mail) { described_class.welcome_email(user).deliver_now }
+    let(:mail) { described_class.confirmation_instructions(user, 'token', {}) }
+
+    it 'sends an email' do
+      expect { mail }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
 
     it 'renders the subject' do
       expect(mail.subject).to eq('Welcome to EPIX')

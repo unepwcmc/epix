@@ -332,3 +332,11 @@ li.login > a:focus {
   border-right: none;
 }
 
+#error_explanation {
+  h2 {
+    border-bottom: none;
+    padding: 0;
+  }
+  ul { padding: 0; }
+}
+

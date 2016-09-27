@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  as :user do
+    patch '/user/confirmation' => 'users/confirmations#update', :via => :patch, :as => :update_user_confirmation
+  end
+
   devise_for :users, controllers: {
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
   }
   wash_out "api/v1/soap_api"
   # The priority is based upon order of creation: first created -> highest priority.

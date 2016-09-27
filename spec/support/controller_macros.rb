@@ -5,6 +5,7 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryGirl.create(:cites_ma_user, is_admin: false)
+      user.confirm
       sign_in user
     end
   end
@@ -15,6 +16,7 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryGirl.create(:"#{role}_user")
+      user.confirm
       sign_in user
     end
   end
@@ -27,6 +29,7 @@ module ControllerMacros
         is_admin: true,
         organisation_id: @system_managers.id
       )
+      user.confirm
       sign_in user
     end
   end

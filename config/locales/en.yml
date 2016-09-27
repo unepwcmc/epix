@@ -45,6 +45,8 @@ en:
   user_email: 'Email'
   user_organisation: 'Organisation'
   user_is_admin: 'Admin?'
+  choose_password: 'Choose a Password'
+  password_confirmation: 'Password Confirmation'
   adapter_status: 'Status'
   adapter_uri: 'URI'
   adapter_not_configured: 'Not configured'
