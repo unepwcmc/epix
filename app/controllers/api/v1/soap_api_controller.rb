@@ -73,7 +73,6 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   end
 
   def track_soap_request
-    #to get the action just use `action_name`
     @hit = Staccato::Pageview.new(tracker, path: request.path)
     GaTracker.add_caller_identification(@hit, request, @user)
     GaTracker.add_request_meta_data(@hit, request, action_name, params, @adapter)
