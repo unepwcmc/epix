@@ -95,4 +95,8 @@ Rails.application.configure do
 
   config.wash_out.camelize_wsdl = true
   config.wash_out.parser = :nokogiri
+
+  #GA Tracking
+  config.staccato.tracker_id = Rails.application.secrets.ga_tracking_id
+  config.staccato.hostname = 'epix-staging.linode.unep-wcmc.org'
 end
