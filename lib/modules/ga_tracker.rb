@@ -38,7 +38,7 @@ module GaTracker
     hit.add_custom_dimension(DIMENSIONS[:response_status], response.status)
     failure_details = exception.present? ? exception.message : ' '
     hit.add_custom_dimension(DIMENSIONS[:failure_details], failure_details)
-    timeout = exception.present? ? exception.cause.is_a?(Tiemout::Error) : false
+    timeout = exception.present? ? exception.cause.is_a?(Timeout::Error) : false
     hit.add_custom_dimension(DIMENSIONS[:timeout], timeout)
   end
 
