@@ -6,6 +6,9 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   }
 
   before_action :load_adapter, except: :_generate_wsdl
+  before_action :track_soap_request, except: :_generate_wsdl
+
+  after_action :track_soap_response, except: :_generate_wsdl
 
   soap_action :get_final_cites_certificate,
               args: {
@@ -58,15 +61,29 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     organisation = Organisation.cites_mas.with_available_adapters.
       joins(:country).where('countries.iso_code2' => params[:IsoCountryCode]).
       first
-    user = get_user
+    @user = get_user
     if !organisation.present?
       render_soap_error "AdapterNotFound"
-    elsif !organisation.adapter.has_country?(user.organisation.country_id) &&
-      !user.can_access_adapter?(organisation.country_id)
+    elsif !organisation.adapter.has_country?(@user.organisation.country_id) &&
+      !@user.can_access_adapter?(organisation.country_id)
       render_soap_error "AdapterNotAvailable"
     else
       @adapter = organisation.adapter
     end
+  end
+
+  def track_soap_request
+    @hit = Staccato::Pageview.new(tracker, path: request.path)
+    GaTracker.add_caller_identification(@hit, request, @user)
+    GaTracker.add_request_meta_data(@hit, request, action_name, params, @adapter)
+    @start_time = Time.now
+  end
+
+  def track_soap_response(exception=nil)
+    response_time = (Time.now - @start_time).to_f
+    GaTracker.add_response_meta_data(@hit, response, response_time, exception)
+    GaTracker.add_metrics(@hit)
+    @hit.track!
   end
 
   def get_user
