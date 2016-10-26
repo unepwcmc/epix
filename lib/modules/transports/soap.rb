@@ -31,7 +31,8 @@ class Transports::Soap < Transports::Base
       # for self-signed certs
       common_options.merge!({ ssl_verify_mode: :none })
     end
-    Savon::Client.new(common_options) if auth.empty?
+    return Savon::Client.new(common_options) if auth.empty?
+
     if auth['token_auth'].present?
       Savon::Client.new(
         common_options.merge({
