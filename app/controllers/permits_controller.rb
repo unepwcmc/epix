@@ -19,7 +19,7 @@ class PermitsController < ApplicationController
   end
 
   def show
-    @response = Adapters::SimpleAdapter.run(
+    @response = @adapter.name.constantize.run(
       @adapter, {
         CertificateNumber: @permit_identifier,
         TokenId: @security_token,
