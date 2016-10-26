@@ -14,10 +14,7 @@ class Adapters::SimpleAdapter < Adapters::Base
       wsdl: adapter.web_service_uri,
       timeout: adapter.time_out,
       operation: :get_non_final_cites_certificate,
-      auth: {
-        username: '',
-        password: ''
-      },
+      auth: {},
       skip_ssl_verification: adapter.skip_ssl_verification
     }
   end

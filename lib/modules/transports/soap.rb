@@ -32,19 +32,6 @@ class Transports::Soap < Transports::Base
       common_options.merge!({ ssl_verify_mode: :none })
     end
     return Savon::Client.new(common_options) if auth.empty?
-
-    if auth['token_auth'].present?
-      Savon::Client.new(
-        common_options.merge({
-          soap_header: auth[:token_auth]
-        })
-      )
-    else
-      Savon::Client.new(
-        common_options.merge({
-          wsse_auth: [auth['username'], auth['password']]
-        })
-      )
-    end
+    Savon::Client.new(common_options.merge(auth))
   end
 end
