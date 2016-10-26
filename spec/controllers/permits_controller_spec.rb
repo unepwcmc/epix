@@ -100,7 +100,7 @@ RSpec.describe PermitsController, type: :controller do
           permit_identifier: '123'
         }
         expect(response).to redirect_to(permits_path)
-        expect(flash[:error]).to eq('This request took too long to be processed...')
+        expect(flash[:alert]).to eq('This request took too long to be processed...')
       end
     end
 
@@ -118,7 +118,7 @@ RSpec.describe PermitsController, type: :controller do
           permit_identifier: '123'
         }
         expect(response).to redirect_to(permits_path)
-        expect(flash[:error]).to eq('Something went wrong')
+        expect(flash[:alert]).to match('Internal error')
       end
     end
 

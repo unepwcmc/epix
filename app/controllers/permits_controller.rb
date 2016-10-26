@@ -65,13 +65,16 @@ class PermitsController < ApplicationController
                 'This request took too long to be processed...'
               elsif e.cause.is_a?(Savon::SOAPFault)
                 """
-                Something went wrong:
-                #{e.cause.to_hash[:fault][:details][:cites_data_exchange_fault][:error_message]}
+                SOAP error:
+                #{e.cause.to_s}
                 """
               else
-                'Something went wrong'
+                """
+                Internal error:
+                #{e.cause.to_s}
+                """
               end
-    redirect_to permits_path, flash: { error: message }
+    redirect_to permits_path, flash: { alert: message }
   end
 
 
