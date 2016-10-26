@@ -5,6 +5,8 @@ class Adapter < ApplicationRecord
 
   belongs_to :organisation
 
+  validates :name, presence: true, inclusion: ['Adapters::SimpleAdapter', 'Adapters::CzechAdapter']
+
   def cites_toolkit_v2?
     cites_toolkit_version == 2
   end
