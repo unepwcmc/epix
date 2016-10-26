@@ -19,6 +19,14 @@ class Transports::Soap < Transports::Base
       wsdl: wsdl,
       convert_request_keys_to: :none
     }
+    if Rails.env.development?
+      common_options.merge!({
+        log: true,
+        log_level: :debug,
+        logger: Logger.new('./log/soap.log'),
+        pretty_print_xml: true
+      })
+    end
     if skip_ssl_verification
       # for self-signed certs
       common_options.merge!({ ssl_verify_mode: :none })
