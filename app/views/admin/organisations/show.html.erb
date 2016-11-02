@@ -22,6 +22,10 @@
     <label class='col-sm-3'><%= t('organisation_country') %></label>
     <span class='col-sm-5'><%= @organisation.country.try(:name) %></span>
   </div>
+  <div class="form-group">
+    <label class='col-sm-3'><%= t('trade_unpermitted') %></label>
+    <span class='col-sm-5'><%= trade_reporting_permitted? %></span>
+  </div>
 </div>
 
 <% if @adapter %>

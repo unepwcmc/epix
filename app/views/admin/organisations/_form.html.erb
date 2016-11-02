@@ -28,6 +28,14 @@
         %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label(:trade_reporting_unpermitted, class: 'col-sm-3 control-label') { t('trade_unpermitted') } %>
+      <div class="col-sm-4">
+        <%= f.check_box :trade_reporting_unpermitted,
+           value: @trade_reporting_unpermitted, class: 'form-control'
+        %>
+      </div>
+    </div>
     <h3><%= t('adapter_show_page') %></h3>
     <%= f.fields_for :adapter do |ff| %>
       <div class="form-group">
