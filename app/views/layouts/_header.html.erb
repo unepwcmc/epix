@@ -17,12 +17,14 @@
             class: (current_page?(permits_path) ? 'active' : nil)
           %>
         </li>
-        <li class="nav-elem">
-          <%=
-            link_to "Trade Reporting Tool",
-              "#{Rails.application.secrets.trade_reporting_tool['sign_in']}?user=#{current_user.email}"
-          %>
-        </li>
+        <% if current_user && !current_user.organisation.trade_reporting_unpermitted %>
+          <li class="nav-elem">
+            <%=
+              link_to "Trade Reporting Tool",
+                "#{Rails.application.secrets.trade_reporting_tool['sign_in']}?user=#{current_user.email}"
+            %>
+          </li>
+        <% end %>
         <li class="nav-elem"><a href="#"><%= t('about') %></a></li>
       </ul>
     </nav>
