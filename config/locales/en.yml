@@ -116,5 +116,5 @@ en:
   issued: "Issued by"
   trade:
     reporting_details: "Trade reporting details"
-    reporting_enabled: "Trade reporting"
+    reporting_enabled: "Trade reporting enabled"
     error_correction: "Trade error correction in online sandbox"

@@ -30,7 +30,11 @@
     </div>
     <h3><%= t('trade_reporting_details') %></h3>
     <div class="form-group">
-      <%= f.label(:trade_reporting_enabled, class: 'col-sm-3') { t('trade.reporting_enabled') } %>
+      <%=
+        f.label(:trade_reporting_enabled, class: 'col-sm-3') {
+          trade_reporting_enabled_info
+        }
+      %>
       <div class="col-sm-4">
         <%= f.check_box :trade_reporting_enabled,
            value: @trade_reporting_enabled
@@ -40,7 +44,7 @@
     <div class="form-group">
       <%=
         f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
-          t('trade.error_correction')
+          trade_error_correction_info
         }
       %>
       <div class="col-sm-4">
