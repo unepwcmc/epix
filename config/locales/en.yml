@@ -114,4 +114,7 @@ en:
   address: "Adress"
   country: "Country"
   issued: "Issued by"
-  trade_unpermitted: "Trade reporting permitted"
+  trade:
+    reporting_details: "Trade reporting details"
+    reporting_enabled: "Trade reporting"
+    error_correction: "Trade error correction in online sandbox"

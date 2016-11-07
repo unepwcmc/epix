@@ -17,7 +17,7 @@
             class: (current_page?(permits_path) ? 'active' : nil)
           %>
         </li>
-        <% if current_user && !current_user.organisation.trade_reporting_unpermitted %>
+        <% if current_user && current_user.organisation.trade_reporting_enabled %>
           <li class="nav-elem">
             <%=
               link_to "Trade Reporting Tool",

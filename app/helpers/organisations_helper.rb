@@ -9,10 +9,17 @@ module OrganisationsHelper
     @adapter.has_country?(country.id) ? yes : no
   end
 
-  def trade_reporting_permitted?
+  def trade_reporting_enabled?
     yes = content_tag(:span, '', class: 'fa fa-check')
     no = content_tag(:span, '', class: 'fa fa-times')
     return no unless @adapter
-    @organisation.trade_reporting_unpermitted ? no : yes
+    @organisation.trade_reporting_enabled ? yes : no
+  end
+
+  def trade_error_correction_in_sandbox?
+    yes = content_tag(:span, '', class: 'fa fa-check')
+    no = content_tag(:span, '', class: 'fa fa-times')
+    return no unless @adapter
+    @organisation.trade_error_correction_in_sandbox_enabled ? yes : no
   end
 end
