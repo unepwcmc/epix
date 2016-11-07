@@ -41,7 +41,16 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(organisation_params)
+    disable_error_correction = organisation_params[:trade_reporting_enabled] == '0'
+    new_org_params = organisation_params
+
+    if disable_error_correction
+      new_org_params = organisation_params.merge({
+        trade_error_correction_in_sandbox_enabled: '0'
+      })
+    end
+
+    if @organisation.update_attributes(new_org_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
 
