@@ -9,11 +9,11 @@ module OrganisationsHelper
     @adapter.has_country?(country.id) ? yes : no
   end
 
-  def trade_reporting_enabled?
+  def trade_reporting_enabled?(field)
     yes = content_tag(:span, '', class: 'fa fa-check')
     no = content_tag(:span, '', class: 'fa fa-times')
     return no unless @adapter
-    @organisation.trade_reporting_enabled ? yes : no
+    @organisation.send(field) ? yes : no
   end
 
   def trade_reporting_enabled_info
@@ -23,13 +23,6 @@ module OrganisationsHelper
       class: 'fa fa-info-circle',
       title: info_text
     })
-  end
-
-  def trade_error_correction_in_sandbox?
-    yes = content_tag(:span, '', class: 'fa fa-check')
-    no = content_tag(:span, '', class: 'fa fa-times')
-    return no unless @adapter
-    @organisation.trade_error_correction_in_sandbox_enabled ? yes : no
   end
 
   def trade_error_correction_info

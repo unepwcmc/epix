@@ -24,11 +24,15 @@
   </div>
   <div class="form-group">
     <label class='col-sm-3'><%= t('trade.reporting_enabled') %></label>
-    <span class='col-sm-5'><%= trade_reporting_enabled? %></span>
+    <span class='col-sm-5'>
+      <%= trade_reporting_enabled?("trade_reporting_enabled") %>
+    </span>
   </div>
   <div class="form-group">
     <label class='col-sm-3'><%= t('trade.error_correction') %></label>
-    <span class='col-sm-5'><%= trade_error_correction_in_sandbox? %></span>
+    <span class='col-sm-5'>
+      <%= trade_reporting_enabled?("trade_error_correction_in_sandbox_enabled") %>
+    </span>
   </div>
 </div>
 
