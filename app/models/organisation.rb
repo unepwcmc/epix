@@ -30,4 +30,8 @@ class Organisation < ApplicationRecord
     end
   end
 
+  def is_cites_ma?
+    role == CITES_MA
+  end
+
 end

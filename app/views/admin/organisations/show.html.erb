@@ -22,64 +22,73 @@
     <label class='col-sm-3'><%= t('organisation_country') %></label>
     <span class='col-sm-5'><%= @organisation.country.try(:name) %></span>
   </div>
-  <div class="form-group">
-    <label class='col-sm-3'><%= t('trade.reporting_enabled') %></label>
-    <span class='col-sm-5'>
-      <%= trade_reporting_enabled?("trade_reporting_enabled") %>
-    </span>
+</div>
+<% if @organisation.is_cites_ma? %>
+  <div class="form-header">
+    <h2><%= t('trade_reporting_details') %></h2>
   </div>
-  <div class="form-group">
-    <label class='col-sm-3'><%= t('trade.error_correction') %></label>
-    <span class='col-sm-5'>
-      <%= trade_reporting_enabled?("trade_error_correction_in_sandbox_enabled") %>
-    </span>
-  </div>
-</div>
-
-<% if @adapter %>
-<div class="form-header">
-  <h2>Access control list</h2>
-</div>
-<div class="form-horizontal organisation-details access-list-container">
-  <table class="access-list-table">
-    <thead>
-      <tr>
-        <th>Party</th>
-        <th>Access</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @available_countries.each do |country| %>
-        <tr class="access-row">
-          <td class="country-name bold"><%= country.name %></td>
-          <td class="has-access"><%= has_access(country) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% end %>
-
-<div class="form-header">
-  <h2><%= t('adapter_show_page') %></h2>
-</div>
-<div class="form-horizontal organisation-details">
-  <% if @adapter %>
+  <div class="form-horizontal organisation-details">
     <div class="form-group">
-      <label class='col-sm-3'><%= t('adapter_status') %></label>
-      <span class='col-sm-3'>
-        <%= check_box_tag :status, 'is_available', @adapter.is_available, disabled: true %>
-        <%= @adapter.is_available ? t('adapter_up') : t('adapter_down') %>
+      <label class='col-sm-3'><%= t('trade.reporting_enabled') %></label>
+      <span class='col-sm-5'>
+        <%= trade_reporting_enabled?("trade_reporting_enabled") %>
       </span>
     </div>
     <div class="form-group">
-      <label class='col-sm-3'>URI</label>
-      <span class='col-sm-5'><%= @adapter.try(:web_service_uri) %></span>
+      <label class='col-sm-3'><%= t('trade.error_correction') %></label>
+      <span class='col-sm-5'>
+        <%= trade_reporting_enabled?("trade_error_correction_in_sandbox_enabled") %>
+      </span>
     </div>
-  <% else %>
-    <div class="form-group">
-      <label class='col-sm-3'><%= t('adapter_status') %></label>
-      <span class='col-sm-3'><%= t('adapter_not_configured') %></span>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
+<% if @organisation.is_cites_ma? %>
+  <div class="form-header">
+    <h2><%= t('adapter_show_page') %></h2>
+  </div>
+  <div class="form-horizontal organisation-details">
+    <% if @adapter %>
+      <div class="form-group">
+        <label class='col-sm-3'><%= t('adapter_status') %></label>
+        <span class='col-sm-3'>
+          <%= check_box_tag :status, 'is_available', @adapter.is_available, disabled: true %>
+          <%= @adapter.is_available ? t('adapter_up') : t('adapter_down') %>
+        </span>
+      </div>
+      <div class="form-group">
+        <label class='col-sm-3'><%= t('adapter_uri') %></label>
+        <span class='col-sm-5'><%= @adapter.try(:web_service_uri) %></span>
+      </div>
+    <% else %>
+      <div class="form-group">
+        <label class='col-sm-3'><%= t('adapter_status') %></label>
+        <span class='col-sm-3'><%= t('adapter_not_configured') %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @organisation.is_cites_ma? && @adapter %>
+  <div class="form-header">
+    <h2><%= t('access_control_page') %></h2>
+  </div>
+  <div class="form-horizontal organisation-details access-list-container">
+    <table class="access-list-table">
+      <thead>
+        <tr>
+          <th><%= t('cites_party') %></th>
+          <th><%= t('access_granted') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @available_countries.each do |country| %>
+          <tr class="access-row">
+            <td class="country-name bold"><%= country.name %></td>
+            <td class="has-access"><%= has_access(country) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -28,59 +28,86 @@
         %>
       </div>
     </div>
-    <h3><%= t('trade_reporting_details') %></h3>
-    <div class="form-group">
-      <%=
-        f.label(:trade_reporting_enabled, class: 'col-sm-3') {
-          trade_reporting_enabled_info
-        }
-      %>
-      <div class="col-sm-4">
-        <%= f.check_box :trade_reporting_enabled,
-           value: @trade_reporting_enabled
-        %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%=
-        f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
-          trade_error_correction_info
-        }
-      %>
-      <div class="col-sm-4">
-        <%= f.check_box :trade_error_correction_in_sandbox_enabled,
-           value: @trade_error_correction_in_sandbox
-        %>
-      </div>
-    </div>
-    <h3><%= t('adapter_show_page') %></h3>
-    <%= f.fields_for :adapter do |ff| %>
+    <% if @organisation.is_cites_ma? %>
+      <h2><%= t('trade_reporting_details') %></h2>
       <div class="form-group">
-        <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
-            t('organisation_countries')
+        <%=
+          f.label(:trade_reporting_enabled, class: 'col-sm-3') {
+            trade_reporting_enabled_info
           }
         %>
         <div class="col-sm-4">
-          <%= ff.select :countries_with_access_ids,
-                options_for_select(@available_countries_for_dropdown),
-                {},
-                {
-                  id: 'countries_with_access',
-                  multiple: true,
-                  data: { tags: @selected_countries_with_access }
-                }
+          <%= f.check_box :trade_reporting_enabled,
+             value: @trade_reporting_enabled
           %>
         </div>
       </div>
       <div class="form-group">
-        <%= ff.label(:blanket_permission, class: "col-sm-3"){
-            "Grant access to all countries"
+        <%=
+          f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
+            trade_error_correction_info
           }
         %>
         <div class="col-sm-4">
-          <%= ff.check_box :blanket_permission %>
+          <%= f.check_box :trade_error_correction_in_sandbox_enabled,
+             value: @trade_error_correction_in_sandbox
+          %>
         </div>
       </div>
+    <% end %>
+    <% if @organisation.is_cites_ma? %>
+      <h2><%= t('adapter_show_page') %></h2>
+      <%= f.fields_for :adapter do |ff| %>
+        <div class="form-group">
+          <%= ff.label(:is_available, class: "col-sm-3"){
+              t('adapter_up')
+            }
+          %>
+          <div class="col-sm-4">
+            <%= ff.check_box :is_available %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= ff.label(:web_service_uri, class: "col-sm-3"){
+              t('adapter_uri')
+            }
+          %>
+          <div class="col-sm-4">
+            <%= ff.text_field :web_service_uri %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% if @organisation.is_cites_ma? && @adapter %>
+      <h2><%= t('access_control_list') %></h2>
+      <%= f.fields_for :adapter do |ff| %>
+        <div class="form-group">
+          <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
+              t('organisation_countries')
+            }
+          %>
+          <div class="col-sm-4">
+            <%= ff.select :countries_with_access_ids,
+                  options_for_select(@available_countries_for_dropdown),
+                  {},
+                  {
+                    id: 'countries_with_access',
+                    multiple: true,
+                    data: { tags: @selected_countries_with_access }
+                  }
+            %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= ff.label(:blanket_permission, class: "col-sm-3"){
+              t('organisation_blanket_permission')
+            }
+          %>
+          <div class="col-sm-4">
+            <%= ff.check_box :blanket_permission %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 <% end %> <!-- End Form -->
