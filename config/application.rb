@@ -13,5 +13,8 @@ module Epix
     # -- all .rb files in that directory are automatically loaded.
     #
     config.eager_load_paths += %W(#{config.root}/lib/modules)
+
+    # Load shared assets from epix_frontend
+    config.assets.paths << "#{Rails.root}/app/assets/shared/stylesheets"
   end
 end
