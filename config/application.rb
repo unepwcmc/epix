@@ -16,5 +16,6 @@ module Epix
 
     # Load shared assets from epix_frontend
     config.assets.paths << "#{Rails.root}/app/assets/shared/stylesheets"
+    config.assets.paths << "#{Rails.root}/app/assets/shared/fonts"
   end
 end
