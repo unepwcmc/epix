@@ -58,6 +58,21 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
         expect(organisation.role).to eq(Organisation::SYSTEM_MANAGERS)
         expect(response.status).to eq(302)
       end
+
+      it "disables trade error correction if reporting is disabled" do
+        organisation = FactoryGirl.create(:cites_ma, {
+          trade_reporting_enabled: true,
+          trade_error_correction_in_sandbox_enabled: true
+        })
+        patch :update, params: {
+          id: organisation.id, organisation: {
+            role: Organisation::SYSTEM_MANAGERS, trade_reporting_enabled: '0'
+          }
+        }
+        organisation.reload
+        expect(organisation.trade_error_correction_in_sandbox_enabled).to eq(false)
+        expect(response.status).to eq(302)
+      end
     end
   end
 

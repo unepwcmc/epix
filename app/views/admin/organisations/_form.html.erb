@@ -28,6 +28,31 @@
         %>
       </div>
     </div>
+    <h3><%= t('trade_reporting_details') %></h3>
+    <div class="form-group">
+      <%=
+        f.label(:trade_reporting_enabled, class: 'col-sm-3') {
+          trade_reporting_enabled_info
+        }
+      %>
+      <div class="col-sm-4">
+        <%= f.check_box :trade_reporting_enabled,
+           value: @trade_reporting_enabled
+        %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%=
+        f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
+          trade_error_correction_info
+        }
+      %>
+      <div class="col-sm-4">
+        <%= f.check_box :trade_error_correction_in_sandbox_enabled,
+           value: @trade_error_correction_in_sandbox
+        %>
+      </div>
+    </div>
     <h3><%= t('adapter_show_page') %></h3>
     <%= f.fields_for :adapter do |ff| %>
       <div class="form-group">

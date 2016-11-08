@@ -41,7 +41,16 @@ class Admin::OrganisationsController < Admin::BaseController
   def update
     @organisation = Organisation.find(params[:id])
 
-    if @organisation.update_attributes(organisation_params)
+    disable_error_correction = organisation_params[:trade_reporting_enabled] == '0'
+    new_org_params = organisation_params
+
+    if disable_error_correction
+      new_org_params = organisation_params.merge({
+        trade_error_correction_in_sandbox_enabled: '0'
+      })
+    end
+
+    if @organisation.update_attributes(new_org_params)
       flash[:notice] = 'Organisation was successfully updated.'
     end
 
@@ -52,12 +61,14 @@ class Admin::OrganisationsController < Admin::BaseController
 
   def organisation_params
     if current_user.is_system_managers?
-      params.require(:organisation).permit(:name, :role, :country_id,
+      params.require(:organisation).permit(:name, :role, :country_id, :trade_reporting_enabled,
+                                             :trade_error_correction_in_sandbox_enabled,
                                              adapter_attributes:
                                                [:id, :blanket_permission, countries_with_access_ids: []]
                                           )
     elsif current_user.is_cites_ma? && current_user.is_admin?
-      params.require(:organisation).permit(:name, :country_id,
+      params.require(:organisation).permit(:name, :country_id, :trade_reporting_enabled,
+                                             :trade_error_correction_in_sandbox_enabled,
                                              adapter_attributes:
                                                [:id, :blanket_permission, countries_with_access_ids: []]
                                           )
