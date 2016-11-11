@@ -2,6 +2,7 @@
   <% @permit.line_items.each do |line_item| %>
     <div class="species-details-block-mobile">
       <div class="species-details-header-mobile bold">
+        <div class="index-value bold"><%= line_item.id %>.&nbsp;</div>
         <%= line_item.scientific_name %>
       </div>
       <div class="species-details-content-mobile">
