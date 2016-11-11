@@ -3,11 +3,17 @@
     field_title: "1. #{t('permit_certificate')}",
     values: [
       {
+        field: t('permit_no'),
         value: @permit.identifier
+      },
+      {
+        field: t('permit_type_code'),
+        value: @permit.type_code
       }
     ]
   }
 %>
+
 <%= render partial: "permits/mobile/permit_row_mobile",
   locals: {
     field_title: "2. #{t('valid_until')}",

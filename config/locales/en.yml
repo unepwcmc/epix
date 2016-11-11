@@ -86,6 +86,7 @@ en:
     organisation: 'Search organisation'
   permit_certificate: "Permit/Certificate No."
   valid_until: "Valid until"
+  permit_type_code: "Type"
   importer: "Importer <span>(name and address)</span>"
   exporter: "Exporter/re-exporter <span>(name, address and country)</span>"
   country_of_import: "Country of import"
