@@ -35,6 +35,8 @@ gem 'select2-rails'
 # GA Tracking
 gem 'staccato-rails'
 
+gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'ekho/capistrano-git-submodule-strategy'
+
 group :development do
   # Docs
   gem 'yard', '~> 0.8.7.6'
