@@ -13,9 +13,13 @@ default: &defaults
 
 # Configuration per environment, leave out an environment or set active
 # to false to not push metrics for that environment.
+test:
+  <<: *defaults
+  active: false
+
 development:
   <<: *defaults
-  active: true
+  active: false
 
 staging:
   <<: *defaults
