@@ -20,7 +20,6 @@ class Admin::OrganisationsController < Admin::BaseController
   end
 
   def edit
-    @organisation = Organisation.find(params[:id])
     @adapter = @organisation.try(:adapter)
     if @adapter.present?
       @available_countries_for_dropdown = @available_countries.
@@ -39,8 +38,6 @@ class Admin::OrganisationsController < Admin::BaseController
   end
 
   def update
-    @organisation = Organisation.find(params[:id])
-
     disable_error_correction = organisation_params[:trade_reporting_enabled] == '0'
     new_org_params = organisation_params
 
@@ -85,7 +82,8 @@ class Admin::OrganisationsController < Admin::BaseController
   end
 
   def load_available_countries
-    @available_countries = Country.with_organisations
+    @available_countries = Country.with_organisations.
+      where("countries.id != #{@organisation.country_id}")
   end
 
 end
