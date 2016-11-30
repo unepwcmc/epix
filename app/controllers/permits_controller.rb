@@ -8,7 +8,8 @@ class PermitsController < ApplicationController
   def index
     if @country && @permit_identifier
       redirect_to(permit_path(
-        country: @country, permit_identifier: @permit_identifier
+        country: @country, permit_identifier: @permit_identifier,
+        security_token: @security_token
       )) && return
     end
     @countries = Organisation.cites_mas.with_available_adapters.
@@ -21,7 +22,7 @@ class PermitsController < ApplicationController
     @response = Adapters::SimpleAdapter.run(
       @adapter, {
         CertificateNumber: @permit_identifier,
-        TokenId: '?',
+        TokenId: @security_token,
         IsoCountryCode: @country
       }
     )
@@ -39,6 +40,7 @@ class PermitsController < ApplicationController
   def sanitise_params
     @country = params[:country] && params[:country].strip[0..1]
     @permit_identifier = params[:permit_identifier]
+    @security_token = params[:security_token]
   end
 
   def load_adapter
