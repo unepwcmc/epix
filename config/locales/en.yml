@@ -29,8 +29,8 @@ en:
   cites_permit: 'CITES Permit'
   about: 'About'
   login: 'Log in'
-  epix: "facilitates and expedites the exchange of permit data among national\nCITES Authorities"
-  search_permit: 'Search a CITES Permit'
+  epix: "Facilitates and expedites the exchange of permit data among CITES Authorities"
+  search_permit: 'Search for a CITES Permit'
   new_permit_search: "New CITES Permit Search"
   search_permit_info: 'CITES Authorities can query and verify details of CITES permits issued'
   select_country: 'Please select country'
