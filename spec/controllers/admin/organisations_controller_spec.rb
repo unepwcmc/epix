@@ -127,13 +127,15 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
     describe "PATCH update" do
       it "can update access list of countries" do
         organisation = subject.current_user.organisation
-        patch :update, id: organisation.id,
+        patch :update, params: {
+          id: organisation.id,
           organisation: {
             adapter_attributes: {
               id: organisation.adapter.id,
               countries_with_access_ids: [1, 2]
             }
           }
+        }
         organisation.reload
         expect(organisation.adapter.countries_with_access_ids).to eq([1, 2])
       end
@@ -146,13 +148,15 @@ RSpec.describe Admin::OrganisationsController, type: :controller do
     describe "PATCH update" do
       it "cannot update access list of countries" do
         organisation = subject.current_user.organisation
-        patch :update, id: organisation.id,
+        patch :update, params: {
+          id: organisation.id,
           organisation: {
             adapter_attributes: {
               id: organisation.adapter.id,
               countries_with_access_ids: [1, 2]
             }
           }
+        }
         organisation.reload
         expect(organisation.adapter.countries_with_access_ids).to eq([])
       end
