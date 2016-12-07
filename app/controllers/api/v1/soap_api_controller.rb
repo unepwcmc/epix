@@ -18,7 +18,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_final_cites_certificate
-    render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
+    render xml: Adapters::SimpleAdapter.run(@adapter, :get_final_cites_certificate, params).to_xml
   end
 
   soap_action :get_non_final_cites_certificate,
@@ -29,7 +29,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_non_final_cites_certificate
-    render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
+    render xml: Adapters::SimpleAdapter.run(@adapter, :get_non_final_cites_certificate, params).to_xml
   end
 
   soap_action :confirm_quantities,
@@ -42,7 +42,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               return: :string
   def confirm_quantities
     if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
-      render xml: Adapters::SimpleAdapter.run(@adapter, params).to_xml
+      render xml: Adapters::SimpleAdapter.run(@adapter, :confirm_quantities, params).to_xml
     else
       render_soap_error "XML structure is not valid. ID must be a token", "Client"
     end
@@ -52,7 +52,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               args: {},
               return: :string
   def service_state
-    render xml: Adapters::SimpleAdapter.run(@adapter).to_xml
+    render xml: Adapters::SimpleAdapter.run(@adapter, :service_state).to_xml
   end
 
   private

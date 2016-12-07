@@ -20,7 +20,9 @@ class PermitsController < ApplicationController
 
   def show
     @response = @adapter.name.constantize.run(
-      @adapter, {
+      @adapter,
+      :get_non_final_cites_certificate,
+      {
         CertificateNumber: @permit_identifier,
         TokenId: @security_token,
         IsoCountryCode: @country

@@ -1,25 +1,28 @@
-class Adapters::CzechAdapter < Adapters::Base
-
-  def self.run(adapter, message = {})
-    instance = self.new(adapter)
-    message = {ID: message[:CertificateNumber]}
-    instance.request(message)
-  end
+class Adapters::CzechAdapter < Adapters::SimpleAdapter
 
   def initialize(adapter)
-    @params = {
-      request_type: 'soap_request',
+    super(adapter)
+    @params = @params.merge({
       wsdl: adapter.web_service_uri,
-      timeout: adapter.time_out,
-      operation: :get_document,
-      auth: {
-        soap_header: {
-          'AuthenticationSoapHeader' => {
-            'Username' => adapter.auth_username,
-            'Password' => adapter.auth_password
-          }
-        },
+      soap_header: {
+        'AuthenticationSoapHeader' => {
+          'Username' => adapter.auth_username,
+          'Password' => adapter.auth_password
+        }
       }
+    })
+    @operations = {
+      get_non_final_cites_certificate: {
+        name: :get_document
+      }
+    }
+  end
+
+  private
+
+  def message_for_adapter(message)
+    {
+      ID: message[:CertificateNumber]
     }
   end
 end

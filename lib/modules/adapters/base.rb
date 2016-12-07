@@ -1,31 +1,49 @@
 class Adapters::Base
   attr_reader :params
 
-  def self.run(adapter, message = {})
+  SOAP = 'soap_request'
+  REST = 'rest_request'
+
+  def self.run(adapter, operation, message = {})
     instance = self.new(adapter)
-    instance.request(message)
+    instance.request(operation, message)
   end
 
   def initialize(adapter)
+    @adapter = adapter
+    @request_type = nil
     @params = {}
+    if adapter.skip_ssl_verification
+      @params.merge!({
+        ssl_verify_mode: :none
+      })
+    end
+    @operations = {}
   end
 
-  def request(message = {})
-    send(@params[:request_type], message)
+  def request(operation, message = {})
+    send(@request_type, operation, message)
   end
 
   private
 
-  def soap_request(message = {})
-    wsdl = @params[:wsdl]
-    operation = @params[:operation]
-    auth = @params[:auth]
-    timeout = @params[:timeout]
-    skip_ssl_verification = @params[:skip_ssl_verification]
-    Transports::Soap.request(wsdl, operation, timeout, auth, skip_ssl_verification, message)
+  def soap_request(operation_sym, message = {})
+    operation = operation_for_adapter(operation_sym)
+    message = message_for_adapter(message)
+    soap_action = @operations[operation_sym] && @operations[operation_sym][:soap_action]
+    request_params = {soap_action: soap_action} if soap_action
+    Transports::Soap.request(@params, request_params || {}, operation, message, @adapter.time_out)
   end
 
-  def rest_request(message = {})
+  def rest_request(operation, message = {})
+  end
+
+  def operation_for_adapter(operation_sym)
+    @operations[operation_sym] && @operations[operation_sym][:name]
+  end
+
+  def message_for_adapter(message)
+    message
   end
 
 end
