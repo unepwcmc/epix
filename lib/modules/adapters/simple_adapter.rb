@@ -12,8 +12,8 @@ class Adapters::SimpleAdapter < Adapters::Base
     super(adapter)
     @request_type = SOAP
     @params.merge!({
-      wsdl: adapter.web_service_uri,
-    })
+      wsdl: adapter.wsdl_url,
+    }) if adapter.wsdl_url.present?
     @operations = {
       get_non_final_cites_certificate: {
         name: :get_non_final_cites_certificate

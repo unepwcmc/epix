@@ -3,7 +3,7 @@ class Adapters::CzechAdapter < Adapters::SimpleAdapter
   def initialize(adapter)
     super(adapter)
     @params = @params.merge({
-      wsdl: adapter.web_service_uri,
+      wsdl: adapter.wsdl_url,
       soap_header: {
         'AuthenticationSoapHeader' => {
           'Username' => adapter.auth_username,

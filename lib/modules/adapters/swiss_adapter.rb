@@ -2,10 +2,9 @@ class Adapters::SwissAdapter < Adapters::SimpleAdapter
 
   def initialize(adapter)
     super(adapter)
-    @params.delete(:wsdl) # TODO
     @params = @params.merge({
-      endpoint: 'TODO', 
-      namespace: 'TODO',
+      endpoint: adapter.ws_endpoint_url,
+      namespace: adapter.ws_namespace,
       ssl_cert_file: adapter.cert_path,
       ssl_cert_key_file: adapter.cert_key_path,
       ssl_cert_key_password: adapter.cert_passphrase,
