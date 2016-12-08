@@ -6,9 +6,9 @@ class Adapters::SwissAdapter < Adapters::SimpleAdapter
     @params = @params.merge({
       endpoint: 'TODO', 
       namespace: 'TODO',
-      ssl_cert_file: 'TODO',
-      ssl_cert_key_file: 'TODO',
-      ssl_cert_key_password: 'TODO',
+      ssl_cert_file: adapter.cert_path,
+      ssl_cert_key_file: adapter.cert_key_path,
+      ssl_cert_key_password: adapter.cert_passphrase,
       env_namespace: :soapenv,
       namespace_identifier: :v1
     })
