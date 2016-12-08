@@ -7,7 +7,7 @@ class Cites::V2::Permit
   end
 
   def line_items
-    specified_supply_chain_consignment.xpath('urn1:IncludedSupplyChainConsignmentItem').map do |xml|
+    specified_supply_chain_consignment.xpath('IncludedSupplyChainConsignmentItem').map do |xml|
       Cites::V2::PermitLineItem.new(xml)
     end
   end

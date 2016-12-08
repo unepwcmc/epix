@@ -30,6 +30,7 @@ class PermitsController < ApplicationController
     )
 
     xml = Nokogiri::XML(@response.to_xml)
+    xml.remove_namespaces!
     @permit = if @adapter.cites_toolkit_v2?
                 Cites::V2::Permit.new(xml)
               else
