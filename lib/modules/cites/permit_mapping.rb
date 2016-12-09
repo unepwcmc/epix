@@ -4,22 +4,22 @@ module Cites::PermitMapping
 
   # always present
   def identifier
-    header_exchanged_document.at_xpath('ID').content
+    header_exchanged_document.at_xpath('ID').try(:content)
   end
 
   # TODO: where does this go?
   def name
-    header_exchanged_document.at_xpath('Name').content
+    header_exchanged_document.at_xpath('Name').try(:content)
   end
 
   # always present
   def type_code
-    header_exchanged_document.at_xpath('TypeCode').content
+    header_exchanged_document.at_xpath('TypeCode').try(:content)
   end
 
   # TODO: where does this go?
   def copy_indicator
-    header_exchanged_document.at_xpath('CopyIndicator').content
+    header_exchanged_document.at_xpath('CopyIndicator').try(:content)
   end
 
   # Box 2
@@ -160,7 +160,7 @@ module Cites::PermitMapping
 
   # always present
   def issue_date
-    header_exchanged_document.at_xpath('IssueDateTime').content
+    header_exchanged_document.at_xpath('IssueDateTime').try(:content)
   end
 
   # Box 14
@@ -202,11 +202,11 @@ module Cites::PermitMapping
   end
 
   def trade_party_id(node)
-    node.at_xpath('ID').content
+    node.at_xpath('ID').try(:content)
   end
 
   def trade_party_name(node)
-    node.at_xpath('Name').content
+    node.at_xpath('Name').try(:content)
   end
 
   def trade_party_postal_address(node)

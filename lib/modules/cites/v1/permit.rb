@@ -24,9 +24,9 @@ class Cites::V1::Permit
 
   def trade_party_country(node)
     parts = ['ID', 'Name'].map do |country_name_part|
-      node.at_xpath("PostalTradeAddress/CountryIdentificationTradeCountry/#{country_name_part}").content
+      node.at_xpath("PostalTradeAddress/CountryIdentificationTradeCountry/#{country_name_part}").try(:content)
     end
-    parts << node.at_xpath('PostalTradeAddress/CountryIdentificationTradeCountry/SubordinateTradeCountrySubDivision/Name').content
+    parts << node.at_xpath('PostalTradeAddress/CountryIdentificationTradeCountry/SubordinateTradeCountrySubDivision/Name').try(:content)
     parts.compact.join(', ')
   end
 end

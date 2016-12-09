@@ -17,11 +17,11 @@ class Cites::V1::PermitLineItem
   # Box 14
 
   def final_quantity
-    @body.at_xpath('ExaminationTransportEvent/InspectedUnitQuantity').content
+    @body.at_xpath('ExaminationTransportEvent/InspectedUnitQuantity').try(:content)
   end
 
   def final_unit_code
-    @body.at_xpath('ExaminationTransportEvent/InspectedUnitQuantity').attribute('unitCode')
+    @body.at_xpath('ExaminationTransportEvent/InspectedUnitQuantity').try(:attribute, 'unitCode')
   end
 
   private
