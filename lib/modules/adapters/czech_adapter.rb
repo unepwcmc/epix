@@ -4,12 +4,14 @@ class Adapters::CzechAdapter < Adapters::SimpleAdapter
     super(adapter)
     @params = @params.merge({
       wsdl: adapter.wsdl_url,
+      namespace: adapter.ws_namespace,
       soap_header: {
-        'AuthenticationSoapHeader' => {
+        'v1:AuthenticationSoapHeader' => {
           'Username' => adapter.auth_username,
           'Password' => adapter.auth_password
         }
-      }
+      },
+      namespace_identifier: :v1
     })
     @operations = {
       get_non_final_cites_certificate: {
