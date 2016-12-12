@@ -19,8 +19,10 @@ class PermitsController < ApplicationController
   end
 
   def show
-    @response = Adapters::SimpleAdapter.run(
-      @adapter, {
+    @response = @adapter.name.constantize.run(
+      @adapter,
+      :get_non_final_cites_certificate,
+      {
         CertificateNumber: @permit_identifier,
         TokenId: @security_token,
         IsoCountryCode: @country
@@ -28,6 +30,7 @@ class PermitsController < ApplicationController
     )
 
     xml = Nokogiri::XML(@response.to_xml)
+    xml.remove_namespaces!
     @permit = if @adapter.cites_toolkit_v2?
                 Cites::V2::Permit.new(xml)
               else
@@ -65,13 +68,16 @@ class PermitsController < ApplicationController
                 'This request took too long to be processed...'
               elsif e.cause.is_a?(Savon::SOAPFault)
                 """
-                Something went wrong:
-                #{e.cause.to_hash[:fault][:details][:cites_data_exchange_fault][:error_message]}
+                SOAP error:
+                #{e.cause.to_s}
                 """
               else
-                'Something went wrong'
+                """
+                Internal error:
+                #{e.cause.to_s}
+                """
               end
-    redirect_to permits_path, flash: { error: message }
+    redirect_to permits_path, flash: { alert: message }
   end
 
 

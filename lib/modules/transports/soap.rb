@@ -1,11 +1,10 @@
 class Transports::Soap < Transports::Base
 
-  def self.request(wsdl, operation, timeout, auth={}, skip_ssl_verification=false, message={})
+  def self.request(adapter_options, request_options, operation, message={}, timeout)
+    client = get_client(adapter_options)
     begin
       Timeout::timeout(timeout) {
-        client = get_client(wsdl, auth, skip_ssl_verification)
-
-        result = client.call(operation, message: message)
+        result = client.call(operation, {message: message}.merge(request_options))
       }
     rescue => e
       raise Adapters::SoapAdapterException, e.class
@@ -14,28 +13,19 @@ class Transports::Soap < Transports::Base
 
   private
 
-  def self.get_client(wsdl, auth, skip_ssl_verification)
+  def self.get_client(adapter_options)
     common_options = {
-      wsdl: wsdl,
       convert_request_keys_to: :none
     }
-    if skip_ssl_verification
-      # for self-signed certs
-      common_options.merge!({ ssl_verify_mode: :none })
+    if Rails.env.development?
+      common_options.merge!({
+        log: true,
+        log_level: :debug,
+        logger: Logger.new('./log/soap.log'),
+        pretty_print_xml: true
+      })
     end
-    Savon::Client.new(common_options) if auth.empty?
-    if auth['token_auth'].present?
-      Savon::Client.new(
-        common_options.merge({
-          soap_header: auth[:token_auth]
-        })
-      )
-    else
-      Savon::Client.new(
-        common_options.merge({
-          wsse_auth: [auth['username'], auth['password']]
-        })
-      )
-    end
+    common_options.merge!(adapter_options)
+    Savon::Client.new(common_options)
   end
 end

@@ -9,16 +9,25 @@ class Adapters::SimpleAdapter < Adapters::Base
   #    #Return unavailable message
   #  end
   def initialize(adapter)
-    @params = {
-      request_type: 'soap_request',
-      wsdl: adapter.web_service_uri,
-      timeout: adapter.time_out,
-      operation: :get_non_final_cites_certificate,
-      auth: {
-        username: '',
-        password: ''
+    super(adapter)
+    @request_type = SOAP
+    @params.merge!({
+      wsdl: adapter.wsdl_url,
+    }) if adapter.wsdl_url.present?
+    @operations = {
+      get_non_final_cites_certificate: {
+        name: :get_non_final_cites_certificate
       },
-      skip_ssl_verification: adapter.skip_ssl_verification
+      get_final_cites_certificate: {
+        name: :get_final_cites_certificate
+      },
+      confirm_quantities: {
+        name: :confirm_quantities
+      },
+      service_state: {
+        name: :service_state
+      }
     }
   end
+
 end
