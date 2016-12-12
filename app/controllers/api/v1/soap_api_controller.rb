@@ -63,7 +63,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
       first
     @user = get_user
     if !organisation.present?
-      render_soap_error "AdapterNotFound"
+      render_soap_error "AdapterNotFound" and return
     elsif !organisation.adapter.has_country?(@user.organisation.country_id) &&
       !@user.can_access_adapter?(organisation.country_id)
       render_soap_error "AdapterNotAvailable" and return
