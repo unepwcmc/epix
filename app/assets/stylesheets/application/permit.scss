@@ -222,3 +222,7 @@ input.permit-check:checked ~ span {
   padding-top: 15px;
   border-top: 1px solid $light-grey;
 }
+
+.security-token-label {
+  i { margin-left: 5px; }
+}

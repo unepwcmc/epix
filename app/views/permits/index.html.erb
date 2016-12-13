@@ -18,7 +18,7 @@
       )%>
     </div>
     <div class="form-group">
-      <%= label_tag(:security_token, t('enter_security_token')) %>
+      <%= security_token_label %>
       <%= text_field_tag(
         :security_token, nil,
         {class: 'form-control', placeholder: t('security_token')}
