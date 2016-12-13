@@ -22,6 +22,10 @@ class Organisation < ApplicationRecord
 
   accepts_nested_attributes_for :adapter
 
+  def can_access_adapter?(other_organisation)
+    self.is_system_managers? || self.country_id == other_organisation.country_id
+  end
+
   def display_name
     if [CITES_MA, CUSTOMS_EA].include?(role) && country.present?
       [role, 'of', country.name].join(' ')
@@ -30,8 +34,11 @@ class Organisation < ApplicationRecord
     end
   end
 
-  def is_cites_ma?
-    role == CITES_MA
+  VALID_ROLES.each do |role|
+    role_formatted = role.downcase.tr(" ", "_")
+    define_method("is_#{role_formatted}?") do
+      self.role == role
+    end
   end
 
 end

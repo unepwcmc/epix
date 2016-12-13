@@ -1,11 +1,9 @@
 class Api::V1::SoapApiController < Api::V1::BaseController
-  soap_service namespace: 'urn:WashOut', wsse_auth_callback: ->(email, password) {
-    user = User.find_by(email: email)
-    return false unless user.present?
-    return user.valid_password?(password)
-  }
+  soap_service namespace: 'urn:CitesDataExchange'
 
   before_action :authenticate_client_certificate
+  before_action :load_caller_organisation, except: :_generate_wsdl
+  before_action :load_callee_organisation, except: :_generate_wsdl
   before_action :load_adapter, except: :_generate_wsdl
   before_action :track_soap_request, except: :_generate_wsdl
 
@@ -59,32 +57,45 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   private
 
   def authenticate_client_certificate
-    return true if Rails.env.development? || Rails.env.test?
-    logger.debug request.env["HTTP_X_SSL_CLIENT_S_DN"].inspect
-    request.env["HTTP_X_SSL_CLIENT_S_DN"] =~ /C=(.+?)\//
-    @country = $1
-    logger.debug @country
+    request.env['HTTP_X_SSL_CLIENT_S_DN'] =~ /C=(.+?)\//
+    @caller_country = $1
+    if request.env['HTTP_X_SSL_CLIENT_S_DN'].blank? ||
+      @caller_country.blank?
+      render_soap_error "CertificateMissing" and return false
+    end
+  end
+
+  def load_caller_organisation
+    @caller_organisation = Organisation.cites_mas.joins(:country).
+      where('countries.iso_code2' => @caller_country).first
+    if !@caller_organisation.present?
+      render_soap_error "CallerNotFound" and return false
+    end
+  end
+
+  def load_callee_organisation
+    @callee_organisation = Organisation.cites_mas.with_available_adapters.
+      joins(:country).
+      where('countries.iso_code2' => params[:IsoCountryCode]).
+      first
+    if !@callee_organisation.present?
+      render_soap_error "CalleeNotFound" and return false
+    end
   end
 
   def load_adapter
-    organisation = Organisation.cites_mas.with_available_adapters.
-      joins(:country).where('countries.iso_code2' => params[:IsoCountryCode]).
-      first
-    @user = get_user
-    if !organisation.present?
-      render_soap_error "AdapterNotFound" and return
-    elsif !organisation.adapter.has_country?(@user.organisation.country_id) &&
-      !@user.can_access_adapter?(organisation.country_id)
+    if !@callee_organisation.adapter.has_country?(@caller_organisation.country_id) &&
+      !@caller_organisation.can_access_adapter?(@callee_organisation)
       render_soap_error "AdapterNotAvailable" and return
     else
-      @adapter = organisation.adapter
+      @adapter = @callee_organisation.adapter
     end
     @adapter_klass = @adapter.name.constantize
   end
 
   def track_soap_request
     @hit = Staccato::Pageview.new(tracker, path: request.path)
-    GaTracker.add_caller_identification(@hit, request, @user)
+    GaTracker.add_caller_identification(@hit, request, @caller_organisation)
     GaTracker.add_request_meta_data(@hit, request, action_name, params, @adapter)
     @start_time = Time.now
   end
@@ -94,11 +105,5 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     GaTracker.add_response_meta_data(@hit, response, response_time, exception)
     GaTracker.add_metrics(@hit)
     @hit.track!
-  end
-
-  def get_user
-    wsse_token = request.env['WSSE_TOKEN']
-    user_email = wsse_token.values_at(:username, :Username).compact.first
-    User.find_by_email(user_email)
   end
 end

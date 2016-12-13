@@ -5,20 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :organisation
+  delegate :is_cites_ma?, :is_customs_ea?, :is_system_managers?, :is_other? ,to: :organisation
 
   validates :first_name, :last_name, presence: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-
-  def can_access_adapter?(country_id)
-    self.is_system_managers? || self.organisation.country_id == country_id
-  end
-
-  Organisation::VALID_ROLES.each do |role|
-    role_formatted = role.downcase.tr(" ", "_")
-    define_method("is_#{role_formatted}?") do
-      self.organisation.role == role
-    end
-  end
 
   def password_match?
      self.errors[:password] << "can't be blank" if password.blank?
