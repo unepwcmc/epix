@@ -5,6 +5,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     return user.valid_password?(password)
   }
 
+  before_action :authenticate_client_certificate
   before_action :load_adapter, except: :_generate_wsdl
   before_action :track_soap_request, except: :_generate_wsdl
 
@@ -56,6 +57,14 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   end
 
   private
+
+  def authenticate_client_certificate
+    return true if Rails.env.development? || Rails.env.test?
+    logger.debug request.env["HTTP_X_SSL_CLIENT_S_DN"].inspect
+    request.env["HTTP_X_SSL_CLIENT_S_DN"] =~ /C=(.+?)\//
+    @country = $1
+    logger.debug @country
+  end
 
   def load_adapter
     organisation = Organisation.cites_mas.with_available_adapters.
