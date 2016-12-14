@@ -38,6 +38,7 @@ en:
   permit_identifier: 'Permit identifier'
   enter_security_token: 'Enter security token'
   security_token: 'Security token'
+  token_info: 'Please fill in for permit numbers protected by an additional security code.'
   search_button_label: 'Search'
   my_account: 'My account'
   my_organisation: 'My organisation'
