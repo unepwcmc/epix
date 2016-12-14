@@ -12,7 +12,6 @@ module OrganisationsHelper
   def trade_reporting_enabled?(field)
     yes = content_tag(:span, '', class: 'fa fa-check')
     no = content_tag(:span, '', class: 'fa fa-times')
-    return no unless @adapter
     @organisation.send(field) ? yes : no
   end
 
