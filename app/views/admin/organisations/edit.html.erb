@@ -1,9 +1,5 @@
 <div class="form-header">
   <h1><%= t('organisation_edit_page') %></h1>
-  <%= render partial: "buttons", locals: {
-    form_id: "organisation_edit_form",
-    cancel_path: admin_organisations_path
-  } %>
 </div>
 
 <%= render partial: "form", locals: {action: "update", form_id: "organisation_edit_form"} %>
