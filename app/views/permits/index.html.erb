@@ -18,11 +18,11 @@
       )%>
     </div>
     <div class="form-group">
-      <%= label_tag(:security_token, t('enter_security_token')) %>
+      <%= security_token_label %>
       <%= text_field_tag(
         :security_token, nil,
-        {class: 'form-control', placeholder: t('security_token'), required: true })
-      %>
+        {class: 'form-control', placeholder: t('security_token')}
+      )%>
     </div>
     <div class="form-group text-center">
       <%= submit_tag(t('search_button_label'), class: 'button search-button') %>
