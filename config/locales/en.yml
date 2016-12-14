@@ -123,6 +123,7 @@ en:
   country: "Country"
   issued: "Issued by"
   trade:
-    reporting_details: "Trade reporting details"
+    reporting_details: "Trade Reporting Settings"
     reporting_enabled: "Trade reporting enabled"
     error_correction: "Trade error correction in online sandbox"
+  permit_exchange_settings: "Permit exchange settings"

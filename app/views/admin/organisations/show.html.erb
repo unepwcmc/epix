@@ -23,30 +23,14 @@
     <span class='col-sm-5'><%= @organisation.country.try(:name) %></span>
   </div>
 </div>
-<% if @organisation.is_cites_ma? %>
-  <div class="form-header">
-    <h2><%= t('trade_reporting_details') %></h2>
-  </div>
-  <div class="form-horizontal organisation-details">
-    <div class="form-group">
-      <label class='col-sm-3'><%= t('trade.reporting_enabled') %></label>
-      <span class='col-sm-5'>
-        <%= trade_reporting_enabled?("trade_reporting_enabled") %>
-      </span>
-    </div>
-    <div class="form-group">
-      <label class='col-sm-3'><%= t('trade.error_correction') %></label>
-      <span class='col-sm-5'>
-        <%= trade_reporting_enabled?("trade_error_correction_in_sandbox_enabled") %>
-      </span>
-    </div>
-  </div>
-<% end %>
 
 <% if @organisation.is_cites_ma? %>
   <div class="form-header">
-    <h2><%= t('adapter_show_page') %></h2>
+    <h2><%= t('permit_exchange_settings') %></h2>
   </div>
+
+  <h3><%= t('adapter_show_page') %></h3>
+
   <div class="form-horizontal organisation-details">
     <% if @adapter %>
       <div class="form-group">
@@ -70,9 +54,8 @@
 <% end %>
 
 <% if @organisation.is_cites_ma? && @adapter %>
-  <div class="form-header">
-    <h2><%= t('access_control_page') %></h2>
-  </div>
+  <h3><%= t('access_control_page') %></h3>
+
   <div class="form-horizontal organisation-details access-list-container">
     <table class="access-list-table">
       <thead>
@@ -90,5 +73,25 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+<% end %>
+
+<% if @organisation.is_cites_ma? %>
+  <div class="form-header">
+    <h2><%= t('trade.reporting_details') %></h2>
+  </div>
+  <div class="form-horizontal organisation-details">
+    <div class="form-group">
+      <label class='col-sm-3'><%= t('trade.reporting_enabled') %></label>
+      <span class='col-sm-5'>
+        <%= trade_reporting_enabled?("trade_reporting_enabled") %>
+      </span>
+    </div>
+    <div class="form-group">
+      <label class='col-sm-3'><%= t('trade.error_correction') %></label>
+      <span class='col-sm-5'>
+        <%= trade_reporting_enabled?("trade_error_correction_in_sandbox_enabled") %>
+      </span>
+    </div>
   </div>
 <% end %>

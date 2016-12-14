@@ -28,35 +28,10 @@
         %>
       </div>
     </div>
+
     <% if @organisation.is_cites_ma? %>
-      <h2><%= t('trade_reporting_details') %></h2>
-      <div class="form-group">
-        <%=
-          f.label(:trade_reporting_enabled, class: 'col-sm-3') {
-            trade_reporting_enabled_info
-          }
-        %>
-        <div class="col-sm-4">
-          <%= f.check_box :trade_reporting_enabled,
-             value: @trade_reporting_enabled
-          %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%=
-          f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
-            trade_error_correction_info
-          }
-        %>
-        <div class="col-sm-4">
-          <%= f.check_box :trade_error_correction_in_sandbox_enabled,
-             value: @trade_error_correction_in_sandbox
-          %>
-        </div>
-      </div>
-    <% end %>
-    <% if @organisation.is_cites_ma? %>
-      <h2><%= t('adapter_show_page') %></h2>
+      <h2><%= t('permit_exchange_settings') %></h2>
+      <h3><%= t('adapter_show_page') %></h3>
       <%= f.fields_for :adapter do |ff| %>
         <div class="form-group">
           <%= ff.label(:is_available, class: "col-sm-3"){
@@ -79,7 +54,7 @@
       <% end %>
     <% end %>
     <% if @organisation.is_cites_ma? && @adapter %>
-      <h2><%= t('access_control_list') %></h2>
+      <h3><%= t('access_control_list') %></h3>
       <%= f.fields_for :adapter do |ff| %>
         <div class="form-group">
           <%= ff.label(:countries_with_access_ids, class: 'col-sm-3 control-label'){
@@ -109,5 +84,34 @@
         </div>
       <% end %>
     <% end %>
+
+    <% if @organisation.is_cites_ma? %>
+      <h2><%= t('trade.reporting_details') %></h2>
+      <div class="form-group">
+        <%=
+          f.label(:trade_reporting_enabled, class: 'col-sm-3') {
+            trade_reporting_enabled_info
+          }
+        %>
+        <div class="col-sm-4">
+          <%= f.check_box :trade_reporting_enabled,
+             value: @trade_reporting_enabled
+          %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%=
+          f.label(:trade_error_correction_in_sandbox_enabled, class: 'col-sm-3') {
+            trade_error_correction_info
+          }
+        %>
+        <div class="col-sm-4">
+          <%= f.check_box :trade_error_correction_in_sandbox_enabled,
+             value: @trade_error_correction_in_sandbox
+          %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 <% end %> <!-- End Form -->
