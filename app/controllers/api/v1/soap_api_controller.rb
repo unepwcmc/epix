@@ -66,6 +66,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   end
 
   def load_caller_organisation
+    # TODO: soap_request.headers[:Caller].inspect
     @caller_organisation = Organisation.cites_mas.joins(:country).
       where('countries.iso_code2' => @caller_country).first
     if !@caller_organisation.present?
@@ -74,6 +75,7 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   end
 
   def load_callee_organisation
+    # TODO: soap_request.headers[:Callee].inspect
     @callee_organisation = Organisation.cites_mas.with_available_adapters.
       joins(:country).
       where('countries.iso_code2' => params[:IsoCountryCode]).
