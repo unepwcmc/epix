@@ -44,10 +44,14 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when country adapter supports CITES Toolkit V1" do
       let!(:adapter){
-        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 1,
-                             countries_with_access_ids:
-                               [subject.current_user.organisation.country_id]
-                          )
+        FactoryGirl.create(
+          :adapter,
+          organisation: cites_ma,
+          cites_toolkit_version: 1,
+          countries_with_access_ids: [
+            subject.current_user.organisation.country_id
+          ]
+        )
       }
       let(:fixture){
         File.read("spec/fixtures/v1/get_non_final_cites_certificate.xml")
@@ -66,10 +70,14 @@ RSpec.describe PermitsController, type: :controller do
 
     context "when country adapter supports CITES Toolkit V2" do
       let!(:adapter){
-        FactoryGirl.create(:adapter, organisation: cites_ma, cites_toolkit_version: 2,
-                             countries_with_access_ids:
-                               [subject.current_user.organisation.country_id]
-                          )
+        FactoryGirl.create(
+          :adapter,
+          organisation: cites_ma,
+          cites_toolkit_version: 2,
+          countries_with_access_ids: [
+            subject.current_user.organisation.country_id
+          ]
+        )
       }
       let(:fixture){
         File.read("spec/fixtures/v2/get_non_final_cites_certificate.xml")

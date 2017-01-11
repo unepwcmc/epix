@@ -1,6 +1,8 @@
 class PermitsController < ApplicationController
   before_action :sanitise_params, only: [:index, :show]
   before_action :authenticate_user!
+  before_action :load_caller_organisation, only: [:show]
+  before_action :load_callee_organisation, only: [:show]
   before_action :load_adapter, only: [:show]
 
   rescue_from Adapters::SoapAdapterException, with: :soap_adapter_exception
@@ -19,7 +21,7 @@ class PermitsController < ApplicationController
   end
 
   def show
-    @response = @adapter.name.constantize.run(
+    @response = @adapter_klass.run(
       @adapter,
       :get_non_final_cites_certificate,
       {
@@ -46,21 +48,35 @@ class PermitsController < ApplicationController
     @security_token = params[:security_token]
   end
 
-  def load_adapter
-    organisation = Organisation.cites_mas.with_available_adapters.
-      joins(:country).where('countries.iso_code2' => params[:country].try(:upcase)).
+  def load_caller_organisation
+    @caller_organisation = current_user.organisation
+    if !@caller_organisation.present?
+      flash.alert = 'Caller not found'
+      redirect_to(permits_path) and return false
+    end
+  end
+
+  def load_callee_organisation
+    @callee_organisation = Organisation.cites_mas.with_available_adapters.
+      joins(:country).
+      where('countries.iso_code2' => params[:country].try(:upcase)).
       first
-    unless organisation.present?
-      flash.alert = 'Web Service not found or not available'
-      redirect_to(permits_path) && return
+    if !@callee_organisation.present?
+      flash.alert = 'Callee not found'
+      redirect_to(permits_path) and return false
     end
-    user_country = current_user.organisation.country_id
-    unless organisation.adapter.has_country?(user_country) ||
-      current_user.can_access_adapter?(organisation.country_id)
+  end
+
+  def load_adapter
+    unless @callee_organisation.adapter && (
+        @callee_organisation.adapter.has_country?(@caller_organisation.country_id) ||
+        @caller_organisation.can_access_adapter?(@callee_organisation)
+      )
       flash.alert = 'Web Service access denied'
-      redirect_to(permits_path) && return
+      redirect_to(permits_path) and return false
     end
-    @adapter = organisation.adapter
+    @adapter = @callee_organisation.adapter
+    @adapter_klass = @adapter.name.constantize
   end
 
   def soap_adapter_exception(e)

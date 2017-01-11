@@ -18,11 +18,10 @@ module GaTracker
     "counter": 1
   }
 
-  def self.add_caller_identification(hit, request, user)
+  def self.add_caller_identification(hit, request, organisation)
     hit.add_custom_dimension(DIMENSIONS[:IP], request.ip)
-    hit.add_custom_dimension(DIMENSIONS[:user_id], user.id)
-    hit.add_custom_dimension(DIMENSIONS[:organisation_id], user.organisation_id)
-    hit.add_custom_dimension(DIMENSIONS[:country_iso_code], user.organisation.country.iso_code2)
+    hit.add_custom_dimension(DIMENSIONS[:organisation_id], organisation.id)
+    hit.add_custom_dimension(DIMENSIONS[:country_iso_code], organisation.country.iso_code2)
   end
 
   def self.add_request_meta_data(hit, request, action_name, params, adapter)
