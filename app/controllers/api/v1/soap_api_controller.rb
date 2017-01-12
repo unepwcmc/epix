@@ -17,7 +17,11 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_final_cites_certificate
-    render xml: @adapter_klass.run(@adapter, :get_final_cites_certificate, params).to_xml
+    render xml: @adapter_klass.run(
+      @adapter,
+      :get_final_cites_certificate,
+      params.permit(:CertificateNumber, :TokenId, :IsoCountryCode).to_h
+    ).to_xml
   end
 
   soap_action :get_non_final_cites_certificate,
@@ -28,7 +32,11 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               },
               return: :string
   def get_non_final_cites_certificate
-    render xml: @adapter_klass.run(@adapter, :get_non_final_cites_certificate, params).to_xml
+    render xml: @adapter_klass.run(
+      @adapter,
+      :get_non_final_cites_certificate,
+      params.permit(:CertificateNumber, :TokenId, :IsoCountryCode).to_h
+    ).to_xml
   end
 
   soap_action :confirm_quantities,
@@ -41,7 +49,11 @@ class Api::V1::SoapApiController < Api::V1::BaseController
               return: :string
   def confirm_quantities
     if WashOut::Types::CitesPositionsType.valid?(params[:ConfirmedQuantities][:CitesPosition])
-      render xml: @adapter_klass.run(@adapter, :confirm_quantities, params).to_xml
+      render xml: @adapter_klass.run(
+        @adapter,
+        :confirm_quantities,
+        params.permit(:CertificateNumber, :TokenId, :IsoCountryCode).to_h
+      ).to_xml
     else
       render_soap_error "XML structure is not valid. ID must be a token", "Client"
     end
