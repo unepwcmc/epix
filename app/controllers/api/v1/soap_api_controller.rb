@@ -71,8 +71,8 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   def authenticate_client_certificate
     request.env['HTTP_X_SSL_CLIENT_S_DN'] =~ /C=(.+?)\//
     @caller_country = $1
-    if request.env['HTTP_X_SSL_CLIENT_S_DN'].blank? ||
-      @caller_country.blank?
+    if (request.env['HTTP_X_SSL_CLIENT_S_DN'].blank? ||
+      @caller_country.blank?) && !Rails.env.development?
       render_soap_error "CertificateMissing" and return false
     end
   end
