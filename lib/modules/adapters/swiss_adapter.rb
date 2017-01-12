@@ -30,4 +30,15 @@ class Adapters::SwissAdapter < Adapters::SimpleAdapter
       }
     }
   end
+
+  private
+
+  def message_for_adapter(operation_sym, message)
+    if operation_sym == :service_state
+      {}
+    else
+      message
+    end
+  end
+
 end

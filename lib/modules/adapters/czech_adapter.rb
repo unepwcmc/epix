@@ -22,9 +22,13 @@ class Adapters::CzechAdapter < Adapters::SimpleAdapter
 
   private
 
-  def message_for_adapter(message)
-    {
-      ID: message[:CertificateNumber]
-    }
+  def message_for_adapter(operation_sym, message)
+    if operation_sym == :get_non_final_cites_certificate
+      {
+        ID: message[:CertificateNumber]
+      }
+    else
+      message
+    end
   end
 end

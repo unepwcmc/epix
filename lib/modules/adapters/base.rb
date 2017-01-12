@@ -29,8 +29,8 @@ class Adapters::Base
 
   def soap_request(operation_sym, message = {})
     operation = operation_for_adapter(operation_sym)
-    message = message_for_adapter(message)
     raise Adapters::OperationNotAvailableException unless operation.present?
+    message = message_for_adapter(operation_sym, message)
     soap_action = @operations[operation_sym] && @operations[operation_sym][:soap_action]
     request_params = {soap_action: soap_action} if soap_action
     Transports::Soap.request(@params, request_params || {}, operation, message, @adapter.time_out)
@@ -43,7 +43,7 @@ class Adapters::Base
     @operations[operation_sym] && @operations[operation_sym][:name]
   end
 
-  def message_for_adapter(message)
+  def message_for_adapter(operation_sym, message)
     message
   end
 
