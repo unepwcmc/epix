@@ -60,10 +60,16 @@ class Api::V1::SoapApiController < Api::V1::BaseController
   end
 
   soap_action :service_state,
-              args: {},
+              args: {
+                IsoCountryCode: :string
+              },
               return: :string
   def service_state
-    render xml: @adapter_klass.run(@adapter, :service_state).to_xml
+    render xml: @adapter_klass.run(
+      @adapter,
+      :service_state,
+      params.permit(:IsoCountryCode).to_h
+    ).to_xml
   end
 
   private
