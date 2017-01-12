@@ -9,6 +9,8 @@ class Api::V1::BaseController < ApplicationController
       render_soap_error 'This request took too long to process...'
     elsif e.cause.is_a?(Savon::SOAPFault)
       render xml: e.cause.xml
+    elsif e.is_a?(Adapters::SoapAdapterException)
+      render_soap_error e.message
     else
       render_soap_error 'Something went wrong'
     end
