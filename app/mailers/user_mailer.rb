@@ -10,7 +10,7 @@ class UserMailer < Devise::Mailer
   end
 
   def confirmation_instructions(user, token, opts={})
-    opts[:subject] = 'Welcome to EPIX'
+    opts[:subject] = 'Welcome to EPIX Connect'
     super
   end
 end
