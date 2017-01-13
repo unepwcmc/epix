@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'renders the subject' do
-      expect(mail.subject).to eq('Welcome to EPIX')
+      expect(mail.subject).to eq('Welcome to EPIX Connect')
     end
 
     it 'renders the receiver email' do

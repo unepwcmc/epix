@@ -1,10 +1,10 @@
 # EPIX Conduit
 
-This repository contains the source code of the EPIX project. The EPIX (Electronic Permit Information eXchange) facilitates and expedites the exchange of permit data among national CITES Authorities.
+This repository contains the source code of the EPIX Connect project. EPIX (Electronic Permit Information eXchange) facilitates and expedites the exchange of permit data among national CITES Authorities.
 
 ## Installation
 
-EPIX is a Rails 4 app, using a Postgres database. Installation is pretty standard:
+EPIX Connect is a Rails 5 app, using a Postgres database. Installation is pretty standard:
 
 ```
   $ git clone https://github.com/unepwcmc/epix
