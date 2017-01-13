@@ -9,6 +9,8 @@ class Api::V1::SoapApiController < Api::V1::BaseController
 
   after_action :track_soap_response, except: :_generate_wsdl
 
+  rescue_from NoMethodError, with: :handle_no_method_error
+
   soap_action :get_final_cites_certificate,
               args: {
                 CertificateNumber: :string,
@@ -125,5 +127,19 @@ class Api::V1::SoapApiController < Api::V1::BaseController
     GaTracker.add_response_meta_data(@hit, response, response_time, exception)
     GaTracker.add_metrics(@hit)
     @hit.track!
+  end
+
+  def handle_no_method_error(exception)
+    log_error(exception)
+    render_soap_error "Invalid Request"
+  end
+
+  def log_error(exception)
+    if Rails.env.production? || Rails.env.staging?
+      Appsignal.add_exception(exception) if defined? Appsignal
+    else
+      Rails.logger.error exception.message
+      Rails.logger.error exception.backtrace.join("\n")
+    end
   end
 end
