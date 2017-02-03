@@ -25,7 +25,7 @@ module OrganisationsHelper
   end
 
   def trade_error_correction_info
-    info_text = "If the trade reporting mechanism detects errors in the uploaded trade data, it will suspend the submission and errors will need to be corrected. This can be done in one of 2 ways: either by applying corrections to the source permit repository, or to the uploaded copy within an online sandbox environment."
+    info_text = "If the trade reporting mechanism detects errors in the uploaded trade data, it will suspend the submission and errors will need to be corrected. This can be done in one of 2 ways: either by applying corrections to the source permit repository, or to the uploaded copy within an online sandbox environment. The first option is always available."
     content_tag('span', t('trade.error_correction')) +
     content_tag('i', '', {
       class: 'fa fa-info-circle',
